@@ -8,7 +8,8 @@ module ApplicationHelper
   end
 
   def is_index?
-    params[:action] == "index" && params[:controller] == "index"
+    #params[:action] == "index" && params[:controller] == "index"
+    params[:action] == "index" && params[:controller] == "catalogue"
   end
 
   def is_valid_json(obj)

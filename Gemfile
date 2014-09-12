@@ -13,6 +13,8 @@ gem 'mysql2'
 gem 'slim'
 gem 'paperclip', "~> 4.2"
 
+gem 'rack-rewrite'
+
 group :development do
   gem 'sqlite3'
   gem 'terminal-notifier'

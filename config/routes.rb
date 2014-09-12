@@ -1,6 +1,6 @@
 Woodlove::Application.routes.draw do
 
-  root to: "index#index"
+  root to: redirect('/catalogue')
 
   get 'catalogue', to: 'catalogue#index'
 
