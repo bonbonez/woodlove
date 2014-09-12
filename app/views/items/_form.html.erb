@@ -1,0 +1,53 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :title_original %><br />
+    <%= f.text_field :title_original %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br />
+    <%= f.text_area :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_original %><br />
+    <%= f.text_area :desc_original %>
+  </div>
+  <div class="field">
+    <%= f.label :meta %><br />
+    <%= f.text_field :meta %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :price_original %><br />
+    <%= f.number_field :price_original %>
+  </div>
+  <div class="field">
+    <%= f.label :price_special %><br />
+    <%= f.number_field :price_special %>
+  </div>
+  <div class="field">
+    <%= f.label :link_to_original_item %><br />
+    <%= f.text_field :link_to_original_item %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

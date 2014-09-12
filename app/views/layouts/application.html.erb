@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Woodlove</title>
+        <%#= stylesheet_link_tag    "application", :media => "all" %>
+        <%#= javascript_include_tag "application" %>
+        <%#= csrf_meta_tags %>
+        <link rel="stylesheet" href="/styles/global.css?<%= frontend_version %>" />
+    </head>
+    <body>
+        <div class="b-layout">
+            <div class="b-layout-page">
+                <div class="b-layout-header">
+                    <% if is_index? %>
+                        <div class="b-logo"></div>
+                    <% else %>
+                        <a href="/" class="b-logo"></a>
+                    <% end %>
+                </div>
+                <%= render partial: 'application/top_menu' %>
+                <div class="b-layout-content">
+                    <%= yield %>
+                </div>
+            </div>
+            <%= render partial: 'application/footer' %>
+        </div>
+
+    </body>
+</html>

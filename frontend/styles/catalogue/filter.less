@@ -1,0 +1,35 @@
+.b-layout-catalogue-filter {
+  margin-bottom: 50px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+
+  &-item {
+    border: 1px solid @color-brown-dark;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    color: @color-brown-dark;
+    font-family: @font-museo;
+    font-weight: bold;
+    font-size: 28px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+
+    &:not(:last-of-type) {
+      margin-right: 49px;
+    }
+
+    &:hover {
+      background-color: @color-brown-dark;
+      color: #ffffff;
+    }
+
+    &.m-active {
+      background-color: @color-brown-dark;
+      color: #ffffff;
+      cursor: default;
+    }
+  }
+}

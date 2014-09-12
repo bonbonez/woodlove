@@ -1,0 +1,162 @@
+.b-layout-item {
+  white-space: nowrap;
+
+  &-content-left,
+  &-content-right {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+  }
+
+  &-content-left {
+    margin-right: 20px;
+    width: 450px;
+  }
+
+  &-pictures-wrapper {
+
+  }
+
+  &-picture-large {
+    .box-sizing(border-box);
+    background-color: #ffffff;
+    border: 1px solid @color-brown-darker;
+    height: 300px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 450px;
+
+    &-image {
+      .vertical-align-middle();
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &-picture-thumbs-wrapper {
+    white-space: nowrap;
+  }
+
+  &-picture-thumb {
+    background-color: #ffffff;
+    border: 1px solid @color-brown;
+    cursor: pointer;
+    display: inline-block;
+    height: 54px;
+    line-height: 54px;
+    text-align: center;
+    width: 80px;
+
+    &.m-active {
+      border-color: @color-brown;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
+
+    &-image {
+      .vertical-align-middle();
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &-content-right {
+    width: @layout-max-width - 450px - 20px;
+  }
+
+  &-title {
+    color: @color-brown-dark;
+    font-family: @font-museo;
+    font-weight: 900;
+    font-size: 33px;
+    line-height: 44px;
+  }
+
+  &-price {
+    color: @color-orange-darker;
+    font-family: @font-museo;
+    font-size: 29px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  &-description {
+    color: @color-brown-darker;
+    font-family: @font-museo;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 24px;
+    margin-bottom: 45px;
+  }
+
+  &-button-buy-wrapper {
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  &-specs {
+    margin-bottom: 50px;
+    width: 100%;
+
+    &-header {
+      color: @color-brown-darker;
+      font-family: @font-museo;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    &-item {
+      .box-sizing(border-box);
+      padding: 10px 0 10px 180px;
+      position: relative;
+      width: 100%;
+
+      &:not(:last-of-type) {
+        //margin-bottom: 10px;
+        border-bottom: 1px solid rgba(146, 124, 86, 0.2);
+      }
+
+      &-label,
+      &-text {
+        color: @color-brown-darker;
+        font-family: @font-museo;
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 24px;
+      }
+
+      &-label {
+        //width: 160px;
+        left: 0;
+        position: absolute;
+        top: 10px;
+      }
+
+      &-text {
+        width: 100%;
+      }
+    }
+  }
+
+  &-guarantee {
+    margin-bottom: 50px;
+
+    &-header {
+      color: @color-brown-darker;
+      font-family: @font-museo;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    &-text {
+      color: @color-brown-darker;
+      font-family: @font-museo;
+      font-size: 18px;
+      font-weight: normal;
+      line-height: 24px;
+    }
+  }
+}

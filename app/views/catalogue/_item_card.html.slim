@@ -1,0 +1,8 @@
+ruby:
+  item ||= nil
+
+- if !item.nil?
+  = link_to "/items/#{item.url}", class: 'b-item-card' do
+    img.b-item-card-image src=item.picture.url(:medium)
+    .b-item-card-title =item.title
+    .b-item-card-price ="-#{item.price}"

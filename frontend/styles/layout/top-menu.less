@@ -1,0 +1,35 @@
+.b-layout-top-menu {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+
+  &-item {
+    .vertical-align-middle();
+    border-radius: 2px;
+    color: @color-brown;
+    cursor: pointer;
+    font-family: @font-museo;
+    font-size: 19px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 40px;
+    overflow: hidden;
+    padding: 0 15px;
+    text-transform: uppercase;
+
+    &:not(.last) {
+      margin-right: 15px;
+    }
+
+    &.m-current {
+      border: 1px solid @color-brown;
+      cursor: default;
+    }
+
+    &:not(.m-current):hover {
+      background-color: @color-brown;
+      color: #ffffff;
+    }
+  }
+}

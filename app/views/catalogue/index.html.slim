@@ -1,0 +1,39 @@
+.b-layout-catalogue
+  = render partial: 'catalogue/promo_slider'
+
+  /h1.b-layout-catalogue-header ="Каталог"
+  .b-layout-catalogue-header.m-centered
+    | Интернет магазин брендовых<br/>изделий из дерева
+
+  .b-layout-catalogue-content
+    .b-layout-catalogue-navigation
+      .b-layout-catalogue-navigation-categories-wrapper
+        .b-layout-catalogue-navigation-categories-item ="Деревянные очки Woodzee"
+        .b-layout-catalogue-navigation-categories-item.m-active ="Деревянные часы JORD"
+        .b-layout-catalogue-navigation-categories-item ="Деревянные гаджеты"
+        .b-layout-catalogue-navigation-categories-item ="Деревянные чехлы для iPhone"
+      .b-layout-catalogue-navigation-subcategories-wrapper
+        .b-layout-catalogue-navigation-subcategories-item
+          .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Alpine"
+        .b-layout-catalogue-navigation-subcategories-item
+          .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Cardiff"
+        .b-layout-catalogue-navigation-subcategories-item
+          .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Dakota"
+        .b-layout-catalogue-navigation-subcategories-item
+          .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Daphine"
+        .b-layout-catalogue-navigation-subcategories-item
+          .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Sierra"
+        .b-layout-catalogue-navigation-subcategories-item
+          .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Trinity"
+
+    .b-layout-catalogue-filter
+      .b-layout-catalogue-filter-item.m-active ="По популярности"
+      .b-layout-catalogue-filter-item ="Сначала дешевле"
+      .b-layout-catalogue-filter-item ="Сначала дороже"
+
+    .b-layout-catalogue-items-wrapper
+      - for i in 0..4
+        = render partial: 'catalogue/item_card', locals: {item: @item}
+
+  /.b-layout-catalogue-header.m-centered
+    | Интернет магазин брендовых<br/>изделий из дерева

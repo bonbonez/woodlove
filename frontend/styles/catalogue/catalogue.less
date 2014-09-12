@@ -1,0 +1,115 @@
+.b-layout-catalogue {
+
+  &-header {
+    color: @color-brown-dark;
+    font-family: @font-museo;
+    font-size: 48px;
+    font-weight: 900;
+    margin: 0 0 20px 0;
+
+    &.m-centered {
+      text-align: center;
+    }
+  }
+
+  &-content {
+    .box-sizing(border-box);
+    padding: 0 30px;
+    width: 100%;
+  }
+
+  &-navigation {
+    .box-sizing(border-box);
+    margin-bottom: 40px;
+    min-height: 200px;
+    padding-left: 400px;
+    position: relative;
+    width: 100%;
+
+    &-categories {
+
+      &-wrapper {
+        left: 0;
+        position: absolute;
+        padding: 5px 0;
+        top: 0;
+        width: 400px;
+      }
+
+      &-item {
+        .box-sizing(border-box);
+        .transition(0.15s);
+        color: @color-brown-dark;
+        cursor: pointer;
+        font-family: @font-museo;
+        font-size: 24px;
+        font-weight: bold;
+        height: 44px;
+        line-height: 44px;
+        padding: 0 10px;
+        width: 100%;
+
+        &.m-active,
+        &:hover {
+          background-color: #ffffff;
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        &.m-active {
+          cursor: default;
+        }
+      }
+    }
+
+    &-subcategories {
+      &-wrapper {
+        .box-sizing(border-box);
+        background-color: #ffffff;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        padding: 14px 12px;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+      }
+
+      &-item {
+        color: @color-brown-dark;//533503
+        //display: ;
+        font-size: 22px;
+        font-weight: normal;
+        height: 30px;
+        line-height: 30px;
+
+        &-text {
+          cursor: pointer;
+          display: inline-block;
+          padding: 0 10px;
+        }
+
+        .m-active,
+        &:hover {
+          //.b-lay
+          .b-layout-catalogue-navigation-subcategories-item-text {
+            background-color: #f1f1f1;
+          }
+        }
+
+        &.m-active {
+          .b-layout-catalogue-navigation-subcategories-item-text {
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+
+  &-items-wrapper {
+    width: 100%;
+    text-align: left;
+
+    .b-item-card {
+      vertical-align: top;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+.b-layout-promo-slider {
+  height: 364px;
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%;
+
+  &-wrapper {
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  &-content {
+    height: 100%;
+    width: 100%;
+
+    &-slide {
+      background-image: url('/assets/catalogue/promo-slider/dipped-sierries.jpg');
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &-arrow {
+    &-left,
+    &-right {
+      .transition-prop(background-color, 0.1s);
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 90px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+
+      &::before {
+        content: ' ';
+        background-repeat: no-repeat;
+        position: absolute;
+        height: 116px;
+        left: 50%;
+        margin: -58px 0 0 -17px;
+        top: 50%;
+        width: 34px;
+      }
+    }
+
+    &-left {
+      left: 0;
+
+      &::before {
+        background-image: url('/assets/ui/arrow-left.png');
+      }
+    }
+
+    &-right {
+      right: 0;
+
+      &::before {
+        background-image: url('/assets/ui/arrow-right.png');
+      }
+    }
+  }
+
+  &-pagination {
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+
+    &-item {
+      .transition-prop(background-color, 0.1s);
+      .vertical-align-middle();
+      background-color: @color-brown-dark;
+      border-radius: 12px;
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+
+      &.m-active,
+      &:hover {
+        background-color: @color-brown-lighter;
+      }
+
+      &:not(:last-of-type) {
+        margin-right: 10px;
+      }
+    }
+  }
+}

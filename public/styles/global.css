@@ -1,0 +1,1192 @@
+/* ==========================================================================
+Helper classes
+========================================================================== */
+/*
+* Hide from both screenreaders and browsers: h5bp.com/u
+*/
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+/*
+* Hide only visually, but have it available for screenreaders: h5bp.com/v
+*/
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/*
+* Extends the .visuallyhidden class to allow the element to be focusable
+* when navigated to via the keyboard: h5bp.com/p
+*/
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+/*
+* Hide visually and from screenreaders, but maintain layout
+*/
+.invisible {
+  visibility: hidden;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+/*
+* Clearfix: contain floats
+*
+* For modern browsers
+* 1. The space content is one way to avoid an Opera bug when the
+* `contenteditable` attribute is included anywhere else in the document.
+* Otherwise it causes space to appear at the top and bottom of elements
+* that receive the `clearfix` class.
+* 2. The use of `table` rather than `block` is only necessary if using
+* `:before` to contain the top-margins of child elements.
+*/
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before {
+  content: '';
+  display: block;
+}
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* ==========================================================================
+EXAMPLE Media Queries for Responsive Design.
+These examples override the primary ('mobile first') styles.
+Modify as content requires.
+========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+/* ==========================================================================
+Print styles.
+Inlined to avoid required HTTP connection: h5bp.com/r
+========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /*
+    * Don't show links for images, or javascript/internal links
+    */
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+.lazyloading {
+  background: transparent url('/pipeline/application/loader-horizontal/light_grey@2x.gif') center center no-repeat;
+  background-size: 51px 9px;
+}
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
+}
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+a,
+p,
+abbr,
+sub,
+sup,
+small,
+mark,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button {
+  -webkit-font-smoothing: antialiased;
+}
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px;
+}
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box;
+}
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+.hidden {
+  display: none;
+}
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/**
+ * Museo
+ */
+/**
+ * Museo
+ */
+@font-face {
+  font-family: "museo_sans_cyrl300";
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/museo/museosanscyrl-300-webfont.svg#museo_sans_cyrl300') format('svg'), url('/assets/museo/museosanscyrl-300-webfont.eot?'), url('/assets/museo/museosanscyrl-300-webfont.woff') format('woff'), url('/assets/museo/museosanscyrl-300-webfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: "museo_sans_cyrl300";
+  font-style: italic;
+  font-weight: normal;
+  src: url('/assets/museo/museosanscyrl-300italic.svg#museo_sans_cyrl300_italic') format('svg'), url('/assets/museo/museosanscyrl-300italic.eot?'), url('/assets/museo/museosanscyrl-300italic.woff') format('woff'), url('/assets/museo/museosanscyrl-300italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: "museo_sans_cyrl300";
+  font-style: normal;
+  font-weight: bold;
+  src: url('/assets/museo/museosanscyrl-500-webfont.svg#museo_sans_cyrl500') format('svg'), url('/assets/museo/museosanscyrl-500-webfont.eot?'), url('/assets/museo/museosanscyrl-500-webfont.woff') format('woff'), url('/assets/museo/museosanscyrl-500-webfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: "museo_sans_cyrl300";
+  font-style: italic;
+  font-weight: bold;
+  src: url('/assets/museo/museosanscyrl-500italic-webfont.svg#museo_sans_cyrl500_italic') format('svg'), url('/assets/museo/museosanscyrl-500italic-webfont.eot?'), url('/assets/museo/museosanscyrl-500italic-webfont.woff') format('woff'), url('/assets/museo/museosanscyrl-500italic-webfont.ttf') format('truetype');
+}
+@font-face {
+  font-family: "museo_sans_cyrl300";
+  font-style: normal;
+  font-weight: 900;
+  src: url('/assets/museo/museosanscyrl-700-webfont.svg#museo_sans_cyrl300') format('svg'), url('/assets/museo/museosanscyrl-700-webfont.eot?'), url('/assets/museo/museosanscyrl-700-webfont.woff') format('woff'), url('/assets/museo/museosanscyrl-700-webfont.ttf') format('truetype');
+}
+/* todo: remove this variables */
+html,
+body,
+.b-layout {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background-image: url('/assets/13.png');
+  font-size: 0;
+}
+*:focus {
+  outline: 0;
+}
+*:link,
+*:visited {
+  text-decoration: none;
+  color: #000000;
+}
+div,
+span,
+p,
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -webkit-font-smoothing: antialiased;
+}
+.b-layout-wrapper {
+  width: 100%;
+}
+.b-layout {
+  box-sizing: border-box;
+  zoom: 1;
+  width: 1012px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+}
+.b-layout:before {
+  content: '';
+  display: block;
+}
+.b-layout:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.b-layout:before {
+  content: '';
+  display: block;
+}
+.b-layout:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.b-layout-page {
+  zoom: 1;
+  position: relative;
+  max-width: 980px;
+  min-height: 100%;
+  margin: 0 auto;
+}
+.b-layout-page:before {
+  content: '';
+  display: block;
+}
+.b-layout-page:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.b-layout-page:before {
+  content: '';
+  display: block;
+}
+.b-layout-page:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.b-layout-header {
+  height: 100px;
+}
+.b-layout-content {
+  position: relative;
+  padding-bottom: 120px;
+  padding-top: 30px;
+}
+.b-layout-footer {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin: -100px auto 0;
+  line-height: 100px;
+}
+.b-layout.m-layout-content-fullwidth {
+  padding: 0;
+  width: 100%;
+}
+.b-layout.m-layout-content-fullwidth .b-layout-page {
+  max-width: 100%;
+}
+.b-layout.m-layout-content-fullwidth .b-layout-header,
+.b-layout.m-layout-content-fullwidth .b-layout-footer {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+.b-layout.m-layout-content-fullwidth .b-layout-footer {
+  height: 120px;
+}
+.b-layout-header {
+  /*background-image: url('/assets/tree.png');
+  background-repeat: no-repeat;
+  background-position: 0px 5px;*/
+  position: relative;
+}
+.b-logo {
+  background-image: url('/assets/logo.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  height: 42px;
+  left: 50%;
+  margin: -21px 0 0 -141px;
+  position: absolute;
+  top: 50%;
+  width: 283px;
+}
+@media print, screen, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 1.25/1), (min--moz-device-pixel-ratio: 1.25), (-moz-min-device-pixel-ratio: 1.25), (-ms-min-device-pixel-ratio: 1.25), (min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
+  .b-logo {
+    background-image: url('/assets/logo@2x.png');
+    background-size: 100% 100%;
+  }
+}
+.b-layout-footer {
+  border-top: 1px solid rgba(122, 90, 39, 0.2);
+}
+.b-layout-footer-content {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  line-height: normal;
+  width: 100%;
+}
+.b-layout-footer-navigation {
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+.b-layout-footer-navigation-item {
+  color: #533503;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+}
+.b-layout-footer-navigation-item:not(:last-of-type) {
+  margin-right: 20px;
+}
+.b-layout-footer-social-block {
+  height: 30px;
+  line-height: 30px;
+}
+.b-layout-footer-social-block-item {
+  background-color: #533503;
+  border-radius: 30px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+}
+.b-layout-footer-social-block-item:not(:last-of-type) {
+  margin-right: 10px;
+}
+.b-layout-footer-copyrights {
+  color: #533503;
+  text-align: center;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+}
+.b-layout-top-menu {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+}
+.b-layout-top-menu-item {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  border-radius: 2px;
+  color: #887659;
+  cursor: pointer;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+  height: 35px;
+  line-height: 40px;
+  overflow: hidden;
+  padding: 0 15px;
+  text-transform: uppercase;
+}
+.b-layout-top-menu-item:not(.last) {
+  margin-right: 15px;
+}
+.b-layout-top-menu-item.m-current {
+  border: 1px solid #887659;
+  cursor: default;
+}
+.b-layout-top-menu-item:not(.m-current):hover {
+  background-color: #887659;
+  color: #ffffff;
+}
+.b-layout-catalogue-header {
+  color: #533503;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+}
+.b-layout-catalogue-header.m-centered {
+  text-align: center;
+}
+.b-layout-catalogue-content {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 0 30px;
+  width: 100%;
+}
+.b-layout-catalogue-navigation {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  margin-bottom: 40px;
+  min-height: 200px;
+  padding-left: 400px;
+  position: relative;
+  width: 100%;
+}
+.b-layout-catalogue-navigation-categories-wrapper {
+  left: 0;
+  position: absolute;
+  padding: 5px 0;
+  top: 0;
+  width: 400px;
+}
+.b-layout-catalogue-navigation-categories-item {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+  color: #533503;
+  cursor: pointer;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 10px;
+  width: 100%;
+}
+.b-layout-catalogue-navigation-categories-item.m-active,
+.b-layout-catalogue-navigation-categories-item:hover {
+  background-color: #ffffff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.b-layout-catalogue-navigation-categories-item.m-active {
+  cursor: default;
+}
+.b-layout-catalogue-navigation-subcategories-wrapper {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  padding: 14px 12px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+.b-layout-catalogue-navigation-subcategories-item {
+  color: #533503;
+  font-size: 22px;
+  font-weight: normal;
+  height: 30px;
+  line-height: 30px;
+}
+.b-layout-catalogue-navigation-subcategories-item-text {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 10px;
+}
+.b-layout-catalogue-navigation-subcategories-item .m-active .b-layout-catalogue-navigation-subcategories-item-text,
+.b-layout-catalogue-navigation-subcategories-item:hover .b-layout-catalogue-navigation-subcategories-item-text {
+  background-color: #f1f1f1;
+}
+.b-layout-catalogue-navigation-subcategories-item.m-active .b-layout-catalogue-navigation-subcategories-item-text {
+  cursor: default;
+}
+.b-layout-catalogue-items-wrapper {
+  width: 100%;
+  text-align: left;
+}
+.b-layout-catalogue-items-wrapper .b-item-card {
+  vertical-align: top;
+}
+.b-layout-promo-slider {
+  height: 364px;
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.b-layout-promo-slider-wrapper {
+  margin-bottom: 40px;
+  position: relative;
+}
+.b-layout-promo-slider-content {
+  height: 100%;
+  width: 100%;
+}
+.b-layout-promo-slider-content-slide {
+  background-image: url('/assets/catalogue/promo-slider/dipped-sierries.jpg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  height: 100%;
+  width: 100%;
+}
+.b-layout-promo-slider-arrow-left,
+.b-layout-promo-slider-arrow-right {
+  -webkit-transition: background-color 0.1s ease-out;
+  transition: background-color 0.1s ease-out;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 90px;
+}
+.b-layout-promo-slider-arrow-left:hover,
+.b-layout-promo-slider-arrow-right:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.b-layout-promo-slider-arrow-left::before,
+.b-layout-promo-slider-arrow-right::before {
+  content: ' ';
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 116px;
+  left: 50%;
+  margin: -58px 0 0 -17px;
+  top: 50%;
+  width: 34px;
+}
+.b-layout-promo-slider-arrow-left {
+  left: 0;
+}
+.b-layout-promo-slider-arrow-left::before {
+  background-image: url('/assets/ui/arrow-left.png');
+}
+.b-layout-promo-slider-arrow-right {
+  right: 0;
+}
+.b-layout-promo-slider-arrow-right::before {
+  background-image: url('/assets/ui/arrow-right.png');
+}
+.b-layout-promo-slider-pagination {
+  height: 12px;
+  line-height: 12px;
+  text-align: center;
+}
+.b-layout-promo-slider-pagination-item {
+  -webkit-transition: background-color 0.1s ease-out;
+  transition: background-color 0.1s ease-out;
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  background-color: #533503;
+  border-radius: 12px;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+}
+.b-layout-promo-slider-pagination-item.m-active,
+.b-layout-promo-slider-pagination-item:hover {
+  background-color: #a58755;
+}
+.b-layout-promo-slider-pagination-item:not(:last-of-type) {
+  margin-right: 10px;
+}
+.b-layout-catalogue-filter {
+  margin-bottom: 50px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+}
+.b-layout-catalogue-filter-item {
+  border: 1px solid #533503;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  color: #533503;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+}
+.b-layout-catalogue-filter-item:not(:last-of-type) {
+  margin-right: 49px;
+}
+.b-layout-catalogue-filter-item:hover {
+  background-color: #533503;
+  color: #ffffff;
+}
+.b-layout-catalogue-filter-item.m-active {
+  background-color: #533503;
+  color: #ffffff;
+  cursor: default;
+}
+.b-item-card {
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 40px;
+  width: 450px;
+}
+.b-item-card:nth-child(odd) {
+  margin-right: 18px;
+}
+.b-item-card-image {
+  display: block;
+  height: auto;
+  max-height: 215px;
+  margin: 0 auto 10px auto;
+  max-width: 450px;
+}
+.b-item-card-title {
+  color: #533503;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 25px;
+  font-weight: normal;
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+.b-item-card-price {
+  color: #533503;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+.b-button-emphasis {
+  background-color: #e48f00;
+  border: 0;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  height: 52px;
+  line-height: 52px;
+  padding: 0 20px;
+}
+.b-button-emphasis:hover {
+  background-color: #ee9600;
+}
+.b-layout-item {
+  white-space: nowrap;
+}
+.b-layout-item-content-left,
+.b-layout-item-content-right {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
+.b-layout-item-content-left {
+  margin-right: 20px;
+  width: 450px;
+}
+.b-layout-item-picture-large {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #745829;
+  height: 300px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 450px;
+}
+.b-layout-item-picture-large-image {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  max-height: 100%;
+  max-width: 100%;
+}
+.b-layout-item-picture-thumbs-wrapper {
+  white-space: nowrap;
+}
+.b-layout-item-picture-thumb {
+  background-color: #ffffff;
+  border: 1px solid #887659;
+  cursor: pointer;
+  display: inline-block;
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  width: 80px;
+}
+.b-layout-item-picture-thumb.m-active {
+  border-color: #887659;
+}
+.b-layout-item-picture-thumb:not(:last-of-type) {
+  margin-right: 10px;
+}
+.b-layout-item-picture-thumb-image {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  max-height: 100%;
+  max-width: 100%;
+}
+.b-layout-item-content-right {
+  width: 510px;
+}
+.b-layout-item-title {
+  color: #533503;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-weight: 900;
+  font-size: 33px;
+  line-height: 44px;
+}
+.b-layout-item-price {
+  color: #d0880b;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 29px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.b-layout-item-description {
+  color: #745829;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 24px;
+  margin-bottom: 45px;
+}
+.b-layout-item-button-buy-wrapper {
+  display: block;
+  margin-bottom: 50px;
+}
+.b-layout-item-specs {
+  margin-bottom: 50px;
+  width: 100%;
+}
+.b-layout-item-specs-header {
+  color: #745829;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.b-layout-item-specs-item {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 10px 0 10px 180px;
+  position: relative;
+  width: 100%;
+}
+.b-layout-item-specs-item:not(:last-of-type) {
+  border-bottom: 1px solid rgba(146, 124, 86, 0.2);
+}
+.b-layout-item-specs-item-label,
+.b-layout-item-specs-item-text {
+  color: #745829;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 24px;
+}
+.b-layout-item-specs-item-label {
+  left: 0;
+  position: absolute;
+  top: 10px;
+}
+.b-layout-item-specs-item-text {
+  width: 100%;
+}
+.b-layout-item-guarantee {
+  margin-bottom: 50px;
+}
+.b-layout-item-guarantee-header {
+  color: #745829;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.b-layout-item-guarantee-text {
+  color: #745829;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 24px;
+}

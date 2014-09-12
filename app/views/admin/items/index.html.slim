@@ -1,0 +1,7 @@
+.m-offset-bottom
+  = link_to 'Новый Item', new_admin_item_path, class: 'b-admin-form-item-button'
+
+- if @items.present?
+  - @items.each do |item|
+    .m-offset-bottom
+      = link_to item.title, edit_admin_item_path(item)

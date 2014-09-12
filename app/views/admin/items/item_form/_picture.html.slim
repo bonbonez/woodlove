@@ -1,0 +1,14 @@
+ruby:
+  form ||= nil
+  picture_n ||= ''
+  picture_title = picture_n == '' ? 'Изображение 1' : "Изображение #{picture_n}"
+
+- if !form.nil?
+  .b-admin-form-block-right-item
+    .b-admin-form-block-right-item-header = picture_title
+    .b-admin-form-block-right-item-content
+      - if item.picture.present?
+        img.b-admin-form-block-right-item-image src=item.send("picture#{picture_n}".to_sym).url(:thumb)
+
+      = form.label "picture#{picture_n}", 'Выбрать картинку',  class: 'b-admin-form-item-button'
+      = form.file_field "picture#{picture_n}", hidden: 'hidden'

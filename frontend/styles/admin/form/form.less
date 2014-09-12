@@ -1,0 +1,103 @@
+.b-admin-form {
+  position: relative;
+
+  &-item {
+    margin-bottom: 10px;
+    padding: 10px 0 10px 200px;
+    position: relative;
+
+    &.m-no-label {
+      padding-left: 0;
+    }
+
+    &.m-align-right {
+      text-align: right;
+    }
+
+    label {
+      color: #000000;
+      font-family: @font-museo;
+      font-size: 17px;
+      font-weight: normal;
+      left: 0;
+      position: absolute;
+      top: 10px;
+    }
+
+    textarea {
+      border: 1px solid #ccc;
+      font-family: @font-museo;
+      font-size: 17px;
+      font-weight: normal;
+      line-height: 1.2em;
+      padding: 10px;
+      resize: vertical;
+      width: 400px;
+    }
+
+    input[type=text] {
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      font-family: @font-museo;
+      font-size: 17px;
+      font-weight: normal;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+      width: 400px;
+    }
+
+    &-button,
+    input[type=submit] {
+      color: #000000;
+      border: 0;
+      display: inline-block;
+      border-radius: 2px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+      background-color: #ffffff;
+      font-family: @font-museo;
+      font-size: 17px;
+      font-weight: normal;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 30px;
+      margin-top: 20px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #fafafa;
+      }
+    }
+  }
+
+  &-block-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+
+    &-item {
+      position: relative;
+
+      &:not(:last-of-type) {
+        margin-bottom: 40px;
+      }
+
+      &-header {
+        color: #000000;
+        font-family: @font-museo;
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      &-image {
+        display: block;
+      }
+
+      &-content {
+
+      }
+    }
+  }
+}

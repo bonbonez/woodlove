@@ -1,0 +1,21 @@
+<h1>Listing items</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.title %></td>
+    <td><%= item.title_original %></td>
+    <td><%= item.desc %></td>
+    <td><%= item.desc_original %></td>
+    <td><%= item.meta %></td>
+    <td><%= item.price %></td>
+    <td><%= item.price_original %></td>
+    <td><%= item.price_special %></td>
+    <td><%= item.link_to_original_item %></td>
+  </tr>
+<% end %>
+</table>

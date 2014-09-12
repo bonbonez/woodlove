@@ -1,0 +1,53 @@
+= form_for [:admin, item], html: {class: 'b-admin-form'} do |f|
+  .b-admin-form-item
+    = f.label        "url"
+    = f.text_field   "url"
+
+  .b-admin-form-item
+    = f.label        "title"
+    = f.text_field   "title"
+
+  .b-admin-form-item
+    = f.label        "title_original"
+    = f.text_field   "title_original"
+
+  .b-admin-form-item
+    = f.label         "desc"
+    = f.text_area "desc"
+
+  .b-admin-form-item
+    = f.label         "desc_original"
+    = f.text_area "desc_original"
+
+  .b-admin-form-item
+    = f.label     "meta"
+    = f.text_area "meta"
+    /= @item.meta
+
+  .b-admin-form-item
+    = f.label        "price"
+    = f.text_field   "price"
+
+  .b-admin-form-item
+    = f.label        "price_original"
+    = f.text_field   "price_original"
+
+  .b-admin-form-item
+    = f.label        "price_special"
+    = f.text_field   "price_special"
+
+  .b-admin-form-item
+    = f.label        "link_to_original_item"
+    = f.text_field   "link_to_original_item"
+
+  .b-admin-form-item.m-no-label
+    = f.submit
+
+  .b-admin-form-block-right
+    = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item}
+    = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 2}
+    = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 3}
+    = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 4}
+    = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 5}
+
+= javascript_include_tag "admin/item/form.js"
