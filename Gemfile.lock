@@ -61,6 +61,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.15.1)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -77,6 +78,11 @@ GEM
       activesupport (= 3.2.19)
       bundler (~> 1.0)
       railties (= 3.2.19)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.19)
       actionpack (= 3.2.19)
       activesupport (= 3.2.19)
@@ -121,7 +127,9 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip (~> 4.2)
+  pg (= 0.15.1)
   rails (= 3.2.19)
+  rails_12factor (= 0.0.2)
   sass-rails (~> 3.2.3)
   slim
   sqlite3
