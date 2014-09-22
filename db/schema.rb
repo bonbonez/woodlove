@@ -11,13 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140906212339) do
+ActiveRecord::Schema.define(:version => 20140922215014) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "weight"
+    t.string   "picture_thumb_file_name"
+    t.string   "picture_thumb_content_type"
+    t.integer  "picture_thumb_file_size"
+    t.datetime "picture_thumb_updated_at"
+    t.string   "picture_large_file_name"
+    t.string   "picture_large_content_type"
+    t.integer  "picture_large_file_size"
+    t.datetime "picture_large_updated_at"
   end
 
   create_table "items", :force => true do |t|

@@ -6,10 +6,32 @@
       | Сочетайте современный образ жизни с природной красотой дерева
 
   = render partial: 'catalogue/promo_slider'
+  = render partial: 'ui/carousel', locals: {title: "Популярное", items: @items_for_popular}
+  = render partial: 'catalogue/category_cards', locals: {categories: @categories}
 
-  .b-layout-catalogue-content
+  = render partial: 'ui/share'
 
-    = render partial: 'ui/carousel', locals: {title: "Популярное", items: @items_for_popular}
+  .b-layout-catalogue-features
+    .b-layout-catalogue-features-item
+      .b-layout-catalogue-features-item-header ="Высокое качество"
+      .b-layout-catalogue-features-item-text
+        | Дерево&nbsp;&mdash; удивительный материал, требующий при обработке высочайших навыков, тонкого вкуса, деликатного отношения. Какое разнообразие цвета, текстуры заключено в&nbsp;разных породах дерева! Замысловатые способы сушки, шлифовки, пропитки в&nbsp;сочетании с&nbsp;натуральным цветом и&nbsp;рисунком дерева дают задуманный эффект.
+      .b-layout-catalogue-features-item-text
+        | Современный мир устал от&nbsp;пластика и&nbsp;металла, от&nbsp;штампованной синтетики и&nbsp;многотиражного ширпотреба. Поэтому американские и&nbsp;европейские производители решили использовать теплый и&nbsp;живой деревянный материал в&nbsp;изготовлении почти ювелирных изделий. Представьте деревянные наручные часы, ремешок которых состоит из&nbsp;множества мелких звеньев. Или стильную оправу очков, полностью выполненную из&nbsp;дерева. В&nbsp;таких изящных шедеврах воплотился многолетний опыт производителей, которые знают толк в&nbsp;дизайне, современных тенденциях и&nbsp;технологиях, но&nbsp;главное&nbsp;&mdash; знают все о&nbsp;дереве и&nbsp;секретах его ручной обработки. Вы&nbsp;только взгляните на&nbsp;деревянные часы <a href="#" class="b-layout-catalogue-features-item-link">JORD Series 746!</a> У&nbsp;нас вы&nbsp;найдете в&nbsp;продаже и&nbsp;<a href="#" class="b-layout-catalogue-features-item-link">множество других вариантов</a>.
+      .b-layout-catalogue-features-item-text
+        | А&nbsp;как вам <a href="#" class="b-layout-catalogue-features-item-link">деревянная компьютерная клавиатура</a> или <a href="#" class="b-layout-catalogue-features-item-link">чехол для мобильного</a>?! Посмотрите&nbsp;&mdash; даже такая мелочь, как наклейки из&nbsp;дерева, требует высокой точности обработки и&nbsp;особого подхода:
+    .b-layout-catalogue-features-item
+      .b-layout-catalogue-features-item-header ="Уникальность"
+      .b-layout-catalogue-features-item-text
+        | У&nbsp;деревянных изделий есть приятная особенность&nbsp;&mdash; каждое неповторимо. Любое из&nbsp;них радует вас и&nbsp;привлекает внимание других.
+      .b-layout-catalogue-features-item-text
+        | Яркий пример&nbsp;&mdash; <a href="#" class="b-layout-catalogue-features-item-link">деревянная клавиатура от&nbsp;французского дизайнера</a>, клавиши которой имеют свой индивидуальный рельеф. Неожиданно увидеть обыденную вещь в&nbsp;столь оригинальном исполнении, клавиатура превращается в&nbsp;эксклюзивный предмет, который украшает вашу повседневность, радует каждым прикосновением. А&nbsp;еще поможет быстрее освоить технику слепой печати.
+      .b-layout-catalogue-features-item-text
+        | Мы&nbsp;предлагаем большой выбор <a href="#" class="b-layout-catalogue-features-item-link">деревянных клавиатур</a>, а&nbsp;также <a href="#" class="b-layout-catalogue-features-item-link">деревянные накладки на&nbsp;клавиши</a>. Побалуйте себя или изумите подарком друга.
+
+  /.b-layout-catalogue-content
+
+
 
     /.b-layout-catalogue-navigation
       .b-layout-catalogue-navigation-categories-wrapper

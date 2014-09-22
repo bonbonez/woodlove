@@ -526,6 +526,9 @@ th {
  * Museo
  */
 /**
+ * Lobster
+ */
+/**
  * Museo
  */
 @font-face {
@@ -557,6 +560,15 @@ th {
   font-style: normal;
   font-weight: 900;
   src: url('/assets/museo/museosanscyrl-700-webfont.svg#museo_sans_cyrl300') format('svg'), url('/assets/museo/museosanscyrl-700-webfont.eot?'), url('/assets/museo/museosanscyrl-700-webfont.woff') format('woff'), url('/assets/museo/museosanscyrl-700-webfont.ttf') format('truetype');
+}
+/**
+ * Lobster
+ */
+@font-face {
+  font-family: "Lobster";
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/lobster/lobster-webfont.svg#/assets/lobster/lobster-webfont') format('svg'), url('/assets/lobster/lobster-webfont.eot?'), url('/assets/lobster/lobster-webfont.woff') format('woff'), url('/assets/lobster/lobster-webfont.ttf') format('truetype');
 }
 /* todo: remove this variables */
 html,
@@ -701,4 +713,5 @@ body,
 }
 .b-admin-form-block-right-item-image {
   display: block;
+  max-width: 204px;
 }

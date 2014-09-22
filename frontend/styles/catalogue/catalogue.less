@@ -122,4 +122,56 @@
       vertical-align: top;
     }
   }
+
+  &-features {
+    white-space: nowrap;
+    width: 100%;
+
+    &-item {
+      display: inline-block;
+      white-space: normal;
+      vertical-align: top;
+
+      &:first-of-type {
+        margin-right: 30px;
+        width: 620px;
+      }
+
+      &:last-of-type {
+        width: 310px;
+      }
+
+      &-header {
+        color: #000000;
+        .font(49px, 49px, bold);
+        margin-bottom: 30px;
+        text-align: center;
+        width: 100%;
+      }
+
+      &-text,
+      &-link {
+        color: #000000;
+        .font(19px, 28px);
+        width: 100%;
+      }
+
+      &-text {
+        text-indent: 30px;
+
+        &:not(:last-of-type) {
+          margin-bottom: 15px;
+        }
+      }
+
+      &-link {
+        color: #000000;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

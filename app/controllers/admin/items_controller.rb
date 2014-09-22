@@ -12,7 +12,7 @@ class Admin::ItemsController < Admin::ApplicationController
 
   def new
     @item = Item.new
-    @header = "Ноый Item"
+    @header = "Новый Item"
     @link_back = admin_items_path
   end
 

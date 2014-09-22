@@ -526,6 +526,9 @@ th {
  * Museo
  */
 /**
+ * Lobster
+ */
+/**
  * Museo
  */
 @font-face {
@@ -557,6 +560,15 @@ th {
   font-style: normal;
   font-weight: 900;
   src: url('/assets/museo/museosanscyrl-700-webfont.svg#museo_sans_cyrl300') format('svg'), url('/assets/museo/museosanscyrl-700-webfont.eot?'), url('/assets/museo/museosanscyrl-700-webfont.woff') format('woff'), url('/assets/museo/museosanscyrl-700-webfont.ttf') format('truetype');
+}
+/**
+ * Lobster
+ */
+@font-face {
+  font-family: "Lobster";
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/lobster/lobster-webfont.svg#/assets/lobster/lobster-webfont') format('svg'), url('/assets/lobster/lobster-webfont.eot?'), url('/assets/lobster/lobster-webfont.woff') format('woff'), url('/assets/lobster/lobster-webfont.ttf') format('truetype');
 }
 /* todo: remove this variables */
 html,
@@ -594,8 +606,9 @@ h6 {
 }
 .b-layout {
   box-sizing: border-box;
+  -ms-box-sizing: border-box;
   zoom: 1;
-  width: 1012px;
+  width: 980px;
   margin: 0 auto;
   padding: 0 10px;
   position: relative;
@@ -889,10 +902,58 @@ h6 {
 .b-layout-catalogue-items-wrapper .b-item-card {
   vertical-align: top;
 }
+.b-layout-catalogue-features {
+  white-space: nowrap;
+  width: 100%;
+}
+.b-layout-catalogue-features-item {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: top;
+}
+.b-layout-catalogue-features-item:first-of-type {
+  margin-right: 30px;
+  width: 620px;
+}
+.b-layout-catalogue-features-item:last-of-type {
+  width: 310px;
+}
+.b-layout-catalogue-features-item-header {
+  color: #000000;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 49px;
+  font-weight: bold;
+  line-height: 49px;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+}
+.b-layout-catalogue-features-item-text,
+.b-layout-catalogue-features-item-link {
+  color: #000000;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 19px;
+  font-weight: normal;
+  line-height: 28px;
+  width: 100%;
+}
+.b-layout-catalogue-features-item-text {
+  text-indent: 30px;
+}
+.b-layout-catalogue-features-item-text:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+.b-layout-catalogue-features-item-link {
+  color: #000000;
+  text-decoration: underline;
+}
+.b-layout-catalogue-features-item-link:hover {
+  text-decoration: none;
+}
 .b-layout-promo-slider {
   height: 364px;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   width: 100%;
 }
 .b-layout-promo-slider-wrapper {
@@ -1036,6 +1097,64 @@ h6 {
   font-family: "museo_sans_cyrl300", arial, sans-serif;
   font-size: 25px;
   font-weight: bold;
+}
+.b-categories-cards-wrapper {
+  margin-bottom: 65px;
+  width: 100%;
+}
+.b-categories-cards-item {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  display: inline-block;
+  height: 236px;
+  padding: 13px 15px 15px 19px;
+  position: relative;
+  vertical-align: top;
+}
+.b-categories-cards-item:nth-child(odd) {
+  margin-right: 15px;
+}
+.b-categories-cards-item:not(:nth-last-child(-n+2)) {
+  margin-bottom: 15px;
+}
+.b-categories-cards-item[data-width="1"] {
+  width: 310px;
+}
+.b-categories-cards-item[data-width="2"] {
+  width: 635px;
+}
+.b-categories-cards-item-image-wrapper,
+.b-categories-cards-item-image-wrapper-gradient,
+.b-categories-cards-item-image-wrapper-picture {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.b-categories-cards-item-image-wrapper-gradient {
+  background: rgba(255, 255, 255, 0);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(1, #000000));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='rgba(0, 0, 0, 0)', GradientType=0);
+  opacity: 0.25;
+}
+.b-categories-cards-item-header {
+  color: #ffffff;
+  font-family: "Lobster", arial, sans-serif;
+  font-size: 53px;
+  position: relative;
+  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3);
+  line-height: 44px;
+  z-index: 1;
+}
+.b-categories-cards-item-link {
+  font-style: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  text-decoration: none;
+  top: 0;
+  width: 100%;
 }
 .b-button-emphasis {
   background-color: #e48f00;
@@ -1200,13 +1319,22 @@ h6 {
   font-weight: normal;
   line-height: 24px;
 }
-.b-carousel {
-  width: 100%;
+.b-carousel-title {
+  color: #745829;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 45px;
+  font-weight: bold;
+  line-height: 45px;
+  margin-bottom: 10px;
 }
 .b-carousel-wrapper {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  margin-bottom: 50px;
   overflow: hidden;
   padding: 0 45px;
   position: relative;
+  width: 100%;
 }
 .b-carousel-content {
   overflow-y: scroll;
@@ -1268,6 +1396,54 @@ h6 {
   vertical-align: -webkit-baseline-middle;
   max-height: 200px;
   max-width: 300px;
+}
+.b-sharing-buttons-wrapper {
+  margin-bottom: 100px;
+  text-align: center;
+}
+.b-sharing-buttons {
+  height: 64px;
+  line-height: 64px;
+  width: 100%;
+}
+.b-sharing-buttons-header {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 34px;
+  font-weight: normal;
+  line-height: normal;
+  color: #000000;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.b-sharing-buttons-item {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  -webkit-transition: opacity 0.15s ease-out;
+  transition: opacity 0.15s ease-out;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 64px;
+  text-decoration: none;
+  width: 64px;
+}
+.b-sharing-buttons-item:hover {
+  opacity: 0.8;
+}
+.b-sharing-buttons-item:not(:last-of-type) {
+  margin-right: 50px;
+}
+.b-sharing-buttons-item.m-item-vk {
+  background-image: url('/assets/ui/social/vk-rounded.png');
+}
+.b-sharing-buttons-item.m-item-fb {
+  background-image: url('/assets/ui/social/fb-rounded.png');
+}
+.b-sharing-buttons-item.m-item-tw {
+  background-image: url('/assets/ui/social/tw-rounded.png');
 }
 .b-layout-promo-banner {
   font-size: 0;

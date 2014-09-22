@@ -1,0 +1,36 @@
+= form_for [:admin, category], html: {class: 'b-admin-form'} do |f|
+  .b-admin-form-item
+    = f.label        "url"
+    = f.text_field   "url"
+
+  .b-admin-form-item
+    = f.label        "name"
+    = f.text_field   "name"
+
+  .b-admin-form-item
+    = f.label        "weight"
+    = f.text_field   "weight"
+
+  .b-admin-form-block-right
+    .b-admin-form-block-right-item
+      .b-admin-form-block-right-item-header ="Thumb Picture"
+      .b-admin-form-block-right-item-content
+        - if category.picture_thumb.present?
+          img.b-admin-form-block-right-item-image src=category.picture_thumb.url(:default)
+
+        = f.label "picture_thumb", 'Выбрать картинку',  class: 'b-admin-form-item-button'
+        = f.file_field "picture_thumb", hidden: 'hidden'
+        
+    .b-admin-form-block-right-item
+      .b-admin-form-block-right-item-header ="Large Picture"
+      .b-admin-form-block-right-item-content
+        - if category.picture_large.present?
+          img.b-admin-form-block-right-item-image src=category.picture_large.url(:default)
+    
+        = f.label "picture_large", 'Выбрать картинку',  class: 'b-admin-form-item-button'
+        = f.file_field "picture_large", hidden: 'hidden'
+
+
+  .b-admin-form-item.m-no-label
+    = f.submit
+/= javascript_include_tag "admin/item/form.js"

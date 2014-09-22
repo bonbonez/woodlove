@@ -16,6 +16,7 @@ Woodlove::Application.routes.draw do
 
     #get 'items/:id/edit', to: 'items#edit'
     resources :items
+    resources :categories
   end
 
   get '/items/:url', to: 'items#show'

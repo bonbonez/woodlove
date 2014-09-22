@@ -1,10 +1,18 @@
 .b-carousel {
-  width: 100%;
+
+  &-title {
+    color: @color-brown-darker;
+    .font(45px, 45px, bold);
+    margin-bottom: 10px;
+  }
 
   &-wrapper {
+    .box-sizing(border-box);
+    margin-bottom: 50px;
     overflow: hidden;
     padding: 0 45px;
     position: relative;
+    width: 100%;
   }
 
   &-content {

@@ -25,9 +25,14 @@
 @grotesqueRegularItalicName: "museo_sans_cyrl500_italic";
 @grotesqueRegularItalicFile: "/assets/museo/museosanscyrl-500italic-webfont";
 
-@grotesqueBolderName: "museo_sans_cyrl300";
-@grotesqueBolderFile: "/assets/museo/museosanscyrl-700-webfont";
+@grotesqueBolderName:        "museo_sans_cyrl300";
+@grotesqueBolderFile:        "/assets/museo/museosanscyrl-700-webfont";
 
+/**
+ * Lobster
+ */
+@lobsterRegularName:          "Lobster";
+@lobsterRegularFile:          "/assets/lobster/lobster-webfont";
 
 /**
  * Museo
@@ -40,4 +45,10 @@
 
 .createFontFace(@grotesqueThinName, @grotesqueBolderFile,        normal, 900, @grotesqueBolderName);
 
+/**
+ * Lobster
+ */
+.createFontFace(@lobsterRegularName, @lobsterRegularFile,        normal, normal, @lobsterRegularFile);
+
 @font-museo:    @grotesqueThinName, arial, sans-serif;
+@font-lobster:  @lobsterRegularName, arial, sans-serif;

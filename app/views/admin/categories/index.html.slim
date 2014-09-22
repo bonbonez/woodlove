@@ -1,0 +1,8 @@
+.m-offset-bottom
+  = link_to 'Новый Category', new_admin_category_path, class: 'b-admin-form-item-button'
+
+- if @categories.present?
+  .m-offset-bottom
+  - @categories.each do |category|
+    div
+      = link_to category.name, edit_admin_category_path(category)
