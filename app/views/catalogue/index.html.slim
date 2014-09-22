@@ -1,12 +1,17 @@
 .b-layout-catalogue
+  .b-layout-catalogue-header-wrapper
+    .b-layout-catalogue-header-text.m-centered
+      | Woodluv — это интернет магазин брендовых изделий из дерева
+    .b-layout-catalogue-header-subheader
+      | Сочетайте современный образ жизни с природной красотой дерева
+
   = render partial: 'catalogue/promo_slider'
 
-  /h1.b-layout-catalogue-header ="Каталог"
-  .b-layout-catalogue-header.m-centered
-    | Интернет магазин брендовых<br/>изделий из дерева
-
   .b-layout-catalogue-content
-    .b-layout-catalogue-navigation
+
+    = render partial: 'ui/carousel', locals: {title: "Популярное", items: @items_for_popular}
+
+    /.b-layout-catalogue-navigation
       .b-layout-catalogue-navigation-categories-wrapper
         .b-layout-catalogue-navigation-categories-item ="Деревянные очки Woodzee"
         .b-layout-catalogue-navigation-categories-item.m-active ="Деревянные часы JORD"
@@ -26,12 +31,12 @@
         .b-layout-catalogue-navigation-subcategories-item
           .b-layout-catalogue-navigation-subcategories-item-text ="Коллекция Trinity"
 
-    .b-layout-catalogue-filter
+    /.b-layout-catalogue-filter
       .b-layout-catalogue-filter-item.m-active ="По популярности"
       .b-layout-catalogue-filter-item ="Сначала дешевле"
       .b-layout-catalogue-filter-item ="Сначала дороже"
 
-    .b-layout-catalogue-items-wrapper
+    /.b-layout-catalogue-items-wrapper
       - for i in 0..4
         = render partial: 'catalogue/item_card', locals: {item: @item}
 

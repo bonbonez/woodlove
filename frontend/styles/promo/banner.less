@@ -1,0 +1,60 @@
+.b-layout-promo-banner {
+  font-size: 0;
+  height: @promo-banner-height;
+  min-width: @layout-max-width;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &-content {
+    margin: 0 auto;
+    height: @promo-banner-height;
+    line-height: @promo-banner-height;
+    max-width: 100%;
+    text-align: center;
+    width: @layout-max-width;
+
+    &-gradient {
+      .gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+      height: @promo-banner-height;
+      left: 0;
+      position: absolute;
+      top: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    &-text {
+      .vertical-align-middle();
+      display: inline-block;
+      line-height: normal;
+      position: relative;
+      z-index: 1;
+
+      .text-header {
+        color: #ffffff;
+        font-family: @font-museo;
+        font-size: 56px;
+        line-height: 46px;
+        font-weight: bold;
+      }
+
+      .text {
+        color: #ffffff;
+        font-family: @font-museo;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.m-banner-renovo {
+    background-color: #000000;
+
+    .b-layout-promo-banner-content {
+      background-image: url('/assets/promo/renovo-bikes.png');
+      background-repeat: no-repeat;
+    }
+  }
+}

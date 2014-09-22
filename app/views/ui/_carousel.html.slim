@@ -1,0 +1,14 @@
+ruby:
+  title ||= nil
+  items ||= nil
+
+- if title.present? && items.present?
+.b-carousel-wrapper
+  .b-carousel-content-arrow-left
+  .b-carousel-content-arrow-right
+  .b-carousel-content
+    .b-carousel-content-items-wrapper
+      - items.each do |item|
+        - if item.picture.present?
+          .b-carousel-content-item
+            img.b-carousel-content-item-image src=item.picture.url(:medium)

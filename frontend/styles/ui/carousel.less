@@ -1,0 +1,77 @@
+.b-carousel {
+  width: 100%;
+
+  &-wrapper {
+    overflow: hidden;
+    padding: 0 45px;
+    position: relative;
+  }
+
+  &-content {
+    overflow-y: scroll;
+    position: relative;
+    width: 100%;
+
+    &-arrow-left,
+    &-arrow-right {
+      //background-color: red;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      width: 36px;
+
+      &::before {
+        .transform(translateY(-50%));
+        background-image: url('/assets/ui/arrow-left.png');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        content: ' ';
+        height: 72px;
+        //margin-top: -58px;
+        position: absolute;
+        top: 50%;
+        width: 21px;
+      }
+    }
+
+    &-arrow-left {
+      left: 0;
+
+      &::before {
+        background-image: url('/assets/ui/arrow-left.png');
+        left: 12px;
+      }
+    }
+
+    &-arrow-right {
+      right: 0;
+
+      &::before {
+        background-image: url('/assets/ui/arrow-right.png');
+        right: 12px;
+      }
+    }
+
+
+    &-items-wrapper {
+      white-space: nowrap;
+    }
+
+    &-item {
+      height: 200px;
+      line-height: 200px;
+      display: inline-block;
+
+      &:not(:last-of-type) {
+        margin-right: 15px;
+      }
+
+      &-image {
+        .vertical-align-middle();
+        max-height: 200px;
+        max-width: 300px;
+      }
+    }
+  }
+
+}

@@ -618,6 +618,9 @@ h6 {
   display: table;
   clear: both;
 }
+.b-layout-promo-banner + .b-layout {
+  padding-top: 136px;
+}
 .b-layout-page {
   zoom: 1;
   position: relative;
@@ -683,19 +686,19 @@ h6 {
   position: relative;
 }
 .b-logo {
-  background-image: url('/assets/logo.png');
+  background-image: url('/assets/logo2.png');
   background-repeat: no-repeat;
   background-position: 0 0;
-  height: 42px;
+  height: 56px;
   left: 50%;
-  margin: -21px 0 0 -141px;
+  margin: -28px 0 0 -133px;
   position: absolute;
   top: 50%;
-  width: 283px;
+  width: 267px;
 }
 @media print, screen, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 1.25/1), (min--moz-device-pixel-ratio: 1.25), (-moz-min-device-pixel-ratio: 1.25), (-ms-min-device-pixel-ratio: 1.25), (min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
   .b-logo {
-    background-image: url('/assets/logo@2x.png');
+    background-image: url('/assets/logo2@2x.png');
     background-size: 100% 100%;
   }
 }
@@ -787,20 +790,27 @@ h6 {
   background-color: #887659;
   color: #ffffff;
 }
-.b-layout-catalogue-header {
-  color: #533503;
-  font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 48px;
-  font-weight: 900;
-  margin: 0 0 20px 0;
-}
-.b-layout-catalogue-header.m-centered {
+.b-layout-catalogue-header-wrapper {
+  margin: 0 0 40px 0;
   text-align: center;
+}
+.b-layout-catalogue-header-text {
+  color: #000000;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.b-layout-catalogue-header-subheader {
+  color: #000000;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: normal;
 }
 .b-layout-catalogue-content {
   box-sizing: border-box;
   -ms-box-sizing: border-box;
-  padding: 0 30px;
   width: 100%;
 }
 .b-layout-catalogue-navigation {
@@ -1189,4 +1199,132 @@ h6 {
   font-size: 18px;
   font-weight: normal;
   line-height: 24px;
+}
+.b-carousel {
+  width: 100%;
+}
+.b-carousel-wrapper {
+  overflow: hidden;
+  padding: 0 45px;
+  position: relative;
+}
+.b-carousel-content {
+  overflow-y: scroll;
+  position: relative;
+  width: 100%;
+}
+.b-carousel-content-arrow-left,
+.b-carousel-content-arrow-right {
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  width: 36px;
+}
+.b-carousel-content-arrow-left::before,
+.b-carousel-content-arrow-right::before {
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-image: url('/assets/ui/arrow-left.png');
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  content: ' ';
+  height: 72px;
+  position: absolute;
+  top: 50%;
+  width: 21px;
+}
+.b-carousel-content-arrow-left {
+  left: 0;
+}
+.b-carousel-content-arrow-left::before {
+  background-image: url('/assets/ui/arrow-left.png');
+  left: 12px;
+}
+.b-carousel-content-arrow-right {
+  right: 0;
+}
+.b-carousel-content-arrow-right::before {
+  background-image: url('/assets/ui/arrow-right.png');
+  right: 12px;
+}
+.b-carousel-content-items-wrapper {
+  white-space: nowrap;
+}
+.b-carousel-content-item {
+  height: 200px;
+  line-height: 200px;
+  display: inline-block;
+}
+.b-carousel-content-item:not(:last-of-type) {
+  margin-right: 15px;
+}
+.b-carousel-content-item-image {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  max-height: 200px;
+  max-width: 300px;
+}
+.b-layout-promo-banner {
+  font-size: 0;
+  height: 136px;
+  min-width: 980px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.b-layout-promo-banner-content {
+  margin: 0 auto;
+  height: 136px;
+  line-height: 136px;
+  max-width: 100%;
+  text-align: center;
+  width: 980px;
+}
+.b-layout-promo-banner-content-gradient {
+  background: rgba(255, 255, 255, 0);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(1, rgba(0, 0, 0, 0.2)));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(0, 0, 0, 0.2)', endColorstr='rgba(0, 0, 0, 0)', GradientType=0);
+  height: 136px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+}
+.b-layout-promo-banner-content-text {
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  display: inline-block;
+  line-height: normal;
+  position: relative;
+  z-index: 1;
+}
+.b-layout-promo-banner-content-text .text-header {
+  color: #ffffff;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 56px;
+  line-height: 46px;
+  font-weight: bold;
+}
+.b-layout-promo-banner-content-text .text {
+  color: #ffffff;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+.b-layout-promo-banner.m-banner-renovo {
+  background-color: #000000;
+}
+.b-layout-promo-banner.m-banner-renovo .b-layout-promo-banner-content {
+  background-image: url('/assets/promo/renovo-bikes.png');
+  background-repeat: no-repeat;
 }

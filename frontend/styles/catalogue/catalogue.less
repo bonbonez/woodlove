@@ -1,20 +1,30 @@
 .b-layout-catalogue {
 
   &-header {
-    color: @color-brown-dark;
-    font-family: @font-museo;
-    font-size: 48px;
-    font-weight: 900;
-    margin: 0 0 20px 0;
 
-    &.m-centered {
+    &-wrapper {
+      margin: 0 0 40px 0;
       text-align: center;
     }
+
+    &-text {
+      color: #000000;
+      font-family: @font-museo;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    &-subheader {
+      color: #000000;
+      .font(22px);
+    }
+
   }
 
   &-content {
     .box-sizing(border-box);
-    padding: 0 30px;
+    //padding: 0 30px;
     width: 100%;
   }
 
