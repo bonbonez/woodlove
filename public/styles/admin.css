@@ -529,6 +529,9 @@ th {
  * Lobster
  */
 /**
+ * Icon
+ */
+/**
  * Museo
  */
 @font-face {
@@ -570,7 +573,15 @@ th {
   font-weight: normal;
   src: url('/assets/lobster/lobster-webfont.svg#/assets/lobster/lobster-webfont') format('svg'), url('/assets/lobster/lobster-webfont.eot?'), url('/assets/lobster/lobster-webfont.woff') format('woff'), url('/assets/lobster/lobster-webfont.ttf') format('truetype');
 }
-/* todo: remove this variables */
+/**
+ * Icon
+ */
+@font-face {
+  font-family: "Icons";
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/icons/icons.svg#Icons') format('svg'), url('/assets/icons/icons.eot?'), url('/assets/icons/icons.woff') format('woff'), url('/assets/icons/icons.ttf') format('truetype');
+}
 html,
 body,
 .b-admin-layout {

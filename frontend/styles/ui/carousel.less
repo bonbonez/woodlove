@@ -1,16 +1,17 @@
 .b-carousel {
 
   &-title {
-    color: @color-brown-darker;
-    .font(45px, 45px, bold);
+    color: @color-brown;
+    .font(30px, 30px, bold);
     margin-bottom: 10px;
+    text-align: center;
   }
 
   &-wrapper {
     .box-sizing(border-box);
-    margin-bottom: 50px;
-    overflow: hidden;
-    padding: 0 45px;
+    margin-bottom: 90px;
+    //overflow: hidden;
+    //padding: 0 45px;
     position: relative;
     width: 100%;
   }
@@ -30,11 +31,10 @@
 
       &::before {
         .transform(translateY(-50%));
-        background-image: url('/assets/ui/arrow-left.png');
         background-repeat: no-repeat;
         background-size: auto 100%;
         content: ' ';
-        height: 72px;
+        height: 45px;
         //margin-top: -58px;
         position: absolute;
         top: 50%;
@@ -43,19 +43,19 @@
     }
 
     &-arrow-left {
-      left: 0;
+      left: -45px;
 
       &::before {
-        background-image: url('/assets/ui/arrow-left.png');
+        background-image: url('/assets/ui/arrow-left.svg');
         left: 12px;
       }
     }
 
     &-arrow-right {
-      right: 0;
+      right: -45px;
 
       &::before {
-        background-image: url('/assets/ui/arrow-right.png');
+        background-image: url('/assets/ui/arrow-right.svg');
         right: 12px;
       }
     }
@@ -66,18 +66,18 @@
     }
 
     &-item {
-      height: 200px;
-      line-height: 200px;
+      height: 180px;
+      line-height: 180px;
       display: inline-block;
 
       &:not(:last-of-type) {
-        margin-right: 15px;
+        margin-right: 23px;
       }
 
       &-image {
         .vertical-align-middle();
-        max-height: 200px;
-        max-width: 300px;
+        max-height: 180px;
+        max-width: 250px;
       }
     }
   }

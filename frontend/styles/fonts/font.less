@@ -35,6 +35,12 @@
 @lobsterRegularFile:          "/assets/lobster/lobster-webfont";
 
 /**
+ * Icon
+ */
+@fontIconsName:                 "Icons";
+@fontIconsPath:                 "/assets/icons/icons";
+
+/**
  * Museo
  */
 .createFontFace(@grotesqueThinName, @grotesqueThinFile,          normal, normal, @grotesqueThinName);
@@ -50,5 +56,11 @@
  */
 .createFontFace(@lobsterRegularName, @lobsterRegularFile,        normal, normal, @lobsterRegularFile);
 
+/**
+ * Icon
+ */
+.createFontFace(@fontIconsName, @fontIconsPath);
+
 @font-museo:    @grotesqueThinName, arial, sans-serif;
 @font-lobster:  @lobsterRegularName, arial, sans-serif;
+@font-icons:    @fontIconsName, arial, sans-serif;

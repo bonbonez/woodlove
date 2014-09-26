@@ -529,6 +529,9 @@ th {
  * Lobster
  */
 /**
+ * Icon
+ */
+/**
  * Museo
  */
 @font-face {
@@ -570,7 +573,15 @@ th {
   font-weight: normal;
   src: url('/assets/lobster/lobster-webfont.svg#/assets/lobster/lobster-webfont') format('svg'), url('/assets/lobster/lobster-webfont.eot?'), url('/assets/lobster/lobster-webfont.woff') format('woff'), url('/assets/lobster/lobster-webfont.ttf') format('truetype');
 }
-/* todo: remove this variables */
+/**
+ * Icon
+ */
+@font-face {
+  font-family: "Icons";
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/icons/icons.svg#Icons') format('svg'), url('/assets/icons/icons.eot?'), url('/assets/icons/icons.woff') format('woff'), url('/assets/icons/icons.ttf') format('truetype');
+}
 html,
 body,
 .b-layout {
@@ -578,7 +589,7 @@ body,
   -webkit-font-smoothing: antialiased;
 }
 body {
-  background-image: url('/assets/13.png');
+  background-image: url('/assets/13333333.png');
   font-size: 0;
 }
 *:focus {
@@ -664,8 +675,8 @@ h6 {
 }
 .b-layout-content {
   position: relative;
-  padding-bottom: 120px;
-  padding-top: 30px;
+  padding-bottom: 200px;
+  padding-top: 20px;
 }
 .b-layout-footer {
   position: relative;
@@ -699,21 +710,15 @@ h6 {
   position: relative;
 }
 .b-logo {
-  background-image: url('/assets/logo2.png');
+  background-image: url('/assets/woodluv.svg');
   background-repeat: no-repeat;
-  background-position: 0 0;
-  height: 56px;
+  background-size: 100%;
+  height: 31px;
   left: 50%;
-  margin: -28px 0 0 -133px;
+  margin: -15px 0 0 -100px;
   position: absolute;
   top: 50%;
-  width: 267px;
-}
-@media print, screen, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 1.25/1), (min--moz-device-pixel-ratio: 1.25), (-moz-min-device-pixel-ratio: 1.25), (-ms-min-device-pixel-ratio: 1.25), (min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
-  .b-logo {
-    background-image: url('/assets/logo2@2x.png');
-    background-size: 100% 100%;
-  }
+  width: 201px;
 }
 .b-layout-footer {
   border-top: 1px solid rgba(122, 90, 39, 0.2);
@@ -769,42 +774,77 @@ h6 {
 }
 .b-layout-top-menu {
   text-align: center;
-  height: 50px;
-  line-height: 50px;
   width: 100%;
 }
 .b-layout-top-menu-item {
+  border-radius: 2px;
+  color: #78643a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  height: 37px;
+  line-height: 35px;
+  padding: 0 20px;
+  vertical-align: top;
+  /*&-text {
+      .box-sizing(border-box);
+      .vertical-align-middle();
+
+      */
+  /*height: 35px;
+      line-height: 35px;*/
+  /*
+      padding: 0 15px;
+    }*/
+  /*&:not(.last) {
+      margin-right: 15px;
+    }*/
+}
+.b-layout-top-menu-item.m-current {
+  background-color: #439aa1;
+  color: #ffffff;
+}
+.b-layout-top-menu-item:not(.m-current):hover {
+  color: #a58755;
+}
+.b-layout-top-menu-item.m-current .b-layout-top-menu-item-text {
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #439aa1;
+  cursor: default;
+}
+.b-layout-top-categories-navigation {
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  width: 100%;
+}
+.b-layout-top-categories-navigation-item {
   display: inline-block;
   /* IE6-8 */
   *display: inline;
   *zoom: 1;
   vertical-align: middle;
   vertical-align: -webkit-baseline-middle;
-  border-radius: 2px;
-  color: #887659;
-  cursor: pointer;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: bold;
-  height: 35px;
-  line-height: 40px;
-  overflow: hidden;
-  padding: 0 15px;
-  text-transform: uppercase;
+  line-height: 16px;
+  color: #78643a;
+  cursor: pointer;
 }
-.b-layout-top-menu-item:not(.last) {
-  margin-right: 15px;
+.b-layout-top-categories-navigation-item:not(:last-of-type) {
+  margin-right: 50px;
 }
-.b-layout-top-menu-item.m-current {
-  border: 1px solid #887659;
+.b-layout-top-categories-navigation-item:not(.m-current):hover {
+  color: #a58755;
+}
+.b-layout-top-categories-navigation-item.m-current {
   cursor: default;
 }
-.b-layout-top-menu-item:not(.m-current):hover {
-  background-color: #887659;
-  color: #ffffff;
-}
 .b-layout-catalogue-header-wrapper {
-  margin: 0 0 40px 0;
   text-align: center;
 }
 .b-layout-catalogue-header-text {
@@ -921,9 +961,9 @@ h6 {
 .b-layout-catalogue-features-item-header {
   color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 49px;
+  font-size: 30px;
   font-weight: bold;
-  line-height: 49px;
+  line-height: 30px;
   margin-bottom: 30px;
   text-align: center;
   width: 100%;
@@ -953,7 +993,7 @@ h6 {
 .b-layout-promo-slider {
   height: 364px;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 100%;
 }
 .b-layout-promo-slider-wrapper {
@@ -1027,8 +1067,8 @@ h6 {
   background-color: #533503;
   border-radius: 12px;
   cursor: pointer;
-  height: 12px;
-  width: 12px;
+  height: 8px;
+  width: 8px;
 }
 .b-layout-promo-slider-pagination-item.m-active,
 .b-layout-promo-slider-pagination-item:hover {
@@ -1107,7 +1147,9 @@ h6 {
   -ms-box-sizing: border-box;
   display: inline-block;
   height: 236px;
-  padding: 13px 15px 15px 19px;
+  line-height: 236px;
+  text-align: center;
+  overflow: hidden;
   position: relative;
   vertical-align: top;
 }
@@ -1136,16 +1178,29 @@ h6 {
   background: rgba(255, 255, 255, 0);
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(1, #000000));
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='rgba(0, 0, 0, 0)', GradientType=0);
-  opacity: 0.25;
+  opacity: 0.15;
 }
 .b-categories-cards-item-header {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 40px;
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.1);
   color: #ffffff;
-  font-family: "Lobster", arial, sans-serif;
-  font-size: 53px;
+  padding: 8px 10px;
   position: relative;
-  text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3);
   line-height: 44px;
   z-index: 1;
+  text-align: center;
+  width: 100%;
 }
 .b-categories-cards-item-link {
   font-style: 0;
@@ -1212,7 +1267,7 @@ h6 {
 }
 .b-layout-item-picture-thumb {
   background-color: #ffffff;
-  border: 1px solid #887659;
+  border: 1px solid #78643a;
   cursor: pointer;
   display: inline-block;
   height: 54px;
@@ -1221,7 +1276,7 @@ h6 {
   width: 80px;
 }
 .b-layout-item-picture-thumb.m-active {
-  border-color: #887659;
+  border-color: #78643a;
 }
 .b-layout-item-picture-thumb:not(:last-of-type) {
   margin-right: 10px;
@@ -1320,19 +1375,18 @@ h6 {
   line-height: 24px;
 }
 .b-carousel-title {
-  color: #745829;
+  color: #78643a;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 45px;
+  font-size: 30px;
   font-weight: bold;
-  line-height: 45px;
+  line-height: 30px;
   margin-bottom: 10px;
+  text-align: center;
 }
 .b-carousel-wrapper {
   box-sizing: border-box;
   -ms-box-sizing: border-box;
-  margin-bottom: 50px;
-  overflow: hidden;
-  padding: 0 45px;
+  margin-bottom: 90px;
   position: relative;
   width: 100%;
 }
@@ -1353,39 +1407,38 @@ h6 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  background-image: url('/assets/ui/arrow-left.png');
   background-repeat: no-repeat;
   background-size: auto 100%;
   content: ' ';
-  height: 72px;
+  height: 45px;
   position: absolute;
   top: 50%;
   width: 21px;
 }
 .b-carousel-content-arrow-left {
-  left: 0;
+  left: -45px;
 }
 .b-carousel-content-arrow-left::before {
-  background-image: url('/assets/ui/arrow-left.png');
+  background-image: url('/assets/ui/arrow-left.svg');
   left: 12px;
 }
 .b-carousel-content-arrow-right {
-  right: 0;
+  right: -45px;
 }
 .b-carousel-content-arrow-right::before {
-  background-image: url('/assets/ui/arrow-right.png');
+  background-image: url('/assets/ui/arrow-right.svg');
   right: 12px;
 }
 .b-carousel-content-items-wrapper {
   white-space: nowrap;
 }
 .b-carousel-content-item {
-  height: 200px;
-  line-height: 200px;
+  height: 180px;
+  line-height: 180px;
   display: inline-block;
 }
 .b-carousel-content-item:not(:last-of-type) {
-  margin-right: 15px;
+  margin-right: 23px;
 }
 .b-carousel-content-item-image {
   display: inline-block;
@@ -1394,8 +1447,8 @@ h6 {
   *zoom: 1;
   vertical-align: middle;
   vertical-align: -webkit-baseline-middle;
-  max-height: 200px;
-  max-width: 300px;
+  max-height: 180px;
+  max-width: 250px;
 }
 .b-sharing-buttons-wrapper {
   margin-bottom: 100px;
@@ -1408,7 +1461,7 @@ h6 {
 }
 .b-sharing-buttons-header {
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 34px;
+  font-size: 30px;
   font-weight: normal;
   line-height: normal;
   color: #000000;

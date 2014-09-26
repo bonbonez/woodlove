@@ -13,7 +13,10 @@
     //background-color: black;
     display: inline-block;
     height: 236px;
-    padding: 13px 15px 15px 19px;
+    line-height: 236px;
+    //padding: 13px 15px 15px 19px;
+    text-align: center;
+    overflow: hidden;
     position: relative;
     vertical-align: top;
 
@@ -47,18 +50,26 @@
 
       &-gradient {
         .gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-        opacity: 0.25;
+        opacity: 0.15;
       }
     }
 
     &-header {
+      .vertical-align-middle();
+      .font(40px, 40px, 900);
+      .box-sizing(border-box);
+      //background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
       color: #ffffff;
-      font-family: @font-lobster;
-      font-size: 53px;
+      //font-family: @font-lobster;
+      //font-size: 53px;
+      padding: 8px 10px;
       position: relative;
-      text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3);
+      //text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3);
       line-height: 44px;
       z-index: 1;
+      text-align: center;
+      width: 100%;
     }
 
     &-link {

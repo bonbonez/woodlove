@@ -1,15 +1,14 @@
 .b-layout-catalogue
   .b-layout-catalogue-header-wrapper
-    .b-layout-catalogue-header-text.m-centered
+    /.b-layout-catalogue-header-text.m-centered
       | Woodluv — это интернет магазин брендовых изделий из дерева
-    .b-layout-catalogue-header-subheader
+    /.b-layout-catalogue-header-subheader
       | Сочетайте современный образ жизни с природной красотой дерева
-
   = render partial: 'catalogue/promo_slider'
   = render partial: 'ui/carousel', locals: {title: "Популярное", items: @items_for_popular}
   = render partial: 'catalogue/category_cards', locals: {categories: @categories}
 
-  = render partial: 'ui/share'
+  /= render partial: 'ui/share'
 
   .b-layout-catalogue-features
     .b-layout-catalogue-features-item
