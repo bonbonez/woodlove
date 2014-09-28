@@ -1,0 +1,21 @@
+.b-page-category
+  .b-page-category-header-wrapper
+    h1.b-page-category-header-text =@category.name
+    .b-page-category-top-filter
+      .b-page-category-top-filter-item.m-current ="Сначала дешевле"
+      .b-page-category-top-filter-item ="Сначала дороже"
+  .b-page-category-content
+    .b-page-category-content-subcategories-wrapper
+      .b-page-category-content-subcategories-item.m-current ="Unisex"
+      .b-page-category-content-subcategories-item ="Мужские"
+      .b-page-category-content-subcategories-item ="Женские"
+      .b-page-category-content-pagination-top
+        .text ="Страница "
+        .button-dropdown ="1"
+        .text ="По "
+        .button.m-selected ="25"
+        .button ="50"
+        .button ="Всё"
+
+    - @category_items.each do |item|
+      = render partial: 'catalogue/item_card', locals: {item: item}

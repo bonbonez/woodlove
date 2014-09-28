@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
-  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url
+  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id
+
+  belongs_to :category
 
   has_attached_file :picture,  :styles => { :large => "450x300>", :medium => "300x200>", :thumb => "150x100>" }, :default_url => "/images/:style/missing.png"
   has_attached_file :picture2, :styles => { :large => "450x300>", :medium => "300x200>", :thumb => "150x100>" }, :default_url => "/images/:style/missing.png"
@@ -10,15 +12,6 @@ class Item < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   include ApplicationHelper
-
-  #def meta
-  #  return nil if !is_valid_json(self[:meta])
-  #  JSON.parse(self[:meta])
-  #end
-
-  #def meta(val)
-
-  #end
 
   def meta_as_hash
     meta_raw = self[:meta]

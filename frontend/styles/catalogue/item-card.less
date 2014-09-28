@@ -1,34 +1,56 @@
 .b-item-card {
   display: inline-block;
-  text-align: center;
-  margin-bottom: 40px;
+  position: relative;
+  vertical-align: top;
   width: 450px;
 
-  &:nth-child(odd) {
-    margin-right: 18px;
+  &:not(:nth-last-child(-n+2)) {
+    margin-bottom: 20px;
   }
 
   &-image {
-    display: block;
-    height: auto;
-    max-height: 215px;
-    margin: 0 auto 10px auto;
-    max-width: 450px;
+
+    &-wrapper {
+      //display: none;
+      height: 220px;
+      line-height: 220px;
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    &-picture {
+      .vertical-align-middle();
+      max-width: 100%;
+      max-height: 100%;
+    }
+
   }
 
   &-title {
-    color: @color-brown-dark;
-    font-family: @font-museo;
-    font-size: 25px;
-    font-weight: normal;
-    line-height: 32px;
-    margin-bottom: 10px;
+    .font(17px, 19px);
+    color: #000000;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    width: 80%;
   }
 
   &-price {
-    color: @color-brown-dark;
-    font-family: @font-museo;
-    font-size: 25px;
-    font-weight: bold;
+    .font(17px);
+    color: #555555;
+    text-align: center;
+
+    &::before {
+      content: '-';
+    }
   }
+
+  &-link {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
 }

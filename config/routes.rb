@@ -17,9 +17,14 @@ Woodlove::Application.routes.draw do
     #get 'items/:id/edit', to: 'items#edit'
     resources :items
     resources :categories
+
+    get 'items/:id/delete', to: 'items#delete', as: :delete
   end
 
   get '/items/:url', to: 'items#show'
+  get '/categоries/:url', to: 'categories#show', as: :show
+  #get '/:url', to: 'catalogue#url_processor'
+
   #resources :items #, only: :show
 
 end

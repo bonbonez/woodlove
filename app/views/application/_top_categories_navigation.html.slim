@@ -1,7 +1,4 @@
 .b-layout-top-categories-navigation
-  .b-layout-top-categories-navigation-item ="Часы"
-  .b-layout-top-categories-navigation-item.m-current ="Очки"
-  .b-layout-top-categories-navigation-item ="Чехлы"
-  .b-layout-top-categories-navigation-item ="Клавиатуры"
-  .b-layout-top-categories-navigation-item ="Наклейки"
-  .b-layout-top-categories-navigation-item ="Разное"
+  - @categories_for_top_menu.each do |category|
+    = link_to_unless_current category.short_name!, category_path(category), class: 'b-layout-top-categories-navigation-item'
+      a.b-layout-top-categories-navigation-item.m-current =category.short_name!

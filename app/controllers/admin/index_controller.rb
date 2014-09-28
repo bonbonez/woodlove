@@ -5,7 +5,7 @@ class Admin::IndexController < Admin::ApplicationController
     end
 
     def enable_admin_access
-      cookies[:let_me_in_please_im_a_cat] = { value: true, expires: 1.hour.from_now }
+      cookies[:let_me_in_please_im_a_cat] = { value: true, expires: 10.hour.from_now }
       render nothing: true
     end
 

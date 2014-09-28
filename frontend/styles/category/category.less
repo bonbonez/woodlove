@@ -1,0 +1,140 @@
+.b-page-category {
+  text-align: left;
+  width: 100%;
+
+  &-header {
+
+    &-wrapper {
+      position: relative;
+      height: 35px;
+      line-height: 35px;
+      margin-bottom: 28px;
+      //text-align: center;
+    }
+
+    &-text {
+      .font(35px, 35px, bold);
+      .vertical-align-middle();
+      color: @color-brown;
+      margin: 0;
+    }
+  }
+
+  &-top-filter {
+    height: 35px;
+    line-height: 35px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &-item {
+      .font(20px, 40px, bold);
+      .vertical-align-middle();
+      color: @color-brown;
+      border-radius: 2px;
+      height: 35px;
+      line-height: 36px;
+      padding: 0 15px;
+      text-decoration: none;
+
+      &.m-current {
+        background-color: @color-brown;
+        color: #ffffff;
+      }
+
+      &:not(.m-current):hover {
+        color: @color-brown-lighter;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-content {
+    .box-sizing(border-box);
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+
+    &-subcategories {
+      &-wrapper {
+        /*height: 55px;
+        line-height: 55px;*/
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      &-item {
+        .font(20px, 31px, bold);
+        .vertical-align-middle();
+        color: #000000;
+        height: 30px;
+        padding: 0 17px;
+
+        &.m-current {
+          border-radius: 2px;
+          background-color: @color-blue-dark;
+          color: #ffffff;
+        }
+
+        &:not(.m-current):hover {
+          color: @color-blue-dark;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &-pagination-top {
+      height: 30px;
+      line-height: 30px;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .text,
+      .button,
+      .button-dropdown {
+        .font(15px, 27px);
+        .vertical-align-middle();
+        color: #777777;
+        border-radius: 2px;
+        height: 25px;
+        padding: 0 7px;
+      }
+
+      .button {
+        &:not(.m-selected):hover {
+          color: #999999;
+          cursor: pointer;
+        }
+
+        &.m-selected {
+          background-color: #f1f1f1;
+          color: #000000;
+          //margin: 0 7px;
+        }
+      }
+
+      .button-dropdown {
+        background-color: #f1f1f1;
+        margin-right: 20px;
+        position: relative;
+
+        &::after {
+          .vertical-align-middle();
+          background-image: url('/assets/ui/arrow-down-small.svg');
+          background-size: 100% auto;
+          background-position: 50%;
+          background-repeat: no-repeat;
+          content:  ' ';
+          height: 4px;
+          margin-left: 5px;
+          position: relative;
+          top: -4px;
+          width: 10px;
+        }
+      }
+    }
+  }
+}

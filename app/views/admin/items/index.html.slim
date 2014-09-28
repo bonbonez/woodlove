@@ -1,7 +1,18 @@
 .m-offset-bottom
   = link_to 'Новый Item', new_admin_item_path, class: 'b-admin-form-item-button'
 
-- if @items.present?
+/- if @items.present?
   - @items.each do |item|
     .m-offset-bottom
       = link_to item.title, edit_admin_item_path(item)
+
+.b-admin-items
+  - @categories.each do |category|
+    - category_items = category.items
+    .b-admin-items-category-wrapper
+      .b-admin-items-category-header
+        .b-admin-items-category-header-text =category.name
+        = link_to '', new_admin_item_path(selected_category_id: category.id), class: 'b-admin-items-category-header-button-add'
+      .b-admin-items-category-items-wrapper
+        - category_items.each do |category_item|
+          = link_to category_item.title, edit_admin_item_path(category_item), class: "b-admin-items-category-item"

@@ -1,5 +1,9 @@
 .b-layout-item {
+  .box-sizing(border-box);
+  background-color: #ffffff;
+  padding: 35px;
   white-space: nowrap;
+  width: 100%;
 
   &-content-left,
   &-content-right {
@@ -10,7 +14,11 @@
 
   &-content-left {
     margin-right: 20px;
-    width: 450px;
+    width: 400px;
+  }
+
+  &-content-right {
+    width: 470px;
   }
 
   &-pictures-wrapper {
@@ -20,11 +28,11 @@
   &-picture-large {
     .box-sizing(border-box);
     background-color: #ffffff;
-    border: 1px solid @color-brown-darker;
-    height: 300px;
+    //border: 1px solid @color-brown-darker;
+    height: 400px;
     margin-bottom: 10px;
     text-align: center;
-    width: 450px;
+    width: 100%;
 
     &-image {
       .vertical-align-middle();
@@ -62,32 +70,26 @@
     }
   }
 
-  &-content-right {
-    width: @layout-max-width - 450px - 20px;
-  }
-
   &-title {
-    color: @color-brown-dark;
+    .font(25px, 33px, bold);
+    color: #000000;
     font-family: @font-museo;
-    font-weight: 900;
-    font-size: 33px;
-    line-height: 44px;
+    margin-bottom: 10px;
   }
 
   &-price {
-    color: @color-orange-darker;
+    color: #555555;
     font-family: @font-museo;
-    font-size: 29px;
-    font-weight: bold;
-    margin-bottom: 40px;
+    font-size: 20px;
+    margin-bottom: 30px;
   }
 
   &-description {
-    color: @color-brown-darker;
+    color: #000000;
     font-family: @font-museo;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: normal;
-    line-height: 24px;
+    line-height: 25px;
     margin-bottom: 45px;
   }
 
@@ -101,9 +103,9 @@
     width: 100%;
 
     &-header {
-      color: @color-brown-darker;
+      color: #000000;
       font-family: @font-museo;
-      font-size: 25px;
+      font-size: 22px;
       font-weight: bold;
       margin-bottom: 15px;
     }
@@ -116,12 +118,12 @@
 
       &:not(:last-of-type) {
         //margin-bottom: 10px;
-        border-bottom: 1px solid rgba(146, 124, 86, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
 
       &-label,
       &-text {
-        color: @color-brown-darker;
+        color: #000000;
         font-family: @font-museo;
         font-size: 18px;
         font-weight: normal;
@@ -145,14 +147,14 @@
     margin-bottom: 50px;
 
     &-header {
-      color: @color-brown-darker;
+      color: #000000;
       font-family: @font-museo;
-      font-size: 25px;
+      font-size: 22px;
       font-weight: bold;
       margin-bottom: 15px;
     }
     &-text {
-      color: @color-brown-darker;
+      color: #000000;
       font-family: @font-museo;
       font-size: 18px;
       font-weight: normal;

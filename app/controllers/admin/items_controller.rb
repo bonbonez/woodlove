@@ -4,6 +4,7 @@ class Admin::ItemsController < Admin::ApplicationController
 
   def index
     @items = Item.all
+    @categories = Category.all
   end
 
   def show
@@ -32,6 +33,16 @@ class Admin::ItemsController < Admin::ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update_attributes(params[:item])
+
+    redirect_to admin_items_path
+  end
+
+  def delete
+    #puts params
+    #return;
+
+    item = Item.find(params[:id])
+    item.destroy if item.present?
 
     redirect_to admin_items_path
   end

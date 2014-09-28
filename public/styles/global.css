@@ -1110,33 +1110,57 @@ h6 {
 }
 .b-item-card {
   display: inline-block;
-  text-align: center;
-  margin-bottom: 40px;
+  position: relative;
+  vertical-align: top;
   width: 450px;
 }
-.b-item-card:nth-child(odd) {
-  margin-right: 18px;
+.b-item-card:not(:nth-last-child(-n+2)) {
+  margin-bottom: 20px;
 }
-.b-item-card-image {
-  display: block;
-  height: auto;
-  max-height: 215px;
-  margin: 0 auto 10px auto;
-  max-width: 450px;
+.b-item-card-image-wrapper {
+  height: 220px;
+  line-height: 220px;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.b-item-card-image-picture {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  max-width: 100%;
+  max-height: 100%;
 }
 .b-item-card-title {
-  color: #533503;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 25px;
+  font-size: 17px;
   font-weight: normal;
-  line-height: 32px;
-  margin-bottom: 10px;
+  line-height: 19px;
+  color: #000000;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  width: 80%;
 }
 .b-item-card-price {
-  color: #533503;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: normal;
+  color: #555555;
+  text-align: center;
+}
+.b-item-card-price::before {
+  content: '-';
+}
+.b-item-card-link {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .b-categories-cards-wrapper {
   margin-bottom: 65px;
@@ -1211,26 +1235,182 @@ h6 {
   top: 0;
   width: 100%;
 }
+.b-page-category {
+  text-align: left;
+  width: 100%;
+}
+.b-page-category-header-wrapper {
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 28px;
+}
+.b-page-category-header-text {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 35px;
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  color: #78643a;
+  margin: 0;
+}
+.b-page-category-top-filter {
+  height: 35px;
+  line-height: 35px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.b-page-category-top-filter-item {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 40px;
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  color: #78643a;
+  border-radius: 2px;
+  height: 35px;
+  line-height: 36px;
+  padding: 0 15px;
+  text-decoration: none;
+}
+.b-page-category-top-filter-item.m-current {
+  background-color: #78643a;
+  color: #ffffff;
+}
+.b-page-category-top-filter-item:not(.m-current):hover {
+  color: #a58755;
+  cursor: pointer;
+}
+.b-page-category-content {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 20px;
+  width: 100%;
+}
+.b-page-category-content-subcategories-wrapper {
+  /*height: 55px;
+        line-height: 55px;*/
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.b-page-category-content-subcategories-item {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 31px;
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  color: #000000;
+  height: 30px;
+  padding: 0 17px;
+}
+.b-page-category-content-subcategories-item.m-current {
+  border-radius: 2px;
+  background-color: #439aa1;
+  color: #ffffff;
+}
+.b-page-category-content-subcategories-item:not(.m-current):hover {
+  color: #439aa1;
+  cursor: pointer;
+}
+.b-page-category-content-pagination-top {
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.b-page-category-content-pagination-top .text,
+.b-page-category-content-pagination-top .button,
+.b-page-category-content-pagination-top .button-dropdown {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 27px;
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  color: #777777;
+  border-radius: 2px;
+  height: 25px;
+  padding: 0 7px;
+}
+.b-page-category-content-pagination-top .button:not(.m-selected):hover {
+  color: #999999;
+  cursor: pointer;
+}
+.b-page-category-content-pagination-top .button.m-selected {
+  background-color: #f1f1f1;
+  color: #000000;
+}
+.b-page-category-content-pagination-top .button-dropdown {
+  background-color: #f1f1f1;
+  margin-right: 20px;
+  position: relative;
+}
+.b-page-category-content-pagination-top .button-dropdown::after {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  background-image: url('/assets/ui/arrow-down-small.svg');
+  background-size: 100% auto;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  content: ' ';
+  height: 4px;
+  margin-left: 5px;
+  position: relative;
+  top: -4px;
+  width: 10px;
+}
 .b-button-emphasis {
-  background-color: #e48f00;
+  background-color: #439aa1;
   border: 0;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
   font-size: 28px;
-  font-weight: normal;
-  height: 52px;
-  line-height: 52px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
   padding: 0 20px;
 }
 .b-button-emphasis:hover {
-  background-color: #ee9600;
+  background-color: #46a1a8;
 }
 .b-layout-item {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 35px;
   white-space: nowrap;
+  width: 100%;
 }
 .b-layout-item-content-left,
 .b-layout-item-content-right {
@@ -1240,17 +1420,19 @@ h6 {
 }
 .b-layout-item-content-left {
   margin-right: 20px;
-  width: 450px;
+  width: 400px;
+}
+.b-layout-item-content-right {
+  width: 470px;
 }
 .b-layout-item-picture-large {
   box-sizing: border-box;
   -ms-box-sizing: border-box;
   background-color: #ffffff;
-  border: 1px solid #745829;
-  height: 300px;
+  height: 400px;
   margin-bottom: 10px;
   text-align: center;
-  width: 450px;
+  width: 100%;
 }
 .b-layout-item-picture-large-image {
   display: inline-block;
@@ -1291,29 +1473,26 @@ h6 {
   max-height: 100%;
   max-width: 100%;
 }
-.b-layout-item-content-right {
-  width: 510px;
-}
 .b-layout-item-title {
-  color: #533503;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 33px;
+  color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-weight: 900;
-  font-size: 33px;
-  line-height: 44px;
+  margin-bottom: 10px;
 }
 .b-layout-item-price {
-  color: #d0880b;
+  color: #555555;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 29px;
-  font-weight: bold;
-  margin-bottom: 40px;
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 .b-layout-item-description {
-  color: #745829;
+  color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: normal;
-  line-height: 24px;
+  line-height: 25px;
   margin-bottom: 45px;
 }
 .b-layout-item-button-buy-wrapper {
@@ -1325,9 +1504,9 @@ h6 {
   width: 100%;
 }
 .b-layout-item-specs-header {
-  color: #745829;
+  color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -1339,11 +1518,11 @@ h6 {
   width: 100%;
 }
 .b-layout-item-specs-item:not(:last-of-type) {
-  border-bottom: 1px solid rgba(146, 124, 86, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .b-layout-item-specs-item-label,
 .b-layout-item-specs-item-text {
-  color: #745829;
+  color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
@@ -1361,14 +1540,14 @@ h6 {
   margin-bottom: 50px;
 }
 .b-layout-item-guarantee-header {
-  color: #745829;
+  color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 .b-layout-item-guarantee-text {
-  color: #745829;
+  color: #000000;
   font-family: "museo_sans_cyrl300", arial, sans-serif;
   font-size: 18px;
   font-weight: normal;

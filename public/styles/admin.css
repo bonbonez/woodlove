@@ -704,6 +704,17 @@ body,
 .b-admin-form-item input[type=submit]:hover {
   background-color: #fafafa;
 }
+.b-admin-form-button-delete {
+  color: #000000;
+  font-size: 20px;
+  position: absolute;
+  right: 0px;
+  top: -96px;
+  text-decoration: none;
+}
+.b-admin-form-button-delete::before {
+  content: '✖';
+}
 .b-admin-form-block-right {
   position: absolute;
   right: 0;
@@ -725,4 +736,73 @@ body,
 .b-admin-form-block-right-item-image {
   display: block;
   max-width: 204px;
+}
+.b-admin-items-category-wrapper:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+.b-admin-items-category-header {
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+.b-admin-items-category-header-text {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: normal;
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  color: #000000;
+  margin-right: 20px;
+}
+.b-admin-items-category-header-button-add {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  color: #777777;
+  height: 30px;
+  line-height: 30px;
+  position: relative;
+  text-align: center;
+  top: -3px;
+  text-decoration: none;
+  width: 30px;
+  /*.b-admin-items-category-wrapper:not(:hover) & {
+          display: none;
+        }*/
+}
+.b-admin-items-category-header-button-add:hover {
+  color: #aaaaaa;
+}
+.b-admin-items-category-header-button-add::after {
+  content: '+';
+}
+.b-admin-items-category-item {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: normal;
+  color: #000000;
+  display: block;
+  text-decoration: none;
+}
+.b-admin-items-category-item:hover {
+  color: #555555;
+}
+.b-admin-items-category-item::before {
+  content: '— ';
+}
+.b-admin-items-category-item:not(:last-of-type) {
+  margin-bottom: 10px;
 }

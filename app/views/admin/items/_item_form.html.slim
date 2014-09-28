@@ -1,7 +1,15 @@
+ruby:
+  selected_category_id = params[:selected_category_id].present? ? params[:selected_category_id] : nil
+
 = form_for [:admin, item], html: {class: 'b-admin-form'} do |f|
   .b-admin-form-item
     = f.label        "url"
     = f.text_field   "url"
+
+  .b-admin-form-item
+    - if params[:selected_category_id].present?
+
+    = collection_select(:item, :category_id, Category.all, :id, :name, prompt: true, selected: selected_category_id)
 
   .b-admin-form-item
     = f.label        "title"
@@ -49,5 +57,8 @@
     = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 3}
     = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 4}
     = render partial: 'admin/items/item_form/picture', locals: {form: f, item: item, picture_n: 5}
+
+  = link_to '', "/admin/items/#{item.id}/delete", class: "b-admin-form-button-delete", onclick: "if (!confirm('Точно?')) {return false;};"
+
 
 /= javascript_include_tag "admin/item/form.js"
