@@ -842,7 +842,8 @@ h6 {
   color: #a58755;
 }
 .b-layout-top-categories-navigation-item.m-current {
-  cursor: default;
+  font-weight: bold;
+  color: #439aa1;
 }
 .b-layout-catalogue-header-wrapper {
   text-align: center;
@@ -1227,13 +1228,20 @@ h6 {
   width: 100%;
 }
 .b-categories-cards-item-link {
-  font-style: 0;
+  font-size: 0;
   height: 100%;
   left: 0;
   position: absolute;
   text-decoration: none;
   top: 0;
   width: 100%;
+  z-index: 1;
+}
+.m-page-category .b-layout-footer {
+  border-top: 0;
+}
+.m-page-category .b-layout-content {
+  padding-bottom: 130px;
 }
 .b-page-category {
   text-align: left;
@@ -1296,7 +1304,7 @@ h6 {
   box-sizing: border-box;
   -ms-box-sizing: border-box;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 20px 20px 40px 20px;
   width: 100%;
 }
 .b-page-category-content-subcategories-wrapper {
@@ -1341,20 +1349,24 @@ h6 {
 .b-page-category-content-pagination-top .text,
 .b-page-category-content-pagination-top .button,
 .b-page-category-content-pagination-top .button-dropdown {
-  font-family: "museo_sans_cyrl300", arial, sans-serif;
-  font-size: 15px;
-  font-weight: normal;
-  line-height: 27px;
   display: inline-block;
   /* IE6-8 */
   *display: inline;
   *zoom: 1;
   vertical-align: middle;
   vertical-align: -webkit-baseline-middle;
-  color: #777777;
   border-radius: 2px;
   height: 25px;
   padding: 0 7px;
+}
+.b-page-category-content-pagination-top .text,
+.b-page-category-content-pagination-top .button,
+.b-page-category-content-pagination-top .button-dropdown-text {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 27px;
+  color: #777777;
 }
 .b-page-category-content-pagination-top .button:not(.m-selected):hover {
   color: #999999;
@@ -1384,8 +1396,87 @@ h6 {
   height: 4px;
   margin-left: 5px;
   position: relative;
-  top: -4px;
+  top: -2px;
   width: 10px;
+}
+.b-page-category-content-pagination-top .button-dropdown-text {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+}
+.b-page-category-content-pagination-top .button-dropdown-popup {
+  box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  display: none;
+  left: -10px;
+  position: absolute;
+  padding: 0 10px 10px 10px;
+  top: 25px;
+  width: 100%;
+  z-index: 2;
+}
+.b-page-category-content-pagination-top .button-dropdown-popup:hover {
+  display: block;
+}
+.b-page-category-content-pagination-top .button-dropdown-popup-links-wrapper {
+  background-color: #f1f1f1;
+  font-size: 0;
+}
+.b-page-category-content-pagination-top .button-dropdown-popup-link {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 27px;
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  color: #777777;
+  cursor: pointer;
+  height: 27px;
+  padding-left: 8px;
+  text-align: left;
+  width: 100%;
+}
+.b-page-category-content-pagination-top .button-dropdown-popup-link:hover {
+  color: #000000;
+}
+.b-page-category-content-pagination-top .button-dropdown:hover {
+  border-radius: 2px 2px 0px 0px;
+}
+.b-page-category-content-pagination-top .button-dropdown:hover .button-dropdown-popup {
+  display: block;
+}
+.b-page-category-content-pagination-bottom {
+  margin-top: 50px;
+  text-align: center;
+}
+.b-page-category-content-pagination-bottom .link {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+  border-radius: 20px;
+  color: #777777;
+  display: inline-block;
+  height: 30px;
+  line-height: 33px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  width: 30px;
+}
+.b-page-category-content-pagination-bottom .link:not(.page-current):hover {
+  background-color: #78643a;
+  color: #ffffff;
+  cursor: pointer;
 }
 .b-button-emphasis {
   background-color: #439aa1;

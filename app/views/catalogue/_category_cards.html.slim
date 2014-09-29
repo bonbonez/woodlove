@@ -10,7 +10,7 @@ ruby:
             img.b-categories-cards-item-image-wrapper-picture src=category.picture_thumb.url(:default)
             .b-categories-cards-item-image-wrapper-gradient
         .b-categories-cards-item-header =category.name
-        a.b-categories-cards-item-link href="#"
+        a.b-categories-cards-item-link href=category_path(category)
 
     /.b-categories-cards-item data-width="2"
     /.b-categories-cards-item data-width="1"

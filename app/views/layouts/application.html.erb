@@ -7,7 +7,7 @@
         <%#= csrf_meta_tags %>
         <link rel="stylesheet" href="/styles/global.css?<%= frontend_version %>" />
     </head>
-    <body>
+    <body class="<%= @css_class_layout if @css_class_layout.present? %>">
         <%#= render partial: 'banner/renovo' %>
         <div class="b-layout">
             <div class="b-layout-page">

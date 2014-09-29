@@ -1,3 +1,15 @@
+.m-page-category {
+
+  .b-layout-footer {
+    border-top: 0;
+  }
+
+  .b-layout-content {
+    padding-bottom: 130px;
+  }
+
+}
+
 .b-page-category {
   text-align: left;
   width: 100%;
@@ -52,7 +64,7 @@
   &-content {
     .box-sizing(border-box);
     background-color: #ffffff;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     width: 100%;
 
     &-subcategories {
@@ -95,12 +107,17 @@
       .text,
       .button,
       .button-dropdown {
-        .font(15px, 27px);
         .vertical-align-middle();
-        color: #777777;
         border-radius: 2px;
         height: 25px;
         padding: 0 7px;
+      }
+
+      .text,
+      .button,
+      .button-dropdown-text {
+        .font(15px, 27px);
+        color: #777777;
       }
 
       .button {
@@ -131,8 +148,81 @@
           height: 4px;
           margin-left: 5px;
           position: relative;
-          top: -4px;
+          top: -2px;
           width: 10px;
+        }
+
+        &-text {
+          .vertical-align-middle();
+        }
+
+        &-popup {
+          .box-sizing(content-box);
+          display: none;
+          left: -10px;
+          position: absolute;
+          padding: 0 10px 10px 10px;
+          top: 25px;
+          width: 100%;
+          z-index: 2;
+
+          &:hover {
+            display: block;
+          }
+
+          &-links-wrapper {
+            background-color: #f1f1f1;
+            font-size: 0;
+          }
+
+          &-link {
+            .vertical-align-middle();
+            .font(15px, 27px);
+            .box-sizing(border-box);
+            color: #777777;
+            cursor: pointer;
+            height: 27px;
+            padding-left: 8px;
+            text-align: left;
+            width: 100%;
+
+            &:hover {
+              color: #000000;
+            }
+          }
+        }
+
+        &:hover {
+          border-radius: 2px 2px 0px 0px;
+
+          .button-dropdown-popup {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &-pagination-bottom {
+      margin-top: 50px;
+      text-align: center;
+
+      .link {
+        .font(15px);
+        border-radius: 20px;
+        color: #777777;
+        display: inline-block;
+        height: 30px;
+        line-height: 33px;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: top;
+        width: 30px;
+        //margin: 0 10px;
+
+        &:not(.page-current):hover {
+          background-color: @color-brown;
+          color: #ffffff;
+          cursor: pointer;
         }
       }
     }

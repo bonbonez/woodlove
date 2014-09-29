@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
 
   def meta_as_hash
     meta_raw = self[:meta]
-    return nil if meta_raw.nil? || meta_raw.empty?
+    return [] if meta_raw.nil? || meta_raw.empty?
     meta_arr = []
     meta_raw.split(';').each do |meta_item|
       meta_item_parts = meta_item.split(':')

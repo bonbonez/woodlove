@@ -2,20 +2,48 @@
   .b-page-category-header-wrapper
     h1.b-page-category-header-text =@category.name
     .b-page-category-top-filter
-      .b-page-category-top-filter-item.m-current ="Сначала дешевле"
-      .b-page-category-top-filter-item ="Сначала дороже"
+      a.b-page-category-top-filter-item href=url_for_sort_by_price_asc class="#{'m-current' if @current_params[:order] == :from_lowest_price}" ="Сначала дешевле"
+      a.b-page-category-top-filter-item href=url_for_sort_by_price_desc class="#{'m-current' if @current_params[:order] == :from_highest_price}" ="Сначала дороже"
   .b-page-category-content
     .b-page-category-content-subcategories-wrapper
-      .b-page-category-content-subcategories-item.m-current ="Unisex"
-      .b-page-category-content-subcategories-item ="Мужские"
-      .b-page-category-content-subcategories-item ="Женские"
+      /.b-page-category-content-subcategories-item.m-current ="Unisex"
+      /.b-page-category-content-subcategories-item ="Мужские"
+      /.b-page-category-content-subcategories-item ="Женские"
       .b-page-category-content-pagination-top
-        .text ="Страница "
-        .button-dropdown ="1"
-        .text ="По "
-        .button.m-selected ="25"
-        .button ="50"
-        .button ="Всё"
+        - if @pages_total > 1
+          .text ="Страница "
+          .button-dropdown
+            .button-dropdown-text =@page_current
+            .button-dropdown-popup
+              .button-dropdown-popup-links-wrapper
+                - (1..@pages_total).each do |page_n|
+                  - if page_n != @page_current
+                    a.button-dropdown-popup-link href=get_url({page: page_n}) =page_n
 
-    - @category_items.each do |item|
+        - if @items_total > 2
+          .text ="По "
+          a.button class="#{'m-selected' if @items_limit == 2 || params[:limit].nil?}" href=url_for_limit_25 ="25"
+
+          - if @items_total > 4
+          a.button class="#{'m-selected' if @items_limit == 4}" href=url_for_limit_50 ="50"
+
+          - if @items_total > 2
+            a.button class="#{'m-selected' if @items_limit == :all}" href=url_for_limit_all ="Всё"
+
+    - @items.each do |item|
       = render partial: 'catalogue/item_card', locals: {item: item}
+
+    - if @pages_total > 1
+      .b-page-category-content-pagination-bottom
+        - prev_page = get_prev_page
+        - next_page = get_next_page
+
+        - if prev_page
+          a.link.page-prev href=prev_page[:url] ="<"
+          a.link.page-before href=prev_page[:url] =prev_page[:page]
+
+        .link.page-current =@page_current
+
+        - if next_page
+          a.link.page-after href=next_page[:url] =next_page[:page]
+          a.link.page-next href=next_page[:url] =">"
