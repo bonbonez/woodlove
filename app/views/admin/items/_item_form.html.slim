@@ -1,5 +1,6 @@
 ruby:
   selected_category_id = params[:selected_category_id].present? ? params[:selected_category_id] : nil
+  selected_brand_id = params[:selected_brand_id].present? ? params[:selected_brand_id] : nil
 
 = form_for [:admin, item], html: {class: 'b-admin-form'} do |f|
   .b-admin-form-item
@@ -7,9 +8,10 @@ ruby:
     = f.text_field   "url"
 
   .b-admin-form-item
-    - if params[:selected_category_id].present?
-
     = collection_select(:item, :category_id, Category.all, :id, :name, prompt: true, selected: selected_category_id)
+
+  .b-admin-form-item
+    = collection_select(:item, :brand_id, Brand.all, :id, :name, prompt: true, selected: selected_brand_id)
 
   .b-admin-form-item
     = f.label        "title"
@@ -47,6 +49,10 @@ ruby:
   .b-admin-form-item
     = f.label        "link_to_original_item"
     = f.text_field   "link_to_original_item"
+
+  .b-admin-form-item
+    = f.label        "is_published"
+    = f.check_box    "is_published"
 
   .b-admin-form-item.m-no-label
     = f.submit

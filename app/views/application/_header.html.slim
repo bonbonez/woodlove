@@ -1,0 +1,22 @@
+.b-layout-header
+  - if is_index?
+    .b-layout-header-logo
+  - else
+    a.b-layout-header-logo href="/"
+
+  .b-layout-header-content-right role="b-header-cart"
+    .b-layout-header-content-right-button-buy role="b-header-cart-button-order" ="Оформить заказ"
+    a.b-layout-header-content-right-cart href="/cart"
+      .b-layout-header-content-right-cart-text ="Корзина"
+      .b-layout-header-content-right-cart-counter data-visible="false" role="b-header-cart-counter"
+        .b-layout-header-content-right-cart-counter-text role="b-header-cart-counter-text" ="0"
+
+
+/.b-layout-header-fixed role="header-fixed" data-visible="false"
+  .b-layout-header-fixed-content
+    .logo
+    .b-layout-header-fixed-content-right
+      .cart
+        = "Корзина"
+        .cart-counter
+          .cart-counter-text ="0"

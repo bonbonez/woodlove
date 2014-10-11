@@ -61,6 +61,28 @@
     }
   }
 
+  &-brands {
+    &-wrapper {
+      height: 70px;
+      line-height: 70px;
+      text-align: center;
+      width: 100%;
+    }
+    &-item {
+      .vertical-align-middle();
+
+      &:not(:last-of-type) {
+        margin-right: 30px;
+      }
+
+      &-picture {
+        border: 0;
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
   &-content {
     .box-sizing(border-box);
     background-color: #ffffff;

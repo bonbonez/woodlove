@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
-  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id
+  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id, :is_published, :brand_id
 
   belongs_to :category
+  belongs_to :brand
 
   has_attached_file :picture,  :styles => { :large => "450x300>", :medium => "300x200>", :thumb => "150x100>" }, :default_url => "/images/:style/missing.png"
   has_attached_file :picture2, :styles => { :large => "450x300>", :medium => "300x200>", :thumb => "150x100>" }, :default_url => "/images/:style/missing.png"
@@ -38,6 +39,10 @@ class Item < ActiveRecord::Base
     pics_arr << self.picture4 if picture4.present?
     pics_arr << self.picture5 if picture5.present?
     pics_arr
+  end
+
+  def price_to_use
+    self.price
   end
 
   #def to_param

@@ -19,6 +19,10 @@ class Category < ActiveRecord::Base
     name
   end
 
+  def header
+    self.name
+  end
+
   def to_param
     self.url
   end

@@ -1,0 +1,8 @@
+.m-offset-bottom
+  = link_to 'Новый Brand', new_admin_brand_path, class: 'b-admin-form-item-button'
+
+- if @brands.present?
+  .m-offset-bottom
+  - @brands.each do |brand|
+    div
+      = link_to brand.title, edit_admin_brand_path(brand)

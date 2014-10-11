@@ -1,6 +1,6 @@
 .b-page-category
   .b-page-category-header-wrapper
-    h1.b-page-category-header-text =@category.name
+    h1.b-page-category-header-text =@category.header
     .b-page-category-top-filter
       a.b-page-category-top-filter-item href=url_for_sort_by_price_asc class="#{'m-current' if @current_params[:order] == :from_lowest_price}" ="Сначала дешевле"
       a.b-page-category-top-filter-item href=url_for_sort_by_price_desc class="#{'m-current' if @current_params[:order] == :from_highest_price}" ="Сначала дороже"

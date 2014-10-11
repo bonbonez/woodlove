@@ -30,24 +30,24 @@ var paths = {
   styles: ['styles/**/*.less'],
   // Order is important!
   vendor: [
-    'javascripts/dev/core/vendor/*.js',
-    'javascripts/dev/core/namespace/*.js',
-    'javascripts/dev/core/configs/*.js',
-    'javascripts/dev/core/tools/*.js',
-    'javascripts/dev/core/features/*.js',
-    'javascripts/dev/core/user/*.js',
-    'javascripts/dev/core/**/*.js'
+    'scripts/core/vendor/*.js',
+    'scripts/core/namespace/*.js',
+    'scripts/core/configs/*.js',
+    'scripts/core/tools/*.js',
+    'scripts/core/features/*.js',
+    'scripts/core/user/*.js',
+    'scripts/core/**/*.js'
   ],
   modules: [
     //'javascripts/dev/modules/**/*.js',
 
     // Somewhat safe to load
-    'javascripts/dev/modules/**/*.js',
+    'scripts/modules/**/*.js',
 
     // Loaders
-    'javascripts/dev/loader/loadScriptsConfig.js',
-    'javascripts/dev/loader/loadScripts.js',
-    'javascripts/dev/loader/initApp.js'
+    'scripts/loader/loadScriptsConfig.js',
+    'scripts/loader/loadScripts.js',
+    'scripts/loader/initApp.js'
   ]
 };
 
@@ -55,10 +55,19 @@ gulp.task('clean', function(cb) {
   del(['build'], cb);
 });
 
+var frontendVersionBuildingInProgress = false;
 gulp.task('version', function(){
+  if (frontendVersionBuildingInProgress === true) {
+      return;
+  }
+  frontendVersionBuildingInProgress = true;
   var sys = require('sys')
   var exec = require('child_process').exec;
-  function puts(error, stdout, stderr) { sys.puts(stdout) }
+
+    function puts(error, stdout, stderr) {
+        sys.puts(stdout);
+        frontendVersionBuildingInProgress = false;
+    }
   var command = 'filename="../config/frontend_version.yml";' +
                 'rm -f ../config/frontend_version.yml;' +
                 'printf \'version: "\'>> $filename \r;' +
@@ -146,7 +155,5 @@ gulp.task('modules-local', function() {
     .pipe(gulp.dest('../public/javascript'));
 });
 
-// tests
-
 gulp.task('default', ['watch', 'styles', 'styles-admin']);
-gulp.task('local', ['watch-local', 'styles']);
+gulp.task('local', ['watch-local', 'styles', 'vendor-local', 'modules-local']);

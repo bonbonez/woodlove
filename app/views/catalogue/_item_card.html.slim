@@ -1,10 +1,11 @@
 ruby:
   item ||= nil
+  card_size ||= :default
 
 - if !item.nil?
-  .b-item-card
+  .b-item-card class="m-size-#{card_size}"
     .b-item-card-image-wrapper
       img.b-item-card-image-picture src=item.picture.url(:medium)
     .b-item-card-title =item.title
     .b-item-card-price =item.price
-    = link_to '', "/items/#{item.url}", class: 'b-item-card-link'
+    = link_to '', item_path(item), class: 'b-item-card-link'

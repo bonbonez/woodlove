@@ -1,4 +1,6 @@
 .b-button-emphasis {
+  .transition(0.25s);
+  .vertical-align-middle();
   background-color: @color-blue-dark;
   border: 0;
   //box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -12,8 +14,80 @@
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
+  position: relative;
+
+  &[hidden=hidden] {
+    display: none;
+  }
 
   &:hover {
     background-color: lighten(@color-blue-dark, 2%);
   }
+
+  &::before {
+    .transition(0.25s);
+    //background-image: url('/assets/ui/preloader_horizontal_sprite.png');
+    .retina-image('/assets/ui/preloader_horizontal_sprite', 'png', 228px, 15px);
+    animation: button-emphasis-wait-animation 1.5s steps(3) infinite;
+    content: ' ';
+    height: 20px;
+    left: 50%;
+    margin: -7.5px 0 0 -38px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    width: 76px;
+    z-index: -1;
+  }
+
+  &[data-wait=true] {
+    color: rgba(0, 0, 0, 0);
+
+    &::before {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  &[data-visible] {
+    .transition();
+  }
+  &[data-visible=true] {
+    opacity: 1;
+  }
+  &[data-visible=false] {
+    opacity: 0;
+  }
+
+  &[disabled=disabled] {
+    background-color: #f1f1f1;
+    color: #777777;
+  }
+
+  &.m-yellow {
+    background-color: #eddea7;
+    color: @color-brown;
+  }
+
+  .button-text {
+    .transition-prop(opacity);
+    white-space: nowrap;
+
+    &[data-visible=true] {
+      opacity: 1;
+    }
+    &[data-visible=false] {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+    }
+    &[data-visibility=hidden] {
+      visibility: hidden;
+    }
+  }
+}
+
+@keyframes button-emphasis-wait-animation {
+  from { background-position-x: 0px; }
+  to   { background-position-x: -228px; }
 }

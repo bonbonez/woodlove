@@ -1,0 +1,42 @@
+ruby:
+  cart_items = @cart.get_items
+  cart_empty = cart_items.length < 1
+  recent_items = recently_viewed_items.last(4).reverse
+
+.b-page-cart role="b-page-cart" data-cart-empty="#{cart_empty == true}"
+  .b-page-cart-header ="Корзина"
+
+  .b-page-cart-content.content-not-empty
+    .b-page-cart-text
+      | Спасибо за то, что вы с нами. Возможно, вы захотите больше узнать о&nbsp;<a href="#" class="b-page-cart-text-link">гарантии на деревянные изделия</a>, или <a href="#" class="b-page-cart-text-link">оставить отзыв</a> о нашем магазине. Если вам понравился наш магазин, <a href="#" class="b-page-cart-text-link">расскажите о нем друзьям</a>!
+
+    .b-page-cart-items-wrapper
+      - if !cart_empty
+        - cart_items.each do |item|
+          - item_amount = @cart.get_item_amount(item.id)
+          - total_price = item_amount * item.price
+          - total_visible = item_amount > 1 ? "true" : "false"
+
+          .b-page-cart-item role="b-cart-item" data-config=item_control_config(item)
+            a.b-page-cart-item-button-remove role="b-cart-item-button-remove" ="X"
+            a.b-page-cart-item-picture href=item_path(item)
+              img.b-page-cart-item-picture-image src=item.picture.url(:medium)
+            .b-page-cart-item-content
+              a.b-page-cart-item-content-link href=item_path(item) ==item.title
+              .b-page-cart-item-content-amount-wrapper
+                .b-page-cart-item-content-amount-arrow.arrow-left role="b-cart-item-button-minus" data-symbol="-"
+                .b-page-cart-item-content-amount-text role="b-cart-item-amount" data-after=" шт" =item_amount
+                .b-page-cart-item-content-amount-arrow.arrow-right role="b-cart-item-button-plus" data-symbol="+"
+              .b-page-cart-item-content-price-wrapper
+                .b-page-cart-item-content-price role="b-cart-item-price" data-total-visible=total_visible
+                  .b-page-cart-item-content-price-text data-after=" руб." =item.price_to_use
+                  .b-page-cart-item-content-price-text-total role="b-cart-item-price-total" data-before="всего: " data-after=" руб." =total_price
+            a.b-page-cart-item-loading
+
+  .b-page-cart-content.content-empty
+    .b-page-cart-text ="Ваша корзина пуста"
+    - if recent_items.present? && recent_items.length > 0
+      = render partial: 'ui/recent', locals: {items: recent_items}
+      /- recent_items.each do |item|
+        = render partial: 'catalogue/item_card', locals: {item: item}
+

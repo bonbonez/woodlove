@@ -1,11 +1,16 @@
 class CategoriesController < ApplicationController
 
   def show
-    @category = Category.where(url: params[:id]).last
+    if params[:brand_url].present?
+      @category = Brand.where(url: params[:brand_url]).last
+    else
+      @category = Category.where(url: params[:id]).last
+    end
+
     raise ActiveRecord::RecordNotFound if !@category.present?
 
     items_limit    = get_items_limit
-    category_items = @category.items
+    category_items = @category.items.where(is_published: true)
     order_filter   = get_order_filter
     current_page   = get_current_page
 

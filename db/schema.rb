@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140927204700) do
+ActiveRecord::Schema.define(:version => 20141010194728) do
+
+  create_table "brands", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "url"
+    t.string   "name"
+    t.string   "image_promo_file_name"
+    t.string   "image_promo_content_type"
+    t.integer  "image_promo_file_size"
+    t.datetime "image_promo_updated_at"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.string   "cookie_id"
+    t.string   "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -40,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20140927204700) do
     t.integer  "price_original"
     t.integer  "price_special"
     t.string   "link_to_original_item"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -64,6 +88,8 @@ ActiveRecord::Schema.define(:version => 20140927204700) do
     t.datetime "picture5_updated_at"
     t.string   "url"
     t.integer  "category_id"
+    t.boolean  "is_published",          :default => true
+    t.integer  "brand_id"
   end
 
   create_table "subcategories", :force => true do |t|

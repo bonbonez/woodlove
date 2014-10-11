@@ -6,18 +6,14 @@
         <%#= javascript_include_tag "application" %>
         <%#= csrf_meta_tags %>
         <link rel="stylesheet" href="/styles/global.css?<%= frontend_version %>" />
+
     </head>
-    <body class="<%= @css_class_layout if @css_class_layout.present? %>">
+    <body class="<%= @css_class_layout if @css_class_layout.present? %>" data-scripts="<%= @scripts_id if @scripts_id.present? %>" data-cart-config="<%= @cart_config.to_json.to_s %>">
         <%#= render partial: 'banner/renovo' %>
+        <%= render partial: 'templates/item_popup_preview' %>
         <div class="b-layout">
             <div class="b-layout-page">
-                <div class="b-layout-header">
-                    <% if is_index? %>
-                        <div class="b-logo"></div>
-                    <% else %>
-                        <a href="/" class="b-logo"></a>
-                    <% end %>
-                </div>
+                <%= render partial: 'application/header' %>
                 <%= render partial: 'application/top_menu' %>
                 <%= render partial: 'application/top_categories_navigation' %>
                 <div class="b-layout-content">
@@ -26,6 +22,7 @@
             </div>
             <%= render partial: 'application/footer' %>
         </div>
-
+        <script type="text/javascript" src="/javascript/core.js?<%= frontend_version %>"></script>
+        <script type="text/javascript" src="/javascript/modules.js?<%= frontend_version %>"></script>
     </body>
 </html>

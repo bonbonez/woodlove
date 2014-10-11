@@ -1,0 +1,120 @@
+.b-item-popup-preview {
+  .bm-popup-overlay {
+    //background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .bm-popup-content-wrapper {
+    .box-sizing(border-box);
+    //.transform(translateX(-50%));
+    //padding: 40px;
+  }
+
+  .bm-popup-content {
+    .box-sizing(border-box);
+
+    //background-clip: content-box;
+    padding: 30px;
+    //padding-bottom: 66%;
+    height: 100%;
+    max-height: 100%;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 960px;
+    .vertical-align-middle();
+  }
+
+  .bm-popup-button-close {
+    color: #000000;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: @font-icons;
+    position: absolute;
+    right: 41px;
+    top: 40px;
+    z-index: 1;
+
+    &::after {
+      content: 'X';
+    }
+  }
+
+  &-loader {
+    .transition-prop(opacity);
+    left: 50%;
+    margin: -23.5px 0 0 -23.5px;
+    position: absolute;
+    top: 50%;
+
+    &[data-visible=false] {
+      opacity: 0;
+    }
+    &[data-visible=true] {
+      opacity: 1;
+    }
+  }
+
+  &-image-wrapper {
+    background-color: #ffffff;
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  &-image {
+    .transform(translate(-50%, -50%));
+    .vertical-align-middle();
+    //display: none;
+    //max-height: ~"calc(100% - 80px)";
+    left: 50%;
+    max-height: 80%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+
+    &[data-visible=false] {
+      opacity: 0;
+    }
+    &[data-visible=true] {
+      opacity: 1;
+    }
+  }
+
+  &-arrow {
+    .user-select(none);
+    cursor: pointer;
+    height: 45px;
+    margin-top: -22.5px;
+    position: absolute;
+    top: 50%;
+    width: 36px;
+
+    &::before {
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      content: ' ';
+      height: 45px;
+      position: absolute;
+      top: 0px;
+      width: 21px;
+    }
+
+    &.arrow-left {
+      left: 5px;
+
+      &::before {
+        background-image: url('/assets/ui/arrow-left.svg');
+        left: 12px;
+      }
+    }
+    &.arrow-right {
+      right: 5px;
+
+      &::before {
+        background-image: url('/assets/ui/arrow-right.svg');
+        right: 5px;
+      }
+    }
+  }
+}

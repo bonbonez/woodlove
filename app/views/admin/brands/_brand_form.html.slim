@@ -1,0 +1,39 @@
+= form_for [:admin, brand], html: {class: 'b-admin-form'} do |f|
+  .b-admin-form-item
+    = f.label        "url"
+    = f.text_field   "url"
+
+  .b-admin-form-item
+    = f.label        "name"
+    = f.text_field   "name"
+
+  .b-admin-form-item
+    = f.label        "title"
+    = f.text_field   "title"
+
+  .b-admin-form-item
+    = f.label        "description"
+    = f.text_area    "description"
+
+  .b-admin-form-block-right
+    .b-admin-form-block-right-item
+      .b-admin-form-block-right-item-header ="Logo Picture"
+      .b-admin-form-block-right-item-content
+        - if brand.logo.present?
+          img.b-admin-form-block-right-item-image src=brand.logo.url(:default)
+
+        = f.label "logo", 'Выбрать картинку',  class: 'b-admin-form-item-button'
+        = f.file_field "logo", hidden: 'hidden'
+
+    .b-admin-form-block-right-item
+      .b-admin-form-block-right-item-header ="Promo Picture"
+      .b-admin-form-block-right-item-content
+        - if brand.image_promo.present?
+          img.b-admin-form-block-right-item-image src=brand.image_promo.url(:default)
+
+        = f.label "image_promo", 'Выбрать картинку',  class: 'b-admin-form-item-button'
+        = f.file_field "image_promo", hidden: 'hidden'
+
+
+  .b-admin-form-item.m-no-label
+    = f.submit

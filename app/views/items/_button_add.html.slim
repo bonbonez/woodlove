@@ -1,0 +1,21 @@
+ruby:
+  item ||= nil
+  cart ||= nil
+
+- if item.present?
+  .b-layout-item-button-buy-wrapper role="b-button-add" data-config=item_control_config(item)
+    - if cart.item_present?(item)
+      .b-layout-item-button-buy-already-in-cart role="b-button-add-in-cart" data-visible="true"
+        .b-layout-item-button-buy-already-in-cart-text ="Добавлено в "
+        a.b-layout-item-button-buy-already-in-cart-link href="/cart" ="корзину"
+      button.b-button-emphasis role="b-button-add-button" data-state="order"
+        span class="button-text" role="b-button-add-button-text-add" data-visible="false" ="Добавить в корзину"
+        span class="button-text" role="b-button-add-button-text-order" data-visible="true" ="Оформить заказ"
+
+    - else
+      .b-layout-item-button-buy-already-in-cart role="b-button-add-in-cart" data-visible="false"
+        .b-layout-item-button-buy-already-in-cart-text ="Добавлено в "
+        a.b-layout-item-button-buy-already-in-cart-link href="/cart" ="корзину"
+      button.b-button-emphasis role="b-button-add-button" data-state="add"
+        span class="button-text" role="b-button-add-button-text-add" data-visible="true" ="Добавить в корзину"
+        span class="button-text" role="b-button-add-button-text-order" data-visible="false" ="Оформить заказ"

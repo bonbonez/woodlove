@@ -5,14 +5,17 @@ ruby:
 .b-layout-item
   .b-layout-item-content-left
     - if !item_pictures.empty?
-      .b-layout-item-pictures-wrapper
-        .b-layout-item-picture-large
-          = image_tag item_pictures.first.url(:large), class: 'b-layout-item-picture-large-image'
+      .b-layout-item-pictures-wrapper role="bm-item-gallery"
+        .b-layout-item-picture-zoom role="bm-item-gallery-zoom-wrapper" data-visible="false"
+          .b-layout-item-picture-zoom-loader.bm-spinner data-loading="true" role="bm-item-gallery-zoom-loader"
+        .b-layout-item-picture-large data-original-image=item_pictures.first.url(:original) role="bm-item-gallery-image-large"
+          = image_tag item_pictures.first.url(:large), class: 'b-layout-item-picture-large-image', role: 'bm-item-gallery-image-large-picture'
+          .b-layout-item-picture-large-overlay role="bm-item-gallery-image-large-overlay"
 
-        /- if item_pictures.length > 1
+        - if item_pictures.length > 1
           .b-layout-item-picture-thumbs-wrapper
             - item_pictures.each_with_index do |picture, i|
-              .b-layout-item-picture-thumb class="#{'m-active' if i == 0}"
+              .b-layout-item-picture-thumb class="#{'m-active' if i == 0}" data-large-image=picture.url(:large) data-original-image=picture.url(:original) role="bm-item-gallery-image-thumb"
                 = image_tag picture.url(:thumb), class: 'b-layout-item-picture-thumb-image'
           /.b-layout-item-picture-thumb
           /.b-layout-item-picture-thumb
@@ -24,8 +27,7 @@ ruby:
     .b-layout-item-price = "-#{@item.price}"
     .b-layout-item-description
       = @item.desc
-    .b-layout-item-button-buy-wrapper
-      button.b-button-emphasis ="Добавить в корзину"
+    = render partial: 'items/button_add', locals: {item: @item, cart: @cart}
 
     - if !item_meta.empty?
       .b-layout-item-specs

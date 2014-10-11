@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  #include ApplicationHelper
+
   # GET /items
   # GET /items.json
   def index
@@ -17,10 +20,15 @@ class ItemsController < ApplicationController
     @item = Item.where(url: params[:url]).last
     raise ActiveRecord::RecordNotFound if @item.nil?
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @item }
-    end
+    @scripts_id = 'item-show'
+    @cart = get_user_cart
+
+    add_item_to_recents
+
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.json { render json: @item }
+    #end
   end
 
   # GET /items/new
@@ -81,5 +89,15 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def add_item_to_recents
+    if !session[:recently_viewed_items].present?
+      session[:recently_viewed_items] = []
+    end
+    return if session[:recently_viewed_items].index(@item.id) != nil
+    session[:recently_viewed_items].push(@item.id)
   end
 end

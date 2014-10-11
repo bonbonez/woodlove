@@ -1,0 +1,10 @@
+ruby:
+  items ||= []
+
+- if items.present? && items.length > 0
+  .b-block-recent role="b-block-recent"
+    .b-block-recent-button-close role="b-block-recent-button-close" ="X"
+    .b-block-recent-header ="Вы недавно смотрели:"
+    .b-block-recent-content
+      - items.each do |item|
+        = render partial: 'catalogue/item_card', locals: {item: item}
