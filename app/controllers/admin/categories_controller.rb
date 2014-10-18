@@ -11,7 +11,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
 
     def edit
-      @category = Category.find(params[:id])
+      @category = Category.where(url: params[:id]).last
       @header = "Редактирование Category"
       @link_back = admin_categories_path
     end
