@@ -29,6 +29,11 @@
     'cart-index' : function() {
         modules.require('ui-modules');
         modules.require('pageCartInit');
+    },
+
+    'survey-index' : function() {
+        modules.require('ui-modules');
+        modules.require('moduleSurveyInit');
     }
   };
 

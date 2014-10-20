@@ -40,6 +40,16 @@ module CategoriesHelper
       end
     end
 
+    def get_gender_url(gender)
+      {
+        url: get_url({gender: gender})
+      }
+    end
+
+    def link_to_gender_filter(gender)
+
+    end
+
     def get_url(params)
       "#{request.path}?" + @current_params.merge(params).to_param
     end

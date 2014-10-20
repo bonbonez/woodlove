@@ -1,0 +1,233 @@
+body.m-survey {
+
+  .b-layout-content {
+    padding-bottom: 110px;
+    position: static;
+  }
+
+}
+
+.b-layout-survey {
+  /*height: 100%;
+  position: relative;*/
+  padding-top: 45px;
+
+  &-login {
+    .transform(translate(-50%, -50%));
+    //background-color: #ffffff;
+    display: inline-block;
+    left: 50%;
+    //height: 100px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 300px;
+
+    &-input {
+      width: 100%;
+    }
+
+    &-submit {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  &-message-complete {
+    .transform(translate(-50%, -50%));
+    color: #000000;
+    font-family: @font-museo;
+    font-size: 30px;
+    line-height: 40px;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+  }
+
+  &-content {
+    &-item {
+
+      &-header {
+        color: #000000;
+        font-family: @font-museo;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 40px;
+      }
+
+      &-content {
+        white-space: nowrap;
+
+        &-gallery {
+          display: inline-block;
+          vertical-align: top;
+          margin-right: 30px;
+          white-space: normal;
+          width: 400px;
+
+          .b-layout-item-picture {
+            &-large {
+              margin-bottom: 10px;
+            }
+
+            &-thumbs-wrapper {
+              white-space: normal;
+            }
+
+            &-thumb {
+              height: 86px;
+              margin-bottom: 10px;
+              width: 125px;
+
+              &:nth-child(3) {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+
+        &-price {
+          .font(20px, 20px, normal);
+          color: #555555;
+          margin-bottom: 20px;
+        }
+
+        &-description {
+          color: #000000;
+          display: inline-block;
+          font-family: @font-museo;
+          font-size: 18px;
+          line-height: 28px;
+          vertical-align: top;
+          white-space: normal;
+          width: 470px;
+        }
+
+        &-meta {
+          margin-top: 40px;
+
+          &-header {
+            .font(20px, 20px, bold);
+            color: #000000;
+            margin-bottom: 15px;
+          }
+          &-item {
+            .box-sizing(border-box);
+            border-top: 1px solid #f1f1f1;
+            padding: 10px 0;
+            white-space: nowrap;
+            width: 100%;
+
+            &:last-of-type {
+              border-top: 1px solid #f1f1f1;
+            }
+
+            &-label,
+            &-text {
+              .font(18px, 22px, normal);
+              display: inline-block;
+              vertical-align: top;
+              white-space: normal;
+            }
+
+            &-label {
+              margin-right: 10%;
+              width: 20%;
+            }
+
+            &-text {
+              width: 70%;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
+  &-progress {
+    background-color: #ffffff;
+    height: 35px;
+    left: 0px;
+    line-height: 35px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+
+    &-content {
+      .font(15px, 35px, normal);
+      color: #333333;
+      margin: 0 auto;
+      text-align: left;
+      width: @layout-max-width - @layout-padding * 2;
+    }
+  }
+
+  &-controls {
+    background-color: #ffffff;
+    box-shadow: 0px -2px 23px rgba(0, 0, 0, 0.05);
+    bottom: 0;
+
+    left: 0;
+    //margin: -@layout-footer-height auto 0;
+    //text-align: center;
+    //padding: 0 10px;
+    position: fixed;
+    width: 100%;
+
+    &-content {
+      height: @layout-footer-height;
+      line-height: @layout-footer-height;
+      text-align: center;
+      margin: 0 auto;
+      position: relative;
+      width: @layout-max-width - @layout-padding * 2;
+    }
+
+    /*&-counter {
+      position: absolute;
+      height: 15px;
+      line-height: 15px;
+    }*/
+
+    .b-button-emphasis {
+
+      &:first-of-type {
+        margin-right: 40px;
+      }
+
+      &.b-survey-button-next,
+      &.b-survey-button-comment {
+        position: absolute;
+        top: 50%;
+        margin-top: -25px;
+      }
+
+      &.b-survey-button-next {
+        right: 0;
+      }
+      &.b-survey-button-comment {
+        .font(17px, 50px, normal);
+        border: 0;
+        color: #000000;
+        left: 0;
+        padding: 0;
+        text-decoration: underline;
+
+        &:hover {
+          color: #000000;
+          background-color: transparent;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &-header {
+    height: @layout-header-height;
+    width: 100%;
+  }
+}

@@ -18,6 +18,7 @@ Woodlove::Application.routes.draw do
     resources :items
     resources :categories
     resources :brands
+    resources :survey_users
 
     get 'items/:id/delete', to: 'items#delete', as: :delete
   end
@@ -30,6 +31,10 @@ Woodlove::Application.routes.draw do
     post 'cart/item/dec', to: 'cart#dec_item'
 
     post 'items/recent/clear', to: 'items#clear_recent'
+
+    post 'survey/login', to: 'survey#login'
+    post 'survey/next', to: 'survey#next'
+    post 'survey/comment', to: 'survey#comment'
   end
 
   get '/items/:url', to: 'items#show'
@@ -39,5 +44,7 @@ Woodlove::Application.routes.draw do
   #get '/:url', to: 'catalogue#url_processor'
 
   #resources :items #, only: :show
+
+  get '/survey', to: 'survey#index'
 
 end

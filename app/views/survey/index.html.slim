@@ -1,0 +1,33 @@
+.b-layout
+  .b-layout-page
+    - if @survey_user && !@survey_user.finished?
+      .b-layout-survey-progress
+        .b-layout-survey-progress-content
+          ="Осталось "
+          span role="b-survey-counter-items-left" =@items_left
+          =" из "
+          span =@items_total
+    .b-layout-content
+      .b-layout-survey
+        - if !@survey_user
+          .b-layout-survey-login role="b-survey-login-form"
+            input.b-input-emphasis.b-layout-survey-login-input role="b-survey-login-form-input" placeholder="Code"
+            button.b-button-emphasis.m-transparent.b-layout-survey-login-submit role="b-survey-login-form-submit" ="Войти"
+            /.b-layout-survey-login-submit ="code"
+        - elsif @survey_user.finished?
+          .b-layout-survey-message-complete
+            | Опрос окончен.<br/>Спасибо за участие, #{@survey_user.name}!
+        - else
+          .b-layout-survey-content role="b-survey-content"
+            = render partial: 'survey/item', locals: {item: @item}
+
+  - if @survey_user && !@survey_user.finished?
+    .b-layout-survey-controls role="b-survey-controls"
+      .b-layout-survey-controls-content role="b-survey-controls"
+        .b-button-emphasis.m-transparent.b-survey-button-comment role="b-survey-controls-button-comment" =="Комментировать этот товар"
+        button.b-button-emphasis.m-transparent role="b-survey-controls-button-like" ="Нравится"
+        - if @survey_user.male?
+          button.b-button-emphasis.m-transparent role="b-survey-controls-button-best" ="Я бы купил"
+        - elsif @survey_user.female?
+          button.b-button-emphasis.m-transparent role="b-survey-controls-button-best" ="Я бы купила"
+        button.b-button-emphasis.b-survey-button-next role="b-survey-controls-button-next" ="Дальше"

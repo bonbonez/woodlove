@@ -594,7 +594,7 @@
             },
 
             destroy : function() {
-
+                $super.destroy.apply(this, arguments);
             }
 
         });
@@ -764,6 +764,433 @@
 }(this, this.modules, this.jQuery));
 (function(window, modules, $){
 
+    modules.define('moduleSurveyContent', ['basePubSub', 'extend', 'moduleItemGallery'], function(provide, PubSub, extend, ItemGallery) {
+
+        var SurveyContent = extend(PubSub),
+
+            $class = SurveyContent,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(config) {
+                $super.initialize.apply(this, arguments);
+
+                this.$elem               = config.element;
+                this.$elemItemGaller     = null;
+                this._itemGalleryHandler = null;
+
+                this._setupEvents();
+                this.update();
+            },
+
+            _setupEvents : function() {
+                var me = this;
+            },
+
+            update : function() {
+                this.$elemItemGallery = this.$elem.find('@bm-item-gallery');
+                this._itemGalleryHandler = new ItemGallery({
+                    element: this.$elemItemGallery
+                })
+
+            },
+
+            updateItem : function(html) {
+                if (this._itemGalleryHandler !== null) {
+                    this._itemGalleryHandler.destroy();
+                    this._itemGalleryHandler = null;
+                }
+                this.$elem.off();
+                this.$elem.html('');
+                this.$elem.append(html);
+                this.update();
+            },
+
+        });
+
+        provide(SurveyContent);
+
+    });
+
+}(this, this.modules, this.jQuery));
+(function(window, modules, $){
+
+    modules.define('moduleSurveyControls', ['basePubSub', 'extend'], function(provide, PubSub, extend) {
+
+        var SurveyControls = extend(PubSub),
+
+            $class = SurveyControls,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(config) {
+                $super.initialize.apply(this, arguments);
+
+                this.$elem              = config.element;
+                this.$elemButtonComment = this.$elem.find('@b-survey-controls-button-comment');
+                this.$elemButtonLike    = this.$elem.find('@b-survey-controls-button-like');
+                this.$elemButtonBest    = this.$elem.find('@b-survey-controls-button-best');
+                this.$elemButtonNext    = this.$elem.find('@b-survey-controls-button-next');
+
+                this._setupEvents();
+            },
+
+            _setupEvents : function() {
+                var me = this;
+                this.$elemButtonComment.on('click', function() {
+                    me._notify('click-comment');
+                });
+                this.$elemButtonLike.on('click', function() {
+                    me._notify('click-like');
+                });
+                this.$elemButtonBest.on('click', function() {
+                    me._notify('click-best');
+                });
+                this.$elemButtonNext.on('click', function() {
+                    me._notify('click-next');
+                });
+            }
+
+        });
+
+        provide(SurveyControls);
+
+    });
+
+}(this, this.modules, this.jQuery));
+(function(window, modules, $){
+
+    modules.define('moduleSurveyFormLogin', ['basePubSub', 'extend'], function(provide, PubSub, extend) {
+
+        var FormLogin = extend(PubSub),
+
+            $class = FormLogin,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(config) {
+                $super.initialize.apply(this, arguments);
+
+                this.$elem          = config.element;
+                this.$elemInputCode = this.$elem.find('@b-survey-login-form-input');
+                this.$elemSubmit    = this.$elem.find('@b-survey-login-form-submit');
+
+                this._setupEvents();
+            },
+
+            _setupEvents : function() {
+                var me = this;
+                this.$elemInputCode.on('keyup', function(event) {
+                    me._onInputCodeKeyUp(event); 
+                });
+                this.$elemSubmit.on('click', function() {
+                    me._onFormSubmit();
+                });
+            },
+
+            _onInputCodeKeyUp : function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    this._onFormSubmit();
+                    return;
+                }
+            },
+
+            _onFormSubmit : function() {
+                if (this._isFormValid()) {
+                    this._sendRequestLogin();
+                }
+            },
+
+            _sendRequestLogin : function() {
+                var me = this;
+                this._disableForm();
+                $.ajax({
+                    url: '/api/survey/login',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        code: this._getInputCodeValue()
+                    },
+                    success : function(data) {
+                        setTimeout(function(){
+                            me._onLoginRequestSuccess(data);
+                        }, 500);
+                    },
+                    error : function() {
+                        setTimeout(function(){
+                            me._onLoginRequestError();
+                        }, 500);
+                    }
+                });
+            },
+
+            _onLoginRequestSuccess : function(data) {
+                //this._enableForm();
+                this._notify('login-success');
+            },
+
+            _onLoginRequestError : function() {
+                this._enableForm();
+                this._notify('login-error');
+            },
+
+            _enableForm : function() {
+                this.$elemSubmit.removeAttr('disabled');
+                this.$elemSubmit.removeAttr('data-wait');
+                this.$elemInputCode.removeAttr('disabled');
+            },
+
+            _disableForm : function() {
+                this.$elemSubmit.attr('disabled', 'disabled');
+                this.$elemSubmit.attr('data-wait', 'true');
+                this.$elemInputCode.attr('disabled', 'disabled');
+            },
+
+            _isFormValid : function() {
+                var value = this._getInputCodeValue();
+                return value && value.length > 0;
+            },
+
+            _getInputCodeValue : function() {
+                return this.$elemInputCode.val();
+            }
+
+        });
+
+        provide(FormLogin);
+
+    });
+
+}(this, this.modules, this.jQuery));
+(function(window, modules, $){
+
+    modules.define('moduleSurveyInit', [
+        //'moduleSurveryItemGalleryInit',
+        'moduleSurveyFormLogin',
+        'moduleSurveyControls',
+        'moduleSurveyContent',
+        'moduleSurveyRequestHandler',
+        'modulePopupComment'
+    ], function(provide, FormLogin, SurveyControls, SurveyContent, RequestHandler, PopupComment){
+
+        var formLogin = new FormLogin({
+                element: $('@b-survey-login-form')
+            }),
+            surveyControls = new SurveyControls({
+                element: $('@b-survey-controls')
+            }),
+            surveyContent = new SurveyContent({
+                element: $('@b-survey-content')
+            }),
+            popupComment = new PopupComment();
+
+        var callbackRequestNextSuccess = function(data) {
+                /*var contentType = xhr.getResponseHeader("content-type") || '';
+                if (contentType.indexOf('json') !== -1 && data['finished'] === true) {
+
+                } else if (contentType.indexOf('html') !== -1) {
+                    surveyContent.updateItem(data);
+                }*/
+                if (data) {
+                    if (data['next_item_html'] !== null) {
+                        surveyContent.updateItem(data['next_item_html']);
+                    }
+                    if (data['finished'] === true) {
+                        window.location.reload();
+                    }
+                    if (data['left']) {
+                        console.log('ok');
+
+                        $('@b-survey-counter-items-left').html(data['left']);
+                    }
+                }
+            },
+            callbackRequestNextError = function() {
+
+            };
+
+        formLogin.on('login-success', function() {
+            window.location.reload();
+        });
+
+        surveyControls.on('click-comment', function(){
+            //RequestHandler.like(callbackRequestNextSuccess, callbackRequestNextError);
+            popupComment.clear();
+            popupComment.show();
+        });
+        surveyControls.on('click-like', function(){
+            RequestHandler.like(callbackRequestNextSuccess, callbackRequestNextError);
+        });
+        surveyControls.on('click-best', function() {
+            RequestHandler.best(callbackRequestNextSuccess, callbackRequestNextError);
+        });
+        surveyControls.on('click-next', function() {
+            RequestHandler.next(callbackRequestNextSuccess, callbackRequestNextError);
+        });
+
+    });
+
+}(this, this.modules, this.jQuery));
+(function(window, modules, $){
+
+    modules.define('modulePopupComment', ['popupBaseClass', 'extend'], function(provide, PopupBase, extend){
+
+        var PopupComment = extend(PopupBase),
+
+            $class = PopupComment,
+            $super = $class.superclass,
+
+            templateName = 'b-popup-comment-template';
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function() {
+                $super.initialize.call(this, {
+                    className   : 'b-popup-comment',
+                    useTemplate : true
+                });
+
+                this.$elemTextarea = this._element.find('@b-popup-comment-textarea');
+                this.$elemSubmit   = this._element.find('@b-popup-comment-submit');
+                //console.log(this.$elemSubmit);
+
+                this.bindEvents();
+            },
+
+            bindEvents : function() {
+                var me = this;
+                this.$elemSubmit.on('click', function() {
+                    me._onFormSubmit();
+                });
+            },
+
+            _onFormSubmit : function() {
+                if (this.$elemTextarea.length > 0) {
+                    this._disableForm();
+                    this._sendRequest();
+                }
+            },
+
+            _sendRequest : function() {
+                var me = this;
+                $.ajax({
+                    url: '/api/survey/comment',
+                    dataType : 'json',
+                    type: 'post',
+                    data: {
+                        comment: this.$elemTextarea.val()
+                    },
+                    success: function(data) {
+                        me._showStateSuccess();
+                    },
+                    error: function() {
+                        me._enableForm();
+                    }
+                });
+            },
+
+            _disableForm : function() {
+                this.$elemTextarea.attr('disabled', 'disabled');
+                this.$elemSubmit.attr('disabled', 'disabled');
+                this.$elemSubmit.attr('data-wait', 'true');
+            },
+
+            _enableForm : function() {
+                this.$elemTextarea.removeAttr('disabled');
+                this.$elemSubmit.removeAttr('disabled');
+                this.$elemSubmit.removeAttr('data-wait');
+            },
+
+            _showStateInitial : function() {
+                this._element.removeAttr('data-state');
+            },
+
+            _showStateSuccess : function() {
+                console.log('showing');
+                this._element.attr('data-state', 'success');
+            },
+
+            clear : function() {
+                this._enableForm();
+                this._showStateInitial();
+                this.$elemTextarea.val('');
+            },
+
+            _getTemplateName : function() {
+                return templateName;
+            }
+
+        });
+
+        provide(PopupComment);
+
+    });
+
+}(this, this.modules, this.jQuery));
+(function(window, modules, $){
+
+    modules.define('moduleSurveyRequestHandler', ['basePubSub', 'extend'], function(provide, PubSub, extend){
+
+        var RequestHandler = extend(PubSub),
+
+            $class = RequestHandler,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(config) {
+                $super.initialize.apply(this, arguments);
+                this._config = this._parseConfig();
+            },
+
+            _parseConfig : function() {
+                try {
+                    this._config = JSON.parse($(document.body).attr('data-config'));
+                } catch (e) { }
+            },
+
+            //sendLike
+
+            like : function(success, error) {
+                return this._sendRequestNext('like', success, error);
+            },
+
+            best : function(success, error) {
+                return this._sendRequestNext('best', success, error);
+            },
+
+            next : function(success, error) {
+                return this._sendRequestNext('next', success, error);
+            },
+
+            _sendRequestNext : function(action, success, error) {
+                $.ajax({
+                    url: '/api/survey/next',
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        'item_action' : action
+                    },
+                    success : success,
+                    error : error
+                });
+            }
+
+        });
+
+
+
+        provide(new RequestHandler());
+
+    });
+
+}(this, this.modules, this.jQuery));
+(function(window, modules, $){
+
     modules.define('beforeUIModulesInit', [
         'initCartProcessor'
     ], function( provide, initCartProcessor ){
@@ -783,6 +1210,170 @@
     });
 
 }(this, this.modules, this.jQuery));
+(function(window, modules, $, BM){
+
+    modules.define('HeaderCart', ['basePubSub', 'extend', 'CartProcessor'], function(provide, PubSub, extend, cart) {
+
+        var HeaderCart = extend(PubSub),
+
+            $class = HeaderCart,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(config) {
+                $super.initialize.apply(this, arguments);
+
+                if (!config || !config.element) {
+                    return;
+                }
+
+                this.$elem            = config.element;
+                this.$elemCounter     = this.$elem.find('@b-header-cart-counter');
+                this.$elemCounterText = this.$elem.find('@b-header-cart-counter-text');
+                this.$elemButtonOrder = this.$elem.find('@b-header-cart-button-order');
+
+                this._setupEvents();
+                this._updateData();
+            },
+
+            _setupEvents : function() {
+                var me = this;
+                cart.on('update', function() {
+                    me._updateData();
+                });
+            },
+
+            _showCounter : function() {
+                this.$elemCounter.attr('data-visible', 'true');
+            },
+
+            _hideCounter : function() {
+                this.$elemCounter.attr('data-visible', 'false');
+            },
+
+            _updateData : function() {
+                this._updateDataCounter();
+            },
+
+            _updateDataCounter : function() {
+                var amount = cart.getTotalItems();
+                if (amount < 1) {
+                    this._hideCounter();
+                    this._hideButtonOrder();
+                } else {
+                    this._updateCounterText();
+                    this._showCounter();
+                    this._showButtonOrder();
+                }
+            },
+
+            _showButtonOrder : function() {
+                this.$elemButtonOrder.attr('data-visible', 'true');
+            },
+
+            _hideButtonOrder : function() {
+                this.$elemButtonOrder.attr('data-visible', 'false');
+            },
+
+            _updateCounterText : function() {
+                var amount = cart.getTotalItems();
+                this.$elemCounterText.html(amount);
+            },
+
+            destroy : function() {
+                $super.destroy.apply(this, arguments);
+            }
+
+        });
+
+        provide(HeaderCart);
+    });
+
+    modules.define('initCartHeader', ['HeaderCart'], function(provide, HeaderCart) {
+
+        var headerCart = new HeaderCart({
+            element: $('@b-header-cart')
+        });
+
+        provide();
+    });
+
+}(this, this.modules, this.jQuery, this.BM));
+(function(window, modules, $, radio){
+
+    modules.define('CartProcessorClass', ['basePubSub', 'extend'], function(provide, PubSub, extend){
+
+        var CartProcessor = extend(PubSub),
+
+            $class = CartProcessor,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(){
+                $super.initialize.apply(this, arguments);
+
+                this._data = {
+                    items: []
+                };
+            },
+
+            setData : function(data) {
+                if (data) {
+                    if (typeof data === 'string') {
+                        try {
+                            data = JSON.parse(data);
+                        } catch (e) {}
+                    }
+                    this._data = data;
+                    this._notify('update');
+                }
+            },
+
+            getData : function() {
+                return this._data;
+            },
+
+            getTotalItems : function() {
+                var total = 0;
+                this._data.items.forEach(function(elem){
+                    total += elem.amount;
+                });
+                return total
+            },
+
+            destroy : function() {
+                $super.destroy.apply(this, arguments);
+            }
+
+        });
+
+        provide(CartProcessor);
+
+    });
+
+    modules.define('CartProcessor', ['CartProcessorClass'], function(provide, CartProcessor){
+        var $body = $(document.body),
+            cart  = new CartProcessor();
+
+        try {
+            cart.setData(JSON.parse($body.attr('data-cart-config')));
+        } catch (e) {}
+
+        provide(cart)
+    });
+
+    modules.define('initCartProcessor', ['CartProcessor'], function(provide, cart){
+
+        radio('b-cart-update').subscribe(function(data){
+            cart.setData(data);
+        });
+
+        provide();
+    });
+
+}(this, this.modules, this.jQuery, this.radio));
 (function(window, modules, $, BM, radio){
 
     modules.define('buttonAddToCart', ['basePubSub', 'extend'], function(provide, PubSub, extend) {
@@ -981,170 +1572,6 @@
 }(this, this.modules, this.jQuery));
 (function(window, modules, $, BM){
 
-    modules.define('HeaderCart', ['basePubSub', 'extend', 'CartProcessor'], function(provide, PubSub, extend, cart) {
-
-        var HeaderCart = extend(PubSub),
-
-            $class = HeaderCart,
-            $super = $class.superclass;
-
-        BM.tools.mixin($class.prototype, {
-
-            initialize : function(config) {
-                $super.initialize.apply(this, arguments);
-
-                if (!config || !config.element) {
-                    return;
-                }
-
-                this.$elem            = config.element;
-                this.$elemCounter     = this.$elem.find('@b-header-cart-counter');
-                this.$elemCounterText = this.$elem.find('@b-header-cart-counter-text');
-                this.$elemButtonOrder = this.$elem.find('@b-header-cart-button-order');
-
-                this._setupEvents();
-                this._updateData();
-            },
-
-            _setupEvents : function() {
-                var me = this;
-                cart.on('update', function() {
-                    me._updateData();
-                });
-            },
-
-            _showCounter : function() {
-                this.$elemCounter.attr('data-visible', 'true');
-            },
-
-            _hideCounter : function() {
-                this.$elemCounter.attr('data-visible', 'false');
-            },
-
-            _updateData : function() {
-                this._updateDataCounter();
-            },
-
-            _updateDataCounter : function() {
-                var amount = cart.getTotalItems();
-                if (amount < 1) {
-                    this._hideCounter();
-                    this._hideButtonOrder();
-                } else {
-                    this._updateCounterText();
-                    this._showCounter();
-                    this._showButtonOrder();
-                }
-            },
-
-            _showButtonOrder : function() {
-                this.$elemButtonOrder.attr('data-visible', 'true');
-            },
-
-            _hideButtonOrder : function() {
-                this.$elemButtonOrder.attr('data-visible', 'false');
-            },
-
-            _updateCounterText : function() {
-                var amount = cart.getTotalItems();
-                this.$elemCounterText.html(amount);
-            },
-
-            destroy : function() {
-                $super.destroy.apply(this, arguments);
-            }
-
-        });
-
-        provide(HeaderCart);
-    });
-
-    modules.define('initCartHeader', ['HeaderCart'], function(provide, HeaderCart) {
-
-        var headerCart = new HeaderCart({
-            element: $('@b-header-cart')
-        });
-
-        provide();
-    });
-
-}(this, this.modules, this.jQuery, this.BM));
-(function(window, modules, $, radio){
-
-    modules.define('CartProcessorClass', ['basePubSub', 'extend'], function(provide, PubSub, extend){
-
-        var CartProcessor = extend(PubSub),
-
-            $class = CartProcessor,
-            $super = $class.superclass;
-
-        BM.tools.mixin($class.prototype, {
-
-            initialize : function(){
-                $super.initialize.apply(this, arguments);
-
-                this._data = {
-                    items: []
-                };
-            },
-
-            setData : function(data) {
-                if (data) {
-                    if (typeof data === 'string') {
-                        try {
-                            data = JSON.parse(data);
-                        } catch (e) {}
-                    }
-                    this._data = data;
-                    this._notify('update');
-                }
-            },
-
-            getData : function() {
-                return this._data;
-            },
-
-            getTotalItems : function() {
-                var total = 0;
-                this._data.items.forEach(function(elem){
-                    total += elem.amount;
-                });
-                return total
-            },
-
-            destroy : function() {
-                $super.destroy.apply(this, arguments);
-            }
-
-        });
-
-        provide(CartProcessor);
-
-    });
-
-    modules.define('CartProcessor', ['CartProcessorClass'], function(provide, CartProcessor){
-        var $body = $(document.body),
-            cart  = new CartProcessor();
-
-        try {
-            cart.setData(JSON.parse($body.attr('data-cart-config')));
-        } catch (e) {}
-
-        provide(cart)
-    });
-
-    modules.define('initCartProcessor', ['CartProcessor'], function(provide, cart){
-
-        radio('b-cart-update').subscribe(function(data){
-            cart.setData(data);
-        });
-
-        provide();
-    });
-
-}(this, this.modules, this.jQuery, this.radio));
-(function(window, modules, $, BM){
-
     modules.define('initBlockRecent', ['BlockRecent'], function(provide, BlockRecent) {
 
         $('@b-block-recent').each(function(){
@@ -1252,6 +1679,11 @@
     'cart-index' : function() {
         modules.require('ui-modules');
         modules.require('pageCartInit');
+    },
+
+    'survey-index' : function() {
+        modules.require('ui-modules');
+        modules.require('moduleSurveyInit');
     }
   };
 

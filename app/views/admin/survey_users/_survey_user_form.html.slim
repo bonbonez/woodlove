@@ -1,0 +1,16 @@
+= form_for [:admin, survey_user], html: {class: 'b-admin-form'} do |f|
+  .b-admin-form-item
+    = f.label        "name"
+    = f.text_field   "name"
+
+  .b-admin-form-item
+    = f.label        "code"
+    = f.text_field   "code"
+
+  .b-admin-form-item
+    - selected_gender_value = survey_user.gender == nil ? "unisex" : survey_user.gender
+    = f.select(:gender, ["male", "female"], selected: selected_gender_value)
+
+
+  .b-admin-form-item.m-no-label
+    = f.submit

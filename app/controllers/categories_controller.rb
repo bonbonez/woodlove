@@ -12,6 +12,7 @@ class CategoriesController < ApplicationController
     items_limit    = get_items_limit
     category_items = @category.items.where(is_published: true)
     order_filter   = get_order_filter
+    gender_filter  = get_gender_filter
     current_page   = get_current_page
 
     category_items = if order_filter.nil?
@@ -20,6 +21,16 @@ class CategoriesController < ApplicationController
       category_items.order("price asc")
     elsif order_filter == :from_highest_price
       category_items.order("price desc")
+    end
+
+    if gender_filter != :all
+      if gender_filter == :unisex
+        category_items = category_items.where(gender: "unisex")
+      elsif gender_filter == :male
+        category_items = category_items.where(gender: ["male", "unisex"])
+      elsif gender_filter == :female
+        category_items = category_items.where(gender: ["female", "unisex"])
+      end
     end
 
     if items_limit != :all
@@ -46,6 +57,16 @@ class CategoriesController < ApplicationController
     @items_order  = order_filter
     @items_total  = @category.items.length
     @current_params = current_params
+
+    # hack for displaying filter for watches only
+    if Rails.env.production?
+      @show_gender_filter = @category.id == 1
+    elsif Rails.env.development?
+      @show_gender_filter = @category.id == 1
+    end
+
+    @current_gender_filter = gender_filter
+
     @css_class_layout = 'm-page-category'
   end
 
@@ -104,6 +125,20 @@ class CategoriesController < ApplicationController
         filter = :from_highest_price
       end
     end
+  end
+
+  def get_gender_filter
+    filter = :all
+    if params[:gender]
+      if params[:gender] == "unisex"
+        filter = :unisex
+      elsif params[:gender] == "male"
+        filter = :male
+      elsif params[:gender] == "female"
+        filter = :female
+      end
+    end
+    filter
   end
 
 end

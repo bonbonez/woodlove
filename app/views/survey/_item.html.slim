@@ -1,0 +1,23 @@
+ruby:
+  item ||= nil
+  item_meta = item.meta_as_hash
+
+- if !item.nil?
+  .b-layout-survey-content-item
+    .b-layout-survey-content-item-header =item.title
+    .b-layout-survey-content-item-content
+      .b-layout-survey-content-item-content-gallery
+        = render partial: 'items/gallery', locals: {pictures: item.pictures}
+      .b-layout-survey-content-item-content-description
+        .b-layout-survey-content-item-content-price
+          ="- #{item.price_to_use} руб."
+
+        =item.desc
+
+        - if item_meta.length > 0
+          .b-layout-survey-content-item-content-meta
+            .b-layout-survey-content-item-content-meta-header ="Характеристики"
+            - item_meta.each do |item_meta_item|
+              .b-layout-survey-content-item-content-meta-item
+                .b-layout-survey-content-item-content-meta-item-label =item_meta_item[:name]
+                .b-layout-survey-content-item-content-meta-item-text =item_meta_item[:value]

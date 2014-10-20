@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Woodlove</title>
+        <%#= stylesheet_link_tag    "application", :media => "all" %>
+        <%#= javascript_include_tag "application" %>
+        <%#= csrf_meta_tags %>
+        <link rel="stylesheet" href="/styles/global.css?<%= frontend_version %>" />
+
+    </head>
+    <body class="m-survey" data-scripts="<%= @scripts_id if @scripts_id.present? %>" data-cart-config="<%= @cart_config.to_json.to_s %>" data-survey-config="<%= @survey_user.to_json if @survey_user.present? %>">
+        <%= render partial: 'templates/item_popup_preview' %>
+        <%= render partial: 'templates/popup_comment' %>
+
+        <%= yield %>
+
+        <script type="text/javascript" src="/javascript/core.js?<%= frontend_version %>"></script>
+        <script type="text/javascript" src="/javascript/modules.js?<%= frontend_version %>"></script>
+    </body>
+</html>

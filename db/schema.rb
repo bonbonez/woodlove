@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141010194728) do
+ActiveRecord::Schema.define(:version => 20141020171920) do
 
   create_table "brands", :force => true do |t|
     t.string   "title"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20141010194728) do
     t.string   "short_name"
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "survey_user_id"
+    t.integer  "item_id"
+    t.string   "text"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "items", :force => true do |t|
     t.string   "title"
     t.string   "title_original"
@@ -64,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20141010194728) do
     t.integer  "price_original"
     t.integer  "price_special"
     t.string   "link_to_original_item"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -90,6 +98,8 @@ ActiveRecord::Schema.define(:version => 20141010194728) do
     t.integer  "category_id"
     t.boolean  "is_published",          :default => true
     t.integer  "brand_id"
+    t.string   "gender",                :default => "unisex"
+    t.text     "facts"
   end
 
   create_table "subcategories", :force => true do |t|
@@ -101,6 +111,18 @@ ActiveRecord::Schema.define(:version => 20141010194728) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "survey_users", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "data"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "current_index", :default => 0
+    t.string   "data_liked",    :default => "[]"
+    t.string   "data_best",     :default => "[]"
+    t.string   "gender"
   end
 
 end

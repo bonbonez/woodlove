@@ -325,7 +325,7 @@
             },
 
             destroy : function() {
-
+                $super.destroy.apply(this, arguments);
             }
 
         });

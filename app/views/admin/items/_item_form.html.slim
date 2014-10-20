@@ -14,6 +14,10 @@ ruby:
     = collection_select(:item, :brand_id, Brand.all, :id, :name, prompt: true, selected: selected_brand_id)
 
   .b-admin-form-item
+    - selected_gender_value = item.gender == nil ? "unisex" : item.gender
+    = f.select(:gender, [nil, "unisex", "male", "female"], selected: selected_gender_value)
+
+  .b-admin-form-item
     = f.label        "title"
     = f.text_field   "title"
 
@@ -23,16 +27,20 @@ ruby:
 
   .b-admin-form-item
     = f.label         "desc"
-    = f.text_area "desc"
+    = f.text_area     "desc"
 
   .b-admin-form-item
     = f.label         "desc_original"
-    = f.text_area "desc_original"
+    = f.text_field    "desc_original"
 
   .b-admin-form-item
     = f.label     "meta"
     = f.text_area "meta"
     /= @item.meta
+
+  .b-admin-form-item
+    = f.label     "facts"
+    = f.text_area "facts"
 
   .b-admin-form-item
     = f.label        "price"

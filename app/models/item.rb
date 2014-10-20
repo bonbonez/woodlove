@@ -1,8 +1,10 @@
 class Item < ActiveRecord::Base
-  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id, :is_published, :brand_id
+  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :facts, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id, :is_published, :brand_id, :gender
 
   belongs_to :category
   belongs_to :brand
+
+  has_many :comments
 
   has_attached_file :picture,  :styles => { :large => "450x300>", :medium => "300x200>", :thumb => "150x100>" }, :default_url => "/images/:style/missing.png"
   has_attached_file :picture2, :styles => { :large => "450x300>", :medium => "300x200>", :thumb => "150x100>" }, :default_url => "/images/:style/missing.png"

@@ -1,0 +1,8 @@
+.m-offset-bottom
+  = link_to 'Новый Survey User', new_admin_survey_user_path, class: 'b-admin-form-item-button'
+
+- if @survey_users.present?
+  .m-offset-bottom
+  - @survey_users.each do |survey_user|
+    div
+      = link_to "#{survey_user.name} (#{survey_user.code})", edit_admin_survey_user_path(survey_user)

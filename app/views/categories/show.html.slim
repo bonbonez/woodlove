@@ -6,9 +6,19 @@
       a.b-page-category-top-filter-item href=url_for_sort_by_price_desc class="#{'m-current' if @current_params[:order] == :from_highest_price}" ="Сначала дороже"
   .b-page-category-content
     .b-page-category-content-subcategories-wrapper
-      /.b-page-category-content-subcategories-item.m-current ="Unisex"
-      /.b-page-category-content-subcategories-item ="Мужские"
-      /.b-page-category-content-subcategories-item ="Женские"
+      - if @show_gender_filter == true
+        = link_to_if @current_gender_filter != :all, 'Все', get_gender_url(:all)[:url], class: 'b-page-category-content-subcategories-item' do
+          .b-page-category-content-subcategories-item.m-current ="Все"
+
+        = link_to_if @current_gender_filter != :male, 'Мужские', get_gender_url(:male)[:url], class: 'b-page-category-content-subcategories-item' do
+          .b-page-category-content-subcategories-item.m-current ="Мужские"
+
+        = link_to_if @current_gender_filter != :female, 'Женские', get_gender_url(:female)[:url], class: 'b-page-category-content-subcategories-item' do
+          .b-page-category-content-subcategories-item.m-current ="Женские"
+
+        = link_to_if @current_gender_filter != :unisex, 'Унисекс', get_gender_url(:unisex)[:url], class: 'b-page-category-content-subcategories-item' do
+          .b-page-category-content-subcategories-item.m-current ="Унисекс"
+
       .b-page-category-content-pagination-top
         - if @pages_total > 1
           .text ="Страница "
@@ -21,11 +31,13 @@
                     a.button-dropdown-popup-link href=get_url({page: page_n}) =page_n
 
         - if @items_total > 2
+          /script
+            | alert("#{@items_total}")
           .text ="По "
           a.button class="#{'m-selected' if @items_limit == 2 || params[:limit].nil?}" href=url_for_limit_25 ="25"
 
           - if @items_total > 4
-          a.button class="#{'m-selected' if @items_limit == 4}" href=url_for_limit_50 ="50"
+            a.button class="#{'m-selected' if @items_limit == 4}" href=url_for_limit_50 ="50"
 
           - if @items_total > 2
             a.button class="#{'m-selected' if @items_limit == :all}" href=url_for_limit_all ="Всё"
