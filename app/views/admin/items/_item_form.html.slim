@@ -74,5 +74,6 @@ ruby:
 
   = link_to '', "/admin/items/#{item.id}/delete", class: "b-admin-form-button-delete", onclick: "if (!confirm('Точно?')) {return false;};"
 
+  = render partial: 'admin/items/item_form/helper'
 
 /= javascript_include_tag "admin/item/form.js"

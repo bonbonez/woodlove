@@ -1,0 +1,36 @@
+
+<script type="text/javascript">
+    (function(window, $){
+
+        var $elemItemTitle = $('#item_title'),
+            $elemItemUrl   = $('#item_url'),
+            $elemItemMeta  = $('#item_meta'),
+            $elemItemFacts = $('#item_facts');
+
+        $elemItemTitle.on('change keyup paste cut', function() {
+            var value = $elemItemTitle.val();
+            value = value.toLowerCase();
+            value = value.replace(/([^a-zA-Z0-9 &]+)/ig, '');
+            value = value.replace(/([ ]+)/ig, '-');
+            value = value.replace('-&-', '-and-');
+
+            $elemItemUrl.val(value)
+        });
+
+        $elemItemFacts.on('change keyup paste cut', function() {
+            var value = $elemItemFacts.val(),
+                tmp;
+
+            if (value[0] === '"' && value[value.length - 1] === '"') {
+                value = value.slice(1, value.length - 1);
+                tmp = value.split('\n');
+                tmp.forEach(function(elem, i){
+                    tmp[i] = elem.replace(/^\s+|\s+$/g, '');
+                });
+                value = tmp.join('\n');
+                $elemItemFacts.val(value);
+            }
+        });
+
+    }(this, this.jQuery));
+</script>
