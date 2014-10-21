@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'mysql2'
 gem 'slim'
 gem 'paperclip', "~> 4.2"
+gem 'aws-sdk'
 
 gem 'rack-rewrite'
 
