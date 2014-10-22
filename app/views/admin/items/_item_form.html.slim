@@ -8,10 +8,16 @@ ruby:
     = f.text_field   "url"
 
   .b-admin-form-item
-    = collection_select(:item, :category_id, Category.all, :id, :name, prompt: true, selected: selected_category_id)
+    - if selected_category_id.present?
+      = collection_select(:item, :category_id, Category.all, :id, :name, prompt: true, selected: selected_category_id)
+    - else
+      = collection_select(:item, :category_id, Category.all, :id, :name, prompt: true)
 
   .b-admin-form-item
-    = collection_select(:item, :brand_id, Brand.all, :id, :name, prompt: true, selected: selected_brand_id)
+    - if selected_brand_id.present?
+      = collection_select(:item, :brand_id, Brand.all, :id, :name, prompt: true, selected: selected_brand_id)
+    - else
+      = collection_select(:item, :brand_id, Brand.all, :id, :name, prompt: true)
 
   .b-admin-form-item
     - selected_gender_value = item.gender == nil ? "unisex" : item.gender
