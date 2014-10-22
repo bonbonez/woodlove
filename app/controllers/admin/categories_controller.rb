@@ -24,7 +24,7 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
 
     def update
-      @category = Category.find(params[:id])
+      @category = Category.where(url: params[:id]).last
       @category.update_attributes(params[:category])
 
       redirect_to admin_categories_path
