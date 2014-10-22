@@ -30,16 +30,16 @@
                   - if page_n != @page_current
                     a.button-dropdown-popup-link href=get_url({page: page_n}) =page_n
 
-        - if @items_total > 2
+        - if @items_total > limit_single
           /script
             | alert("#{@items_total}")
           .text ="По "
-          a.button class="#{'m-selected' if @items_limit == 2 || params[:limit].nil?}" href=url_for_limit_25 ="25"
+          a.button class="#{'m-selected' if @items_limit == limit_single || params[:limit].nil?}" href=url_for_limit_single =limit_single
 
-          - if @items_total > 4
-            a.button class="#{'m-selected' if @items_limit == 4}" href=url_for_limit_50 ="50"
+          - if @items_total > limit_double
+            a.button class="#{'m-selected' if @items_limit == limit_double}" href=url_for_limit_double =limit_double
 
-          - if @items_total > 2
+          - if @items_total > limit_single
             a.button class="#{'m-selected' if @items_limit == :all}" href=url_for_limit_all ="Всё"
 
     - @items.each do |item|

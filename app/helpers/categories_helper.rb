@@ -1,5 +1,21 @@
 module CategoriesHelper
 
+    def limit_single
+      if Rails.env.development?
+        return 2
+      else
+        return 15
+      end
+    end
+
+    def limit_double
+      if Rails.env.development?
+        return 4
+      else
+        return 30
+      end
+    end
+
     def url_for_sort_by_price_asc
       get_url({order: :from_lowest_price})
     end
@@ -8,12 +24,12 @@ module CategoriesHelper
       get_url({order: :from_highest_price})
     end
 
-    def url_for_limit_25
-      get_url({limit: "2"})
+    def url_for_limit_single
+      get_url({limit: self.limit_single})
     end
 
-    def url_for_limit_50
-      get_url({limit: "4"})
+    def url_for_limit_double
+      get_url({limit: limit_double})
     end
 
     def url_for_limit_all
