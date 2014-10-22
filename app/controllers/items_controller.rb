@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
     @random_items = Item.where(category_id: @item.category.id).shuffle
     if @item.gender != nil
-      @random_items = @random_items.select{|i| i.gender == @item.gender && i.id != @item.id}
+      @random_items = @random_items.select{|i| (i.gender == @item.gender || i.gender == "unisex") && i.id != @item.id}
     end
 
     @item_warranty = @item.brand.present? && @item.brand.warranty.present? ? @item.brand.warranty : nil
