@@ -23,6 +23,15 @@ class ItemsController < ApplicationController
     @scripts_id = 'item-show'
     @cart = get_user_cart
 
+    @random_items = Item.where(category_id: @item.category.id).shuffle
+    if @item.gender != nil
+      @random_items = @random_items.select{|i| i.gender == @item.gender && i.id != @item.id}
+    end
+
+    @item_warranty = @item.brand.present? && @item.brand.warranty.present? ? @item.brand.warranty : nil
+    @item_facts    = @item.facts_as_hash
+    @item_meta     = @item.meta_as_hash
+
     add_item_to_recents
 
     #respond_to do |format|

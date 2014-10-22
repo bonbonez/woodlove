@@ -1,7 +1,9 @@
 .b-layout-item {
   .box-sizing(border-box);
   background-color: #ffffff;
-  padding: 35px;
+  margin-bottom: 50px;
+  padding: 50px 35px;
+  position: relative;
   white-space: nowrap;
   width: 100%;
 
@@ -23,6 +25,17 @@
 
   &-pictures-wrapper {
     position: relative;
+    width: 400px;
+
+    &[data-position=fixed] {
+      position: fixed;
+      top: 50px;
+    }
+    &[data-position=docked-to-bottom] {
+      bottom: 50px;
+      left: 35px;
+      position: absolute;
+    }
   }
 
   &-picture-large {
@@ -200,6 +213,41 @@
     text-decoration: dashed;
   }
 
+  &-facts {
+    margin-bottom: 50px;
+
+    &-header {
+      color: #000000;
+      font-family: @font-museo;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    &-item {
+      color: #000000;
+      font-family: @font-museo;
+      font-size: 18px;
+      font-weight: normal;
+      line-height: 24px;
+      position: relative;
+
+      &:not(:last-of-type) {
+        margin-bottom: 15px;
+      }
+
+      &::before {
+        background-color: @color-brown;
+        border-radius: 10px;
+        content: '';
+        height: 5px;
+        position: absolute;
+        left: -12px;
+        top: 10px;
+        width: 5px;
+      }
+    }
+  }
+
   &-specs {
     margin-bottom: 50px;
     width: 100%;
@@ -245,8 +293,8 @@
     }
   }
 
-  &-guarantee {
-    margin-bottom: 50px;
+  &-warranty {
+    //margin-bottom: 50px;
 
     &-header {
       color: #000000;

@@ -1,6 +1,3 @@
-ruby:
-  item_meta = @item.meta_as_hash
-
 .b-layout-item
   .b-layout-item-content-left
     = render partial: 'items/gallery', locals: {pictures: @item.pictures}
@@ -12,19 +9,30 @@ ruby:
       = @item.desc
     = render partial: 'items/button_add', locals: {item: @item, cart: @cart}
 
-    - if !item_meta.empty?
+    - if !@item_facts.empty?
+      .b-layout-item-facts
+        .b-layout-item-facts-header ="Факты"
+
+        - @item_facts.each do |fact|
+          .b-layout-item-facts-item =fact
+
+
+    - if !@item_meta.empty?
       .b-layout-item-specs
         .b-layout-item-specs-header ="Характеристики"
 
-        - item_meta.each do |meta|
+        - @item_meta.each do |meta|
           .b-layout-item-specs-item
-            .b-layout-item-specs-item-label = meta[:name]
-            .b-layout-item-specs-item-text = meta[:value]
+            .b-layout-item-specs-item-label =meta[:name]
+            .b-layout-item-specs-item-text =meta[:value]
 
-    .b-layout-item-guarantee
-      .b-layout-item-guarantee-header ="Гарантия"
-      .b-layout-item-guarantee-text
-        | Деревянные очки Woodzee сделаны из высококачественных материалов, технологии производства является гордостью компании. Но не стоит забывать, что основной компонент очков - это дерево, а дерево отличается от привычного метала. Гарантия на очки Woodzee длится 90 дней с момента приобретения очков. Подробнее о гарантийных случаях.
+    - if !@item_warranty.nil?
+      .b-layout-item-warranty
+        .b-layout-item-warranty-header ="Гарантия"
+        .b-layout-item-warranty-text =@item_warranty
 
     /.b-layout-item-button-buy-wrapper
       button.b-button-emphasis ="+ Добавить в корзину"
+
+- if @random_items.present? && @random_items.length > 0
+  = render partial: 'ui/random', locals: {items: @random_items, header: "Случайные товары из этой категории:"}

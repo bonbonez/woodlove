@@ -324,6 +324,37 @@
                 this.$elemImageZoomLoader.attr('data-visible', 'false');
             },
 
+            offset : function() {
+                return this.$elem.offset();
+            },
+
+            size : function() {
+                return {
+                    height: this.$elem.height(),
+                    width: this.$elem.width()
+                };
+            },
+
+            setPositionFixed : function(bool) {
+                if (bool) {
+                    this.$elem.attr('data-position', 'fixed');
+                } else {
+                    this.clearPosition();
+                }
+            },
+
+            setPositionDockedToBottom : function(bool) {
+                if (bool) {
+                    this.$elem.attr('data-position', 'docked-to-bottom');
+                } else {
+                    this.clearPosition();
+                }
+            },
+
+            clearPosition : function() {
+                this.$elem.removeAttr('data-position');
+            },
+
             destroy : function() {
                 $super.destroy.apply(this, arguments);
             }

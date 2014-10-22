@@ -1,0 +1,10 @@
+ruby:
+  items ||= []
+  header ||= "Случайные товары:"
+
+- if items.present? && items.length > 0
+  .b-block-random
+    .b-block-random-header =header
+    .b-block-random-content
+      - items.each do |item|
+        = render partial: 'catalogue/item_card', locals: {item: item}

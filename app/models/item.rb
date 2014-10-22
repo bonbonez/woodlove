@@ -33,6 +33,13 @@ class Item < ActiveRecord::Base
     meta_arr
   end
 
+  def facts_as_hash
+    facts_raw = self.facts
+    return [] if facts_raw.nil? || facts_raw.empty?
+    facts_arr = facts_raw.split("\n")
+    facts_arr
+  end
+
   def pictures
     pics_arr = []
     pics_arr << self.picture  if picture.present?

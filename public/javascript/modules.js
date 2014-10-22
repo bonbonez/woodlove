@@ -593,6 +593,37 @@
                 this.$elemImageZoomLoader.attr('data-visible', 'false');
             },
 
+            offset : function() {
+                return this.$elem.offset();
+            },
+
+            size : function() {
+                return {
+                    height: this.$elem.height(),
+                    width: this.$elem.width()
+                };
+            },
+
+            setPositionFixed : function(bool) {
+                if (bool) {
+                    this.$elem.attr('data-position', 'fixed');
+                } else {
+                    this.clearPosition();
+                }
+            },
+
+            setPositionDockedToBottom : function(bool) {
+                if (bool) {
+                    this.$elem.attr('data-position', 'docked-to-bottom');
+                } else {
+                    this.clearPosition();
+                }
+            },
+
+            clearPosition : function() {
+                this.$elem.removeAttr('data-position');
+            },
+
             destroy : function() {
                 $super.destroy.apply(this, arguments);
             }
@@ -607,9 +638,34 @@
 
     modules.define('moduleItemInit', ['moduleItemGallery'], function(provide, ItemGallery){
 
-        var itemGallery = new ItemGallery({
-            element: $('@bm-item-gallery')
-        });
+        var $window = $(window),
+            $elemLayoutItem = $('.b-layout-item'),
+
+            itemGallery = new ItemGallery({
+                element: $('@bm-item-gallery')
+            }),
+
+            gallerySize = itemGallery.size(),
+            layoutItemOffset = $elemLayoutItem.offset(),
+            layoutItemHeight = $elemLayoutItem.height(),
+            breakpointFixed  = layoutItemOffset.top,
+            breakpointDocked = layoutItemOffset.top + layoutItemHeight - gallerySize.height,
+
+            updatePositionGallery = function() {
+                var scrollTop = $window.scrollTop();
+
+                if (scrollTop >= breakpointDocked) {
+                    itemGallery.setPositionDockedToBottom(true);
+                } else if (scrollTop >= breakpointFixed) {
+                    itemGallery.setPositionFixed(true);
+                } else {
+                    itemGallery.setPositionFixed(false);
+                    itemGallery.setPositionDockedToBottom(false);
+                }
+            };
+
+        $window.on('scroll', updatePositionGallery);
+        updatePositionGallery();
 
         provide();
     });
@@ -1210,170 +1266,6 @@
     });
 
 }(this, this.modules, this.jQuery));
-(function(window, modules, $, BM){
-
-    modules.define('HeaderCart', ['basePubSub', 'extend', 'CartProcessor'], function(provide, PubSub, extend, cart) {
-
-        var HeaderCart = extend(PubSub),
-
-            $class = HeaderCart,
-            $super = $class.superclass;
-
-        BM.tools.mixin($class.prototype, {
-
-            initialize : function(config) {
-                $super.initialize.apply(this, arguments);
-
-                if (!config || !config.element) {
-                    return;
-                }
-
-                this.$elem            = config.element;
-                this.$elemCounter     = this.$elem.find('@b-header-cart-counter');
-                this.$elemCounterText = this.$elem.find('@b-header-cart-counter-text');
-                this.$elemButtonOrder = this.$elem.find('@b-header-cart-button-order');
-
-                this._setupEvents();
-                this._updateData();
-            },
-
-            _setupEvents : function() {
-                var me = this;
-                cart.on('update', function() {
-                    me._updateData();
-                });
-            },
-
-            _showCounter : function() {
-                this.$elemCounter.attr('data-visible', 'true');
-            },
-
-            _hideCounter : function() {
-                this.$elemCounter.attr('data-visible', 'false');
-            },
-
-            _updateData : function() {
-                this._updateDataCounter();
-            },
-
-            _updateDataCounter : function() {
-                var amount = cart.getTotalItems();
-                if (amount < 1) {
-                    this._hideCounter();
-                    this._hideButtonOrder();
-                } else {
-                    this._updateCounterText();
-                    this._showCounter();
-                    this._showButtonOrder();
-                }
-            },
-
-            _showButtonOrder : function() {
-                this.$elemButtonOrder.attr('data-visible', 'true');
-            },
-
-            _hideButtonOrder : function() {
-                this.$elemButtonOrder.attr('data-visible', 'false');
-            },
-
-            _updateCounterText : function() {
-                var amount = cart.getTotalItems();
-                this.$elemCounterText.html(amount);
-            },
-
-            destroy : function() {
-                $super.destroy.apply(this, arguments);
-            }
-
-        });
-
-        provide(HeaderCart);
-    });
-
-    modules.define('initCartHeader', ['HeaderCart'], function(provide, HeaderCart) {
-
-        var headerCart = new HeaderCart({
-            element: $('@b-header-cart')
-        });
-
-        provide();
-    });
-
-}(this, this.modules, this.jQuery, this.BM));
-(function(window, modules, $, radio){
-
-    modules.define('CartProcessorClass', ['basePubSub', 'extend'], function(provide, PubSub, extend){
-
-        var CartProcessor = extend(PubSub),
-
-            $class = CartProcessor,
-            $super = $class.superclass;
-
-        BM.tools.mixin($class.prototype, {
-
-            initialize : function(){
-                $super.initialize.apply(this, arguments);
-
-                this._data = {
-                    items: []
-                };
-            },
-
-            setData : function(data) {
-                if (data) {
-                    if (typeof data === 'string') {
-                        try {
-                            data = JSON.parse(data);
-                        } catch (e) {}
-                    }
-                    this._data = data;
-                    this._notify('update');
-                }
-            },
-
-            getData : function() {
-                return this._data;
-            },
-
-            getTotalItems : function() {
-                var total = 0;
-                this._data.items.forEach(function(elem){
-                    total += elem.amount;
-                });
-                return total
-            },
-
-            destroy : function() {
-                $super.destroy.apply(this, arguments);
-            }
-
-        });
-
-        provide(CartProcessor);
-
-    });
-
-    modules.define('CartProcessor', ['CartProcessorClass'], function(provide, CartProcessor){
-        var $body = $(document.body),
-            cart  = new CartProcessor();
-
-        try {
-            cart.setData(JSON.parse($body.attr('data-cart-config')));
-        } catch (e) {}
-
-        provide(cart)
-    });
-
-    modules.define('initCartProcessor', ['CartProcessor'], function(provide, cart){
-
-        radio('b-cart-update').subscribe(function(data){
-            cart.setData(data);
-        });
-
-        provide();
-    });
-
-}(this, this.modules, this.jQuery, this.radio));
 (function(window, modules, $, BM, radio){
 
     modules.define('buttonAddToCart', ['basePubSub', 'extend'], function(provide, PubSub, extend) {
@@ -1541,6 +1433,170 @@
     });
 
 }(this, this.modules, this.jQuery, this.BM));
+(function(window, modules, $, BM){
+
+    modules.define('HeaderCart', ['basePubSub', 'extend', 'CartProcessor'], function(provide, PubSub, extend, cart) {
+
+        var HeaderCart = extend(PubSub),
+
+            $class = HeaderCart,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(config) {
+                $super.initialize.apply(this, arguments);
+
+                if (!config || !config.element) {
+                    return;
+                }
+
+                this.$elem            = config.element;
+                this.$elemCounter     = this.$elem.find('@b-header-cart-counter');
+                this.$elemCounterText = this.$elem.find('@b-header-cart-counter-text');
+                this.$elemButtonOrder = this.$elem.find('@b-header-cart-button-order');
+
+                this._setupEvents();
+                this._updateData();
+            },
+
+            _setupEvents : function() {
+                var me = this;
+                cart.on('update', function() {
+                    me._updateData();
+                });
+            },
+
+            _showCounter : function() {
+                this.$elemCounter.attr('data-visible', 'true');
+            },
+
+            _hideCounter : function() {
+                this.$elemCounter.attr('data-visible', 'false');
+            },
+
+            _updateData : function() {
+                this._updateDataCounter();
+            },
+
+            _updateDataCounter : function() {
+                var amount = cart.getTotalItems();
+                if (amount < 1) {
+                    this._hideCounter();
+                    this._hideButtonOrder();
+                } else {
+                    this._updateCounterText();
+                    this._showCounter();
+                    this._showButtonOrder();
+                }
+            },
+
+            _showButtonOrder : function() {
+                this.$elemButtonOrder.attr('data-visible', 'true');
+            },
+
+            _hideButtonOrder : function() {
+                this.$elemButtonOrder.attr('data-visible', 'false');
+            },
+
+            _updateCounterText : function() {
+                var amount = cart.getTotalItems();
+                this.$elemCounterText.html(amount);
+            },
+
+            destroy : function() {
+                $super.destroy.apply(this, arguments);
+            }
+
+        });
+
+        provide(HeaderCart);
+    });
+
+    modules.define('initCartHeader', ['HeaderCart'], function(provide, HeaderCart) {
+
+        var headerCart = new HeaderCart({
+            element: $('@b-header-cart')
+        });
+
+        provide();
+    });
+
+}(this, this.modules, this.jQuery, this.BM));
+(function(window, modules, $, radio){
+
+    modules.define('CartProcessorClass', ['basePubSub', 'extend'], function(provide, PubSub, extend){
+
+        var CartProcessor = extend(PubSub),
+
+            $class = CartProcessor,
+            $super = $class.superclass;
+
+        BM.tools.mixin($class.prototype, {
+
+            initialize : function(){
+                $super.initialize.apply(this, arguments);
+
+                this._data = {
+                    items: []
+                };
+            },
+
+            setData : function(data) {
+                if (data) {
+                    if (typeof data === 'string') {
+                        try {
+                            data = JSON.parse(data);
+                        } catch (e) {}
+                    }
+                    this._data = data;
+                    this._notify('update');
+                }
+            },
+
+            getData : function() {
+                return this._data;
+            },
+
+            getTotalItems : function() {
+                var total = 0;
+                this._data.items.forEach(function(elem){
+                    total += elem.amount;
+                });
+                return total
+            },
+
+            destroy : function() {
+                $super.destroy.apply(this, arguments);
+            }
+
+        });
+
+        provide(CartProcessor);
+
+    });
+
+    modules.define('CartProcessor', ['CartProcessorClass'], function(provide, CartProcessor){
+        var $body = $(document.body),
+            cart  = new CartProcessor();
+
+        try {
+            cart.setData(JSON.parse($body.attr('data-cart-config')));
+        } catch (e) {}
+
+        provide(cart)
+    });
+
+    modules.define('initCartProcessor', ['CartProcessor'], function(provide, cart){
+
+        radio('b-cart-update').subscribe(function(data){
+            cart.setData(data);
+        });
+
+        provide();
+    });
+
+}(this, this.modules, this.jQuery, this.radio));
 (function(window, modules, $){
 
     modules.define('initFixedHeader', [], function(provide) {
