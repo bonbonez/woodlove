@@ -74,11 +74,11 @@ class CategoriesController < ApplicationController
 
   def get_items_limit
     #limit = 25
-    limit = 2
+    limit = limit_single
     if params[:limit].present?
       #if params[:limit] == "50"
-      if params[:limit] == "4"
-        limit = 4
+      if params[:limit] == limit_double.to_s
+        limit = limit_double
       elsif params[:limit] == "all"
         limit = :all
       end
