@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+  include CategoriesHelper
+
   def show
     if params[:brand_url].present?
       @category = Brand.where(url: params[:brand_url]).last
