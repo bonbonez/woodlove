@@ -42,6 +42,9 @@ class CategoriesController < ApplicationController
     end
 
     current_params = {}
+    if gender_filter != :all
+      current_params = current_params.merge({ gender: gender_filter })
+    end
     if current_page > 1
       current_params = current_params.merge({ page: current_page })
     end

@@ -1893,6 +1893,7 @@ h6 {
 .b-layout-item-pictures-wrapper {
   position: relative;
   width: 400px;
+  z-index: 1;
 }
 .b-layout-item-pictures-wrapper[data-position=fixed] {
   position: fixed;
@@ -1949,7 +1950,7 @@ h6 {
   opacity: 0;
 }
 .b-layout-item-picture-zoom[data-visible=true] {
-  z-index: 1;
+  z-index: 3;
   opacity: 1;
 }
 .b-layout-item-picture-zoom .b-layout-item-picture-zoom-loader {
@@ -2014,7 +2015,6 @@ h6 {
   font-size: 17px;
   font-weight: normal;
   line-height: 25px;
-  margin-bottom: 55px;
 }
 .b-layout-item-button-buy-wrapper {
   display: block;
@@ -2060,7 +2060,7 @@ h6 {
   text-decoration: dashed;
 }
 .b-layout-item-facts {
-  margin-bottom: 50px;
+  margin-top: 50px;
 }
 .b-layout-item-facts-header {
   color: #000000;
@@ -2091,7 +2091,7 @@ h6 {
   width: 5px;
 }
 .b-layout-item-specs {
-  margin-bottom: 50px;
+  margin-top: 50px;
   width: 100%;
 }
 .b-layout-item-specs-header {
@@ -2126,6 +2126,9 @@ h6 {
 }
 .b-layout-item-specs-item-text {
   width: 100%;
+}
+.b-layout-item-warranty {
+  margin-top: 50px;
 }
 .b-layout-item-warranty-header {
   color: #000000;
