@@ -3,7 +3,7 @@ class Admin::ItemsController < Admin::ApplicationController
   include ItemsHelper
 
   def index
-    @items = Item.all
+    @items = Item.all.sort_by{|i|i.title}
     @categories = Category.all
   end
 

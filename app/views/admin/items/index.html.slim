@@ -8,7 +8,7 @@
 
 .b-admin-items
   - @categories.each do |category|
-    - category_items = category.items
+    - category_items = category.items.sort_by{|i|i.title}
     .b-admin-items-category-wrapper
       .b-admin-items-category-header
         .b-admin-items-category-header-text =category.name
