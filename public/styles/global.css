@@ -1893,7 +1893,6 @@ h6 {
 .b-layout-item-pictures-wrapper {
   position: relative;
   width: 400px;
-  z-index: 1;
 }
 .b-layout-item-pictures-wrapper[data-position=fixed] {
   position: fixed;
@@ -1950,7 +1949,7 @@ h6 {
   opacity: 0;
 }
 .b-layout-item-picture-zoom[data-visible=true] {
-  z-index: 3;
+  z-index: 1;
   opacity: 1;
 }
 .b-layout-item-picture-zoom .b-layout-item-picture-zoom-loader {
@@ -2015,10 +2014,10 @@ h6 {
   font-size: 17px;
   font-weight: normal;
   line-height: 25px;
+  margin-bottom: 55px;
 }
 .b-layout-item-button-buy-wrapper {
   display: block;
-  margin-bottom: 50px;
   position: relative;
 }
 .b-layout-item-button-buy-already-in-cart {

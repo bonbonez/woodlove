@@ -26,7 +26,6 @@
   &-pictures-wrapper {
     position: relative;
     width: 400px;
-    z-index: 1;
 
     &[data-position=fixed] {
       position: fixed;
@@ -84,7 +83,7 @@
     }
 
     &[data-visible=true] {
-      z-index: 3;
+      z-index: 1;
       opacity: 1;
     }
 
@@ -155,14 +154,14 @@
     font-size: 17px;
     font-weight: normal;
     line-height: 25px;
-    //margin-bottom: 55px;
+    margin-bottom: 55px;
   }
 
   &-button-buy {
 
     &-wrapper {
       display: block;
-      margin-bottom: 50px;
+      //margin-bottom: 50px;
       position: relative;
     }
 
