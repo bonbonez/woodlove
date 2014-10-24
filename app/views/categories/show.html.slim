@@ -4,6 +4,13 @@
     .b-page-category-top-filter
       a.b-page-category-top-filter-item href=url_for_sort_by_price_asc class="#{'m-current' if @current_params[:order] == :from_lowest_price}" ="Сначала дешевле"
       a.b-page-category-top-filter-item href=url_for_sort_by_price_desc class="#{'m-current' if @current_params[:order] == :from_highest_price}" ="Сначала дороже"
+
+  - if @show_brands && @category_brands.present?
+    .b-page-category-brands-wrapper
+      - @category_brands.each do |brand|
+        a.b-page-category-brands-item href="/brands/#{brand.url}"
+          img.b-page-category-brands-item-picture src=brand.logo.url(:default)
+
   .b-page-category-content
     .b-page-category-content-subcategories-wrapper
       - if @show_gender_filter == true

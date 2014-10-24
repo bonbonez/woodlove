@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   def show
     if params[:brand_url].present?
       @category = Brand.where(url: params[:brand_url]).last
+      @brand = @category
     else
       @category = Category.where(url: params[:id]).last
     end
@@ -64,11 +65,9 @@ class CategoriesController < ApplicationController
     @current_params = current_params
 
     # hack for displaying filter for watches only
-    if Rails.env.production?
-      @show_gender_filter = @category.id == 1
-    elsif Rails.env.development?
-      @show_gender_filter = @category.id == 1
-    end
+    @show_gender_filter = @category.id == 1
+    @show_brands        = @category.id == 1 && !params[:brand_url]
+    @category_brands    = Brand.all
 
     @current_gender_filter = gender_filter
 
