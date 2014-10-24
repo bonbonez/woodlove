@@ -1,4 +1,12 @@
 .b-page-category
+
+  - if @show_brands && @category_brands.present?
+    .b-promo-slider
+      - @category_brands.each do |brand|
+        - if brand.image_promo.present?
+          a.b-promo-slider-item href="/brands/#{brand.url}"
+            img.b-promo-slider-item-image src=brand.image_promo.url(:default)
+
   .b-page-category-header-wrapper
     h1.b-page-category-header-text =@category.header
     .b-page-category-top-filter

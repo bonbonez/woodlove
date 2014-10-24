@@ -1459,6 +1459,9 @@ h6 {
   text-align: left;
   width: 100%;
 }
+.b-page-category .b-promo-slider {
+  margin-bottom: 20px;
+}
 .b-page-category-header-wrapper {
   position: relative;
   height: 35px;
@@ -3048,6 +3051,24 @@ h6 {
 .b-popup-comment[data-state=success] .b-popup-comment-textarea,
 .b-popup-comment[data-state=success] .b-popup-comment-submit {
   display: none;
+}
+.b-promo-slider {
+  height: 225px;
+  position: relative;
+  width: 100%;
+}
+.b-promo-slider-item {
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.b-promo-slider-item-image {
+  height: 100%;
+  width: 100%;
 }
 .b-layout-promo-banner {
   font-size: 0;
