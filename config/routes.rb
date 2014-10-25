@@ -18,6 +18,8 @@ Woodlove::Application.routes.draw do
     resources :items
     resources :categories
     resources :brands
+
+    get 'survey_users/update_data', to: 'survey_users#update_data', as: :update_data
     resources :survey_users
 
     get 'items/:id/delete', to: 'items#delete', as: :delete

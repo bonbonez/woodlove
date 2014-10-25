@@ -1,5 +1,6 @@
 .m-offset-bottom
-  = link_to 'Новый Survey User', new_admin_survey_user_path, class: 'b-admin-form-item-button'
+  = link_to 'Новый Survey User', new_admin_survey_user_path, class: 'b-admin-form-item-button m-offset-right'
+  = link_to 'Обновить опрос', "/admin/survey_users/update_data", class: 'b-admin-form-item-button'
 
 - if @survey_users.present?
   .m-offset-bottom

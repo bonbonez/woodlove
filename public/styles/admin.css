@@ -705,6 +705,10 @@ body,
 .b-admin-form-item input[type=submit]:hover {
   background-color: #fafafa;
 }
+.b-admin-form-item-button.m-offset-right,
+.b-admin-form-item input[type=submit].m-offset-right {
+  margin-right: 20px;
+}
 .b-admin-form-button-delete {
   color: #000000;
   font-size: 20px;
