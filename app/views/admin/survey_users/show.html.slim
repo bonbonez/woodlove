@@ -1,0 +1,33 @@
+.b-admin-survey-user
+  = link_to "Назад", admin_survey_user_path, class: "b-admin-survey-user-link-back"
+
+  - if @likes.length > 0
+    .b-admin-survey-user-header ="Likes"
+    .b-admin-survey-user-items-wrapper
+      - @likes.each do |item|
+        a.b-admin-survey-user-item href="/items/#{item.url}"
+          img.b-admin-survey-user-item-image src=item.picture.url(:medium)
+
+  - if @bests.length > 0
+    .b-admin-survey-user-header ="Best"
+    .b-admin-survey-user-items-wrapper
+      - @bests.each do |item|
+        a.b-admin-survey-user-item href="/items/#{item.url}"
+          img.b-admin-survey-user-item-image src=item.picture.url(:medium)
+
+  - if @comments.length > 0
+    .b-admin-survey-user-header ="Comments"
+    .b-admin-survey-user-comments
+      - @comments.each do |comment|
+        - item = comment.item
+        .b-admin-survey-user-comment
+          a.b-admin-survey-user-item href="/items/#{item.url}"
+            img.b-admin-survey-user-item-image src=item.picture.url(:medium)
+          .b-admin-survey-user-comment-text =comment.text
+
+      - @comments.each do |comment|
+        - item = comment.item
+        .b-admin-survey-user-comment
+          a.b-admin-survey-user-item href="/items/#{item.url}"
+            img.b-admin-survey-user-item-image src=item.picture.url(:medium)
+          .b-admin-survey-user-comment-text =comment.text

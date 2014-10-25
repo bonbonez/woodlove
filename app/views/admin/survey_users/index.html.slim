@@ -6,4 +6,5 @@
   .m-offset-bottom
   - @survey_users.each do |survey_user|
     div
-      = link_to "#{survey_user.name} (#{survey_user.code})", edit_admin_survey_user_path(survey_user)
+      = link_to "#{survey_user.name} (#{survey_user.code}) ", "/admin/survey_users/#{survey_user.id}"
+      = link_to "Edit", edit_admin_survey_user_path(survey_user)

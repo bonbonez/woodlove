@@ -9,7 +9,7 @@
 </head>
 <body>
     <script type="text/javascript" src="/javascript/core.js?<%= frontend_version %>"></script>
-    <div class="b-admin-layout">
+    <div class="b-admin-layout <%= @css_layout_class if @css_layout_class.present? %>">
         <div class="b-admin-layout-header">админочка</div>
         <div class="b-admin-layout-content">
             <% if @link_back %>

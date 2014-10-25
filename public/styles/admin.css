@@ -811,3 +811,68 @@ body,
 .b-admin-items-category-item:not(:last-of-type) {
   margin-bottom: 10px;
 }
+.b-admin-survey-user-layout {
+  background-color: #ffffff;
+}
+.b-admin-survey-user-link-back {
+  color: #000000;
+  display: block;
+  margin-bottom: 20px;
+}
+.b-admin-survey-user-header {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.b-admin-survey-user-items-wrapper {
+  font-size: 0;
+  margin-bottom: 50px;
+  width: 100%;
+}
+.b-admin-survey-user-item {
+  display: inline-block;
+  height: 125px;
+  line-height: 125px;
+  margin: 0 20px 20px 0;
+  text-align: center;
+  width: 150px;
+}
+.b-admin-survey-user-item-image {
+  display: inline-block;
+  /* IE6-8 */
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+  max-height: 100%;
+  max-width: 100%;
+}
+.b-admin-survey-user-comments {
+  width: 100%;
+}
+.b-admin-survey-user-comment {
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  min-height: 125px;
+  padding-left: 180px;
+  position: relative;
+  width: 100%;
+}
+.b-admin-survey-user-comment:not(:last-of-type) {
+  margin-bottom: 45px;
+}
+.b-admin-survey-user-comment .b-admin-survey-user-item {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.b-admin-survey-user-comment-text {
+  font-family: "museo_sans_cyrl300", arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+  color: #000000;
+}

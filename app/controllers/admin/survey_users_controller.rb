@@ -4,6 +4,15 @@ class Admin::SurveyUsersController < Admin::ApplicationController
       @survey_users = SurveyUser.all
     end
 
+    def show
+      @survey_user = SurveyUser.find(params[:id])
+      @comments = Comment.where(survey_user_id: @survey_user.id)
+      @header = @survey_user.name
+      @likes = Item.where(id: @survey_user.get_data_liked)
+      @bests = Item.where(id: @survey_user.get_data_best)
+      @css_layout_class = 'b-admin-survey-user-layout'
+    end
+
     def new
       @survey_user = SurveyUser.new
       @header = "Новый Survey User"

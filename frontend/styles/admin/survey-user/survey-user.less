@@ -1,0 +1,67 @@
+.b-admin-survey-user-layout {
+  background-color: #ffffff;
+}
+
+.b-admin-survey-user {
+
+  &-link-back {
+    color: #000000;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &-header {
+    .font(30px, 30px, bold);
+    color: #000000;
+    margin-bottom: 30px;
+  }
+
+  &-items-wrapper {
+    font-size: 0;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  &-item {
+    display: inline-block;
+    height: 125px;
+    line-height: 125px;
+    margin: 0 20px 20px 0;
+    text-align: center;
+    width: 150px;
+
+    &-image {
+      .vertical-align-middle();
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &-comments {
+    width: 100%;
+  }
+
+  &-comment {
+    .box-sizing(border-box);
+    min-height: 125px;
+    padding-left: 180px;
+    position: relative;
+    width: 100%;
+
+    &:not(:last-of-type) {
+      margin-bottom: 45px;
+    }
+
+    .b-admin-survey-user-item {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+    &-text {
+      .font(16px, 22px, normal);
+      color: #000000;
+    }
+  }
+
+}
