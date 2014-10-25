@@ -2,10 +2,16 @@
 <script type="text/javascript">
     (function(window, $){
 
-        var $elemItemTitle = $('#item_title'),
-            $elemItemUrl   = $('#item_url'),
-            $elemItemMeta  = $('#item_meta'),
-            $elemItemFacts = $('#item_facts');
+        var USD_VALUE    = 42,
+            EUR_VALUE    = 53,
+            PRICE_ADDING = 1000;
+
+        var $elemItemTitle         = $('#item_title'),
+            $elemItemUrl           = $('#item_url'),
+            $elemItemMeta          = $('#item_meta'),
+            $elemItemFacts         = $('#item_facts'),
+            $elemItemPrice         = $('#item_price'),
+            $elemItemPriceOriginal = $('#item_price_original');
 
         $elemItemTitle.on('change keyup paste cut', function() {
             var value = $elemItemTitle.val();
@@ -29,6 +35,21 @@
                 });
                 value = tmp.join('\n');
                 $elemItemFacts.val(value);
+            }
+        });
+
+        $elemItemPriceOriginal.on('change keyup paste cut', function() {
+            var value = $elemItemPriceOriginal.val(),
+                multiplier = USD_VALUE,
+                newValue;
+
+            if (value !== '') {
+                if (value.toLowerCase().indexOf('e') !== -1) {
+                    multiplier = EUR_VALUE;
+                }
+
+                value = parseInt(value, 10);
+                $elemItemPrice.val(value * multiplier + PRICE_ADDING);
             }
         });
 

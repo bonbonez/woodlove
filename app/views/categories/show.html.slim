@@ -2,9 +2,9 @@
 
   - if @show_brands && @category_brands.present?
     .b-promo-slider
-      - @category_brands.each do |brand|
+      - @category_brands.each_with_index do |brand, i|
         - if brand.image_promo.present?
-          a.b-promo-slider-item href="/brands/#{brand.url}"
+          a.b-promo-slider-item href="/brands/#{brand.url}" class="#{'m-current' if i == 0}"
             img.b-promo-slider-item-image src=brand.image_promo.url(:default)
 
   .b-page-category-header-wrapper
