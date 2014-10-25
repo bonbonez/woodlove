@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141021214820) do
+ActiveRecord::Schema.define(:version => 20141025063714) do
 
   create_table "brands", :force => true do |t|
     t.string   "title"
@@ -117,12 +117,12 @@ ActiveRecord::Schema.define(:version => 20141021214820) do
   create_table "survey_users", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.string   "data"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.integer  "current_index", :default => 0
-    t.string   "data_liked",    :default => "[]"
-    t.string   "data_best",     :default => "[]"
+    t.text     "data",          :limit => 255
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.integer  "current_index",                :default => 0
+    t.text     "data_liked",    :limit => 255, :default => "[]"
+    t.text     "data_best",     :limit => 255, :default => "[]"
     t.string   "gender"
   end
 
