@@ -16,6 +16,30 @@ class Item < ActiveRecord::Base
 
   include ApplicationHelper
 
+  def self.popular(limit = 6)
+    items_liked = []
+    items_best  = []
+    items_total = []
+    items       = []
+
+    SurveyUser.all.each do |item|
+      items_liked += item.get_data_liked
+      items_best  += item.get_data_best
+    end
+    items_best += items_best
+    items_total = items_liked + items_best
+
+    items_total.uniq.each do |item|
+      items.push({
+        id: item,
+        points: items_total.count(item)
+      })
+    end
+
+    items_ids = items.sort{ |a,b| a[:points] <=> b[:points] }.reverse
+    items_ids.first(limit).collect{|i|Item.find(i[:id])}
+  end
+
   def meta_as_hash
     meta_raw = self[:meta]
     return [] if meta_raw.nil? || meta_raw.empty?

@@ -2640,9 +2640,11 @@ h6 {
   white-space: nowrap;
 }
 .b-carousel-content-item {
+  display: inline-block;
   height: 180px;
   line-height: 180px;
-  display: inline-block;
+  text-align: center;
+  width: 140px;
 }
 .b-carousel-content-item:not(:last-of-type) {
   margin-right: 23px;
@@ -2654,8 +2656,8 @@ h6 {
   *zoom: 1;
   vertical-align: middle;
   vertical-align: -webkit-baseline-middle;
-  max-height: 180px;
-  max-width: 250px;
+  max-height: 100%;
+  max-width: 100%;
 }
 .b-block-recent {
   box-sizing: border-box;
