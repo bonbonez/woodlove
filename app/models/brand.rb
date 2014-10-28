@@ -1,5 +1,5 @@
 class Brand < ActiveRecord::Base
-  attr_accessible :url, :name, :description, :title, :logo, :image_promo, :warranty
+  attr_accessible :url, :name, :description, :title, :logo, :image_promo, :warranty, :is_published
 
   has_many :items
   #belongs_to :category

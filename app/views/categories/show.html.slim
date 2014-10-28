@@ -4,7 +4,8 @@
     .b-promo-slider
       - @category_brands.each_with_index do |brand, i|
         - if brand.image_promo.present?
-          a.b-promo-slider-item href="/brands/#{brand.url}" class="#{'m-current' if i == 0}"
+          /a.b-promo-slider-item href="/brands/#{brand.url}" class="#{'m-current' if i == 0}"
+          a.b-promo-slider-item.m-current href="/brands/#{brand.url}"
             img.b-promo-slider-item-image src=brand.image_promo.url(:default)
 
   .b-page-category-header-wrapper

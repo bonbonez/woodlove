@@ -67,7 +67,7 @@ class CategoriesController < ApplicationController
     # hack for displaying filter for watches only
     @show_gender_filter = @category.id == 1
     @show_brands        = @category.id == 1 && !params[:brand_url]
-    @category_brands    = Brand.all
+    @category_brands    = Brand.where(is_published: true)
 
     @current_gender_filter = gender_filter
 

@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141025063714) do
+ActiveRecord::Schema.define(:version => 20141028044317) do
 
   create_table "brands", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20141025063714) do
     t.integer  "image_promo_file_size"
     t.datetime "image_promo_updated_at"
     t.text     "warranty"
+    t.boolean  "is_published",             :default => true
   end
 
   create_table "carts", :force => true do |t|
