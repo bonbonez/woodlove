@@ -2,7 +2,7 @@ module CategoriesHelper
 
     def limit_single
       if Rails.env.development?
-        return 2
+        return 3
       else
         return 15
       end
@@ -10,7 +10,7 @@ module CategoriesHelper
 
     def limit_double
       if Rails.env.development?
-        return 4
+        return 6
       else
         return 30
       end

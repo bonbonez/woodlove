@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141028044317) do
+ActiveRecord::Schema.define(:version => 20141029050352) do
 
   create_table "brands", :force => true do |t|
     t.string   "title"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20141028044317) do
     t.integer  "brand_id"
     t.string   "gender",                :default => "unisex"
     t.text     "facts"
+    t.integer  "popularity_points",     :default => 0
   end
 
   create_table "subcategories", :force => true do |t|

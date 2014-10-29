@@ -1,5 +1,6 @@
 .m-offset-bottom
-  = link_to 'Новый Item', new_admin_item_path, class: 'b-admin-form-item-button'
+  = link_to 'Новый Item', new_admin_item_path, class: 'b-admin-form-item-button m-offset-right'
+  = link_to 'Пересчитать популярность', '/admin/items/update_popularity_points', class: 'b-admin-form-item-button'
 
 /- if @items.present?
   - @items.each do |item|

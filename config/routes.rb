@@ -15,6 +15,7 @@ Woodlove::Application.routes.draw do
     get 'let_me_in_please_im_a_dog', to: 'index#disable_admin_access'
 
     #get 'items/:id/edit', to: 'items#edit'
+    get 'items/update_popularity_points', to: 'items#update_popularity_points'
     resources :items
     resources :categories
     resources :brands

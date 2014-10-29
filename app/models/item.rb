@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :facts, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id, :is_published, :brand_id, :gender
+  attr_accessible :desc, :desc_original, :link_to_original_item, :meta, :facts, :price, :price_original, :price_special, :title, :title_original, :picture, :picture2, :picture3, :picture4, :picture5, :url, :category_id, :is_published, :brand_id, :gender, :popularity_points
 
   belongs_to :category
   belongs_to :brand
@@ -17,6 +17,20 @@ class Item < ActiveRecord::Base
   include ApplicationHelper
 
   def self.popular(limit = 6)
+    ids = self.popular_ids(limit)
+    orders = []
+    ids.each_with_index {|id, index| orders[id]=index}
+
+    Item.find(ids).sort_by{|i| orders[i.id]}
+  end
+
+  def self.popular_ids(limit = 6)
+    items = self.popular_as_hash
+    items_ids = items.sort{ |a,b| a[:points] <=> b[:points] }.reverse.map{|i|i[:id].to_i}
+    items_ids
+  end
+
+  def self.popular_as_hash(limit = 6)
     items_liked = []
     items_best  = []
     items_total = []
@@ -36,8 +50,7 @@ class Item < ActiveRecord::Base
       })
     end
 
-    items_ids = items.sort{ |a,b| a[:points] <=> b[:points] }.reverse
-    items_ids.first(limit).collect{|i|Item.find(i[:id])}
+    items
   end
 
   def meta_as_hash

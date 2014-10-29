@@ -1487,7 +1487,7 @@ h6 {
   line-height: 35px;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 1px;
 }
 .b-page-category-top-filter-item {
   font-family: "museo_sans_cyrl300", arial, sans-serif;

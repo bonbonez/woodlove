@@ -60,4 +60,15 @@ class Admin::ItemsController < Admin::ApplicationController
     redirect_to action: :edit
   end
 
+  def update_popularity_points
+    items = Item.popular_as_hash(999)
+    items.each do |item_data|
+      item = Item.find(item_data[:id])
+      item.popularity_points = item_data[:points]
+      item.save!
+    end
+
+    redirect_to admin_items_path
+  end
+
 end

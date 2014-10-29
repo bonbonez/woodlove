@@ -18,8 +18,8 @@ class CategoriesController < ApplicationController
     gender_filter  = get_gender_filter
     current_page   = get_current_page
 
-    category_items = if order_filter.nil?
-      category_items.order("created_at desc")
+    category_items = if order_filter == :popularity
+      category_items.order("popularity_points desc")
     elsif order_filter == :from_lowest_price
       category_items.order("price asc")
     elsif order_filter == :from_highest_price
@@ -121,7 +121,7 @@ class CategoriesController < ApplicationController
   end
 
   def get_order_filter
-    filter = nil
+    filter = :popularity
     if params[:order]
       if params[:order] == "from_lowest_price"
         filter = :from_lowest_price
@@ -129,6 +129,7 @@ class CategoriesController < ApplicationController
         filter = :from_highest_price
       end
     end
+    filter
   end
 
   def get_gender_filter
